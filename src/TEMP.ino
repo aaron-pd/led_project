@@ -358,3 +358,29 @@ sensorValue = sampleAverage
 delay(50);
 }
 */
+
+
+
+
+
+
+
+
+
+
+/*
+Example for delay library function
+
+void ledTasks::flash(int delayTime) {
+  for (int i = 0; i < 4; i++) {
+    digitalWrite(_pinOne, HIGH);
+    digitalWrite(_pinTwo, HIGH);
+    digitalWrite(_pinThree, HIGH);
+    delay(delayTime);
+    digitalWrite(_pinOne, LOW);
+    digitalWrite(_pinTwo, LOW);
+    digitalWrite(_pinThree, LOW);
+    delay(delayTime);
+  }
+}
+*/

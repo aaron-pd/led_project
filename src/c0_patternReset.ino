@@ -5,16 +5,12 @@
 // function, set specific patternReset[#] array to 'false' to prevent
 // patternReset() function from running agian (see ledSelect() function)
 
-void reset() {
+void reset()
+{
 
-  for (int i = 0; i < patternResetCount; i++) {
+  for (int i = 0; i < patternResetCount; i++)
+  {
     patternReset[i] = true;
   }
-  digitalWrite(ledPinCRed, LOW);
-  digitalWrite(ledPinCBlue, LOW);
-  digitalWrite(ledPinCGreen, LOW);
-  for (int i = 0; i < ledCount; i++) {
-    digitalWrite(ledPinL[i], LOW);
-    digitalWrite(ledPinR[i], LOW);
-  }
+  ledPatterns.off();
 }
