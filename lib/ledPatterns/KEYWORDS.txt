@@ -1,0 +1,10 @@
+ledPatterns KEYWORD1
+
+on          KEYWORD2
+off         KEYWORD2
+
+transition0 KEYWORD2
+
+pattern0    KEYWORD2
+pattern1    KEYWORD2
+parrter2    KEYWORD2

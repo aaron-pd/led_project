@@ -1,20 +1,22 @@
 //-------------------- Functions --------------------
 
 // LED dimming control determined by potentiometer value
-void ledDimmer() {
+void ledDimmer()
+{
 
   // Delay variables/values
   unsigned long currentMillis = millis();
-  unsigned long previousMillis = 0;
-  unsigned long intervalMillis = 25;
+  unsigned long intervalMillis = 50;
+
   // EMA variables/values
-  float sampleRate = 0.2;
-  int sampleAverage = analogRead(potPinDimmer); /////REVIEW
-  // Causing slow down? move to global variables & setup()?
+  /////REVIEW Causing slow down? move to global variables & setup()?
+  float sampleRate = .2;
+  int sampleAverage = analogRead(potPinDimmer);
 
   // Delay
-  if (currentMillis - previousMillis >= intervalMillis) {
-    previousMillis = currentMillis;
+  if (currentMillis - previousMillis_Dimmer >= intervalMillis)
+  {
+    previousMillis_Dimmer = currentMillis;
 
     // EMA smoothing
     // -Set analog/digital read input values
