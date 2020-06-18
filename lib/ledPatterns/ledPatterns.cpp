@@ -205,12 +205,7 @@ void ledPatterns::patternRND(unsigned long delay_Val)
   ledPatterns::patternFn fn = ledPatterns::patternArray[r];
   // Assign 'ledPatterns' class to variable 'display'
   ledPatterns display;
-  // Cycle pattern 10 times
-  for (int i = 0; i < 10; i++)
-  {
-    // Call randomly selected function
-    (display.*fn)(delay_Val);
-  }
+  (display.*fn)(delay_Val);
 }
 
 //==========Pattern0==========
