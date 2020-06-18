@@ -5,12 +5,23 @@
 void ledSwitch()
 {
 
-  // Set analog/digital read input values
+  // Set digital read switch input values
   switchPin_PosA_Val = digitalRead(switchPin_PosA);
   switchPin_PosB_Val = digitalRead(switchPin_PosB);
 
+  // Switch position 'A'
+  // -Play all patterns randomly
   if (switchPin_PosA_Val == HIGH)
   {
-    serialPrint(); /////TEMPORARY: used to turn on/off serialPrint()
+    reset();
+    ledPatterns.transitionRND();
+    ledPatterns.patternRND(potPinDelay, potPinDelay_Val, delayRate_Val);
+  }
+
+  // Switch position 'B'
+  // -Play selected patterns only
+  if (switchPin_PosB_Val == HIGH)
+  {
+    ledSelect();
   }
 }

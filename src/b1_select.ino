@@ -8,25 +8,21 @@ void ledSelect()
   unsigned long currentMillis = millis();
   unsigned long intervalMillis = 25;
 
-  // EMA variables/values
-  float sampleRate = 0.6;
-  int sampleAverage = analogRead(potPinSelect);
-
   // Delay
   if (currentMillis - previousMillis_Select >= intervalMillis)
   {
     previousMillis_Select = currentMillis;
 
     // EMA smoothing
-    // -Set analog/digital read input values
+    // -Set analog read input values
     potPinSelect_Val = analogRead(potPinSelect);
     // -calculations
-    sampleAverage =
-        (sampleRate * potPinSelect_Val) + ((1 - sampleRate) * sampleAverage);
+    sampleAverage_Select =
+        (sampleRate_Select * potPinSelect_Val) + ((1 - sampleRate_Select) * sampleAverage_Select);
 
     // Pattern select value set by selection potentiometer with Smoothing
     // calculations
-    select_Val = sampleAverage;
+    select_Val = sampleAverage_Select;
     select_Val = map(potPinSelect_Val, 8, 1015, 0, 999);
 
     // Switch/Case used to select pattern from select_Val variable
@@ -47,7 +43,7 @@ void ledSelect()
       {
         reset();
         patternReset[0] = false;
-        ledPatterns.transition0();
+        ledPatterns.transitionRND();
       }
       ledPatterns.pattern0(potPinDelay, potPinDelay_Val, delayRate_Val);
       break;
@@ -59,7 +55,7 @@ void ledSelect()
       {
         reset();
         patternReset[1] = false;
-        ledPatterns.transition0();
+        ledPatterns.transitionRND();
       }
       ledPatterns.pattern1(potPinDelay, potPinDelay_Val, delayRate_Val);
       break;
@@ -71,7 +67,7 @@ void ledSelect()
       {
         reset();
         patternReset[2] = false;
-        ledPatterns.transition0();
+        ledPatterns.transitionRND();
       }
       ledPatterns.pattern2(potPinDelay, potPinDelay_Val, delayRate_Val);
       break;

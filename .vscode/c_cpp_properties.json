@@ -6,9 +6,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:/Users/Aaron/Documents/PlatformIO/Projects/led_project/include",
-                "C:/Users/Aaron/Documents/PlatformIO/Projects/led_project/src",
-                "C:/Users/Aaron/Documents/PlatformIO/Projects/led_project/lib/ledTasks",
+                "C:/Users/Aaron/Documents/GitHub/led_project/include",
+                "C:/Users/Aaron/Documents/GitHub/led_project/src",
+                "C:/Users/Aaron/Documents/GitHub/led_project/lib/ledPatterns",
                 "C:/Users/Aaron/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/Aaron/.platformio/packages/framework-arduino-avr/variants/standard",
                 "C:/Users/Aaron/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
@@ -22,9 +22,9 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/Aaron/Documents/PlatformIO/Projects/led_project/include",
-                    "C:/Users/Aaron/Documents/PlatformIO/Projects/led_project/src",
-                    "C:/Users/Aaron/Documents/PlatformIO/Projects/led_project/lib/ledTasks",
+                    "C:/Users/Aaron/Documents/GitHub/led_project/include",
+                    "C:/Users/Aaron/Documents/GitHub/led_project/src",
+                    "C:/Users/Aaron/Documents/GitHub/led_project/lib/ledPatterns",
                     "C:/Users/Aaron/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/Aaron/.platformio/packages/framework-arduino-avr/variants/standard",
                     "C:/Users/Aaron/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",

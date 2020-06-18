@@ -4,6 +4,8 @@ on          KEYWORD2
 off         KEYWORD2
 
 transition0 KEYWORD2
+transition1 KEYWORD2
+transition2 KEYWORD2
 
 pattern0    KEYWORD2
 pattern1    KEYWORD2

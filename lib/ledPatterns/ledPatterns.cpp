@@ -4,13 +4,19 @@
  * Revision #1 - See readMe
  */
 
+//==========Define==========
 #include "ledPatterns.h"
 #include "Arduino.h"
+#include "stdlib.h"
 
-//-------------------- Initialization --------------------
+//-------------------- Class Initialization --------------------
 
 ledPatterns::ledPatterns()
 {
+
+  // Randomizer seed
+  // -Based on unused analog input pin
+  randomSeed(analogRead(seedPin));
 
   // LED pin setup
   // Left/Right solid colour LED sets
@@ -67,11 +73,28 @@ void ledPatterns::off()
 
 //-------------------- Transition Patterns --------------------
 
+//==========Transition Randomizer==========
+
+// Randomly select a transition function
+void ledPatterns::transitionRND()
+{
+
+  // Random number selection
+  int r = random(3);
+  // Assign variable 'transitionFn' to a new variable 'fn' with a random array number
+  ledPatterns::transitionFn fn = ledPatterns::transitionArray[r];
+  // Assign 'ledPatterns' class to variable 'display'
+  ledPatterns display;
+  // Call randomly selected function
+  (display.*fn)();
+}
+
 //==========Transition0==========
 
 // Transition LED pattern 0
 void ledPatterns::transition0()
 {
+
   digitalWrite(_ledPinL[0], HIGH);
   digitalWrite(_ledPinR[0], HIGH);
 
@@ -81,14 +104,77 @@ void ledPatterns::transition0()
     digitalWrite(_ledPinR[i - 1], LOW);
     digitalWrite(_ledPinL[i], HIGH);
     digitalWrite(_ledPinR[i], HIGH);
-    delay(100);
+    delay(_dTime);
   }
   digitalWrite(_ledPinL[3], LOW);
   digitalWrite(_ledPinR[3], LOW);
-  delay(100);
+  delay(_dTime);
+}
+
+// Transition LED pattern 1
+void ledPatterns::transition1()
+{
+
+  digitalWrite(_ledPinL[0], HIGH);
+  digitalWrite(_ledPinR[0], HIGH);
+  delay(_dTime);
+  for (int i = 0; i < (_ledCount - 1); i++)
+  {
+    digitalWrite(_ledPinL[i - 1], LOW);
+    digitalWrite(_ledPinR[i - 1], LOW);
+    digitalWrite(_ledPinL[i + 1], HIGH);
+    digitalWrite(_ledPinR[i + 1], HIGH);
+    delay(_dTime);
+  }
+  digitalWrite(_ledPinL[2], LOW);
+  digitalWrite(_ledPinR[2], LOW);
+  delay(_dTime);
+  digitalWrite(_ledPinL[3], LOW);
+  digitalWrite(_ledPinR[3], LOW);
+  delay(_dTime);
+  ledPatterns::off();
+}
+
+// Transition LED pattern 2
+void ledPatterns::transition2()
+{
+
+  digitalWrite(_ledPinL[0], HIGH);
+  digitalWrite(_ledPinL[1], HIGH);
+  delay(_dTime);
+  digitalWrite(_ledPinR[0], HIGH);
+  digitalWrite(_ledPinR[1], HIGH);
+  delay(_dTime);
+  digitalWrite(_ledPinL[2], HIGH);
+  digitalWrite(_ledPinL[3], HIGH);
+  delay(_dTime);
+  digitalWrite(_ledPinR[2], HIGH);
+  digitalWrite(_ledPinR[3], HIGH);
+  delay(_dTime);
+  ledPatterns::off();
 }
 
 //-------------------- Repeating Pattern Functions --------------------
+
+//==========Pattern Randomizer==========
+
+// Randomly select a pattern function
+void ledPatterns::patternRND(int pot_Pin, int pot_Val, unsigned long delay_Val)
+{
+
+  // Random number selection
+  int r = random(3);
+  // Assign variable 'patternFn' to a new variable 'fn' with a random array number
+  ledPatterns::patternFn fn = ledPatterns::patternArray[r];
+  // Assign 'ledPatterns' class to variable 'display'
+  ledPatterns display;
+  // Cycle pattern 10 times
+  for (int i = 0; i < 10; i++)
+  {
+    // Call randomly selected function
+    (display.*fn)(pot_Pin, pot_Val, delay_Val);
+  }
+}
 
 //==========Pattern0==========
 
@@ -98,7 +184,7 @@ void ledPatterns::pattern0(int pot_Pin, int pot_Val, unsigned long delay_Val)
 {
 
   // Delay Rate                                /////REVIEW: EMA Smoothing?
-  // -Set analog/digital read input values
+  // -Set analog read potentiometer input values
   pot_Val = analogRead(pot_Pin);
   // -Delay rate value mapped to input potentiometer
   delay_Val = map(pot_Val, 8, 1015, 0, 999);
@@ -162,10 +248,11 @@ void ledPatterns::pattern1(int pot_Pin, int pot_Val, unsigned long delay_Val)
 {
 
   // Delay Rate                                /////REVIEW: EMA Smoothing?
-  // -Set analog/digital read input values
+  // -Set analog read potentiometer input values
   pot_Val = analogRead(pot_Pin);
   // -Delay rate value mapped to input potentiometer
   delay_Val = map(pot_Val, 8, 1015, 0, 999);
+
   // Delay variables/values
   unsigned long currentMillis = millis();
 
@@ -218,10 +305,11 @@ void ledPatterns::pattern1(int pot_Pin, int pot_Val, unsigned long delay_Val)
 void ledPatterns::pattern2(int pot_Pin, int pot_Val, unsigned long delay_Val)
 {
   // Delay Rate                                /////REVIEW: EMA Smoothing?
-  // -Set analog/digital read input values
+  // -Set analog read potentiometer input values
   pot_Val = analogRead(pot_Pin);
   // -Delay rate value mapped to input potentiometer
   delay_Val = map(pot_Val, 8, 1015, 0, 999);
+
   // Delay variables/values
   unsigned long currentMillis = millis();
 
