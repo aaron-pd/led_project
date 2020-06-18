@@ -10,6 +10,8 @@ transition1     KEYWORD2
 transition2     KEYWORD2
 transitionRND   KEYWORD2
 
+patternDelay    KEYWORD2
+delay_Val_AVG   KEYWORD2
 pattern0        KEYWORD2
 pattern1        KEYWORD2
 partern2        KEYWORD2

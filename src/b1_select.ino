@@ -45,7 +45,8 @@ void ledSelect()
         patternReset[0] = false;
         ledPatterns.transitionRND();
       }
-      ledPatterns.pattern0(potPinDelay, potPinDelay_Val, delayRate_Val);
+      ledPatterns.patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
+      ledPatterns.pattern0(ledPatterns.delay_Val_AVG);
       break;
 
     // -Pattern 1
@@ -57,7 +58,8 @@ void ledSelect()
         patternReset[1] = false;
         ledPatterns.transitionRND();
       }
-      ledPatterns.pattern1(potPinDelay, potPinDelay_Val, delayRate_Val);
+      ledPatterns.patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
+      ledPatterns.pattern1(ledPatterns.delay_Val_AVG);
       break;
 
     // -Pattern 2
@@ -69,7 +71,8 @@ void ledSelect()
         patternReset[2] = false;
         ledPatterns.transitionRND();
       }
-      ledPatterns.pattern2(potPinDelay, potPinDelay_Val, delayRate_Val);
+      ledPatterns.patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
+      ledPatterns.pattern2(ledPatterns.delay_Val_AVG);
       break;
 
     // -Default State

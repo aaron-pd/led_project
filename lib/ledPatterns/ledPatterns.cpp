@@ -14,10 +14,6 @@
 ledPatterns::ledPatterns()
 {
 
-  // Randomizer seed
-  // -Based on unused analog input pin
-  randomSeed(analogRead(seedPin));
-
   // LED pin setup
   // Left/Right solid colour LED sets
   for (int i = 0; i < _ledCount; i++)
@@ -29,6 +25,10 @@ ledPatterns::ledPatterns()
   pinMode(_ledPinCRed, OUTPUT);
   pinMode(_ledPinCBlue, OUTPUT);
   pinMode(_ledPinCGreen, OUTPUT);
+
+  // Randomizer seed
+  // -Based on unused analog input pin
+  randomSeed(analogRead(seedPin));
 }
 
 //-------------------- Non-Pattern Functions --------------------
@@ -160,11 +160,43 @@ void ledPatterns::transition2()
 
 //-------------------- Repeating Pattern Functions --------------------
 
+//==========Delay EMA Smoothing==========
+
+// Reduces input signal noise for variable delay value
+void ledPatterns::patternDelay(int pot_Pin, int pot_Val, unsigned long delay_Val_EMA)
+{
+
+  // Delay variables/values
+  unsigned long currentMillis = millis();
+  unsigned long intervalMillis = 50;
+
+  // EMA Smoothing setup
+  _sampleAverage_Delay = analogRead(pot_Pin);
+
+  // Delay
+  if (currentMillis - _previousMillis_Delay >= intervalMillis)
+  {
+    _previousMillis_Delay = currentMillis;
+
+    // EMA smoothing
+    // -Set analog read input values
+    pot_Val = analogRead(pot_Pin);
+    // -calculations
+    _sampleAverage_Delay =
+        (_sampleRate_Delay * pot_Val) + ((1 - _sampleRate_Delay) * _sampleAverage_Delay);
+    // Delay value set by delay potentiometer with Smoothing calculations
+    delay_Val_EMA = _sampleAverage_Delay;
+    delay_Val_EMA = map(pot_Val, 8, 1015, 0, 255);
+    // Set value for global variable
+    delay_Val_AVG = delay_Val_EMA;
+  }
+}
+
 //==========Pattern Randomizer==========
 
 // Transition function
 // -Randomly select a pattern function
-void ledPatterns::patternRND(int pot_Pin, int pot_Val, unsigned long delay_Val)
+void ledPatterns::patternRND(unsigned long delay_Val)
 {
 
   // Random number selection
@@ -177,7 +209,7 @@ void ledPatterns::patternRND(int pot_Pin, int pot_Val, unsigned long delay_Val)
   for (int i = 0; i < 10; i++)
   {
     // Call randomly selected function
-    (display.*fn)(pot_Pin, pot_Val, delay_Val);
+    (display.*fn)(delay_Val);
   }
 }
 
@@ -185,14 +217,9 @@ void ledPatterns::patternRND(int pot_Pin, int pot_Val, unsigned long delay_Val)
 
 // Sets LED pattern, delay based on variable delay value
 // -Pattern will flash all LEDs simultaneously
-void ledPatterns::pattern0(int pot_Pin, int pot_Val, unsigned long delay_Val)
+// -delay_Val = user custom value or smoothed input variable 'delay_Val_AVG' from 'ledPatterns::patternRND' function
+void ledPatterns::pattern0(unsigned long delay_Val)
 {
-
-  // Delay Rate
-  // -Set analog read potentiometer input values
-  pot_Val = analogRead(pot_Pin);
-  // -Delay rate value mapped to input potentiometer
-  delay_Val = map(pot_Val, 8, 1015, 0, 999);
 
   // Delay variables/values
   unsigned long currentMillis = millis();
@@ -249,14 +276,8 @@ void ledPatterns::pattern0(int pot_Pin, int pot_Val, unsigned long delay_Val)
 
 // Sets LED pattern, delay based on variable delay value
 // -Pattern will flash center LED, then fade through the following LEDs outwards
-void ledPatterns::pattern1(int pot_Pin, int pot_Val, unsigned long delay_Val)
+void ledPatterns::pattern1(unsigned long delay_Val)
 {
-
-  // Delay Rate
-  // -Set analog read potentiometer input values
-  pot_Val = analogRead(pot_Pin);
-  // -Delay rate value mapped to input potentiometer
-  delay_Val = map(pot_Val, 8, 1015, 0, 999);
 
   // Delay variables/values
   unsigned long currentMillis = millis();
@@ -307,13 +328,8 @@ void ledPatterns::pattern1(int pot_Pin, int pot_Val, unsigned long delay_Val)
 // Sets LED pattern, delay based on variable delay value
 // -Pattern will flash center LED, then fade through the following LEDs outwards,
 //  center LED flashes through each colour
-void ledPatterns::pattern2(int pot_Pin, int pot_Val, unsigned long delay_Val)
+void ledPatterns::pattern2(unsigned long delay_Val)
 {
-  // Delay Rate
-  // -Set analog read potentiometer input values
-  pot_Val = analogRead(pot_Pin);
-  // -Delay rate value mapped to input potentiometer
-  delay_Val = map(pot_Val, 8, 1015, 0, 999);
 
   // Delay variables/values
   unsigned long currentMillis = millis();

@@ -54,18 +54,25 @@ public:
 
   //----------Repeating pattern functions----------
 
+  // Delay EMA smoothing
+  // -pot_Pin = Delay input pin
+  // -pot_Val = Delay input pin value
+  // -delay_Val_EMA = Pattern delay rate value
+  void patternDelay(int pot_Pin, int pot_Val, unsigned long delay_Val_EMA);
+  // -EMA adjusted delay rate value
+  unsigned long delay_Val_AVG;
+
   // These continuously play a pattern
-  // -pot_Pin = Input Pin
-  // -pot_Val = Input Pin Value
-  // -delay_Val = Pattern Delay Value
-  void pattern0(int pot_Pin, int pot_Val, unsigned long delay_Val);
-  void pattern1(int pot_Pin, int pot_Val, unsigned long delay_Val);
-  void pattern2(int pot_Pin, int pot_Val, unsigned long delay_Val);
+  // -delay_Val = Delay time
+  // --Use 'ledPatterns.delay_Val_AVG' if using 'ledPatterns.patternDelay' function
+  void pattern0(unsigned long delay_Val);
+  void pattern1(unsigned long delay_Val);
+  void pattern2(unsigned long delay_Val);
 
   // Randomizer pattern function
-  void patternRND(int pot_Pin, int pot_Val, unsigned long delay_Val);
+  void patternRND(unsigned long delay_Val);
   // -Typedef for randomizer class function
-  typedef void (ledPatterns::*patternFn)(int pot_Pin, int pot_Val, unsigned long delay_Val);
+  typedef void (ledPatterns::*patternFn)(unsigned long delay_Val);
   // -Array of function pointers to be randomized
   ledPatterns::patternFn patternArray[3] =
       {
@@ -106,10 +113,18 @@ private:
   //----------Other----------
 
   // Delay variables/values
-  // -Used by all pattern#() functions
+  // -Global variables required to remember previous loop values
+  // --Used by all pattern#() functions
   unsigned long _previousMillis_Pattern = 0;
-  // -Used by all transition#() functions
+  unsigned long _previousMillis_Delay = 0;
+  // -Static value used by all transition#() functions
   int _dTime = 200;
+
+  // EMA smoothing variables/values
+  // -Global variables required to remember previous loop values
+  // --For variable delay input potentiometer
+  int _sampleAverage_Delay = 0;
+  float _sampleRate_Delay = 0.6;
 };
 
 #endif
