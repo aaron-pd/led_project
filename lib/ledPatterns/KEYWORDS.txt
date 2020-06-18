@@ -1,12 +1,16 @@
-ledPatterns KEYWORD1
+ledPatterns     KEYWORD1
 
-on          KEYWORD2
-off         KEYWORD2
+seedPin         KEYWORD2
 
-transition0 KEYWORD2
-transition1 KEYWORD2
-transition2 KEYWORD2
+on              KEYWORD2
+off             KEYWORD2
 
-pattern0    KEYWORD2
-pattern1    KEYWORD2
-parrter2    KEYWORD2
+transition0     KEYWORD2
+transition1     KEYWORD2
+transition2     KEYWORD2
+transitionRND   KEYWORD2
+
+pattern0        KEYWORD2
+pattern1        KEYWORD2
+partern2        KEYWORD2
+patternRND      KEYWORD2

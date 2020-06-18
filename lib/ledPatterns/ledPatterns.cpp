@@ -4,12 +4,12 @@
  * Revision #1 - See readMe
  */
 
-//==========Define==========
+//==========Includes==========
 #include "ledPatterns.h"
 #include "Arduino.h"
 #include "stdlib.h"
 
-//-------------------- Class Initialization --------------------
+//-------------------- Class Initialization: ledPatterns --------------------
 
 ledPatterns::ledPatterns()
 {
@@ -75,7 +75,8 @@ void ledPatterns::off()
 
 //==========Transition Randomizer==========
 
-// Randomly select a transition function
+// Transition function
+// -Randomly select a transition function
 void ledPatterns::transitionRND()
 {
 
@@ -92,6 +93,7 @@ void ledPatterns::transitionRND()
 //==========Transition0==========
 
 // Transition LED pattern 0
+// -Fade through LEDs outwards from the center
 void ledPatterns::transition0()
 {
 
@@ -112,6 +114,7 @@ void ledPatterns::transition0()
 }
 
 // Transition LED pattern 1
+// -Fade through LEDs outwards from the center, with one LED following
 void ledPatterns::transition1()
 {
 
@@ -136,6 +139,7 @@ void ledPatterns::transition1()
 }
 
 // Transition LED pattern 2
+// -Turn on two sets of LEDs at a time until all LEDs are on
 void ledPatterns::transition2()
 {
 
@@ -158,7 +162,8 @@ void ledPatterns::transition2()
 
 //==========Pattern Randomizer==========
 
-// Randomly select a pattern function
+// Transition function
+// -Randomly select a pattern function
 void ledPatterns::patternRND(int pot_Pin, int pot_Val, unsigned long delay_Val)
 {
 
@@ -183,7 +188,7 @@ void ledPatterns::patternRND(int pot_Pin, int pot_Val, unsigned long delay_Val)
 void ledPatterns::pattern0(int pot_Pin, int pot_Val, unsigned long delay_Val)
 {
 
-  // Delay Rate                                /////REVIEW: EMA Smoothing?
+  // Delay Rate
   // -Set analog read potentiometer input values
   pot_Val = analogRead(pot_Pin);
   // -Delay rate value mapped to input potentiometer
@@ -247,7 +252,7 @@ void ledPatterns::pattern0(int pot_Pin, int pot_Val, unsigned long delay_Val)
 void ledPatterns::pattern1(int pot_Pin, int pot_Val, unsigned long delay_Val)
 {
 
-  // Delay Rate                                /////REVIEW: EMA Smoothing?
+  // Delay Rate
   // -Set analog read potentiometer input values
   pot_Val = analogRead(pot_Pin);
   // -Delay rate value mapped to input potentiometer
@@ -300,11 +305,11 @@ void ledPatterns::pattern1(int pot_Pin, int pot_Val, unsigned long delay_Val)
 //==========Pattern2==========
 
 // Sets LED pattern, delay based on variable delay value
-// -Pattern will flash center LED, then fade through the following LEDs outwards
-// while the center LED matches each colour currently lit
+// -Pattern will flash center LED, then fade through the following LEDs outwards,
+//  center LED flashes through each colour
 void ledPatterns::pattern2(int pot_Pin, int pot_Val, unsigned long delay_Val)
 {
-  // Delay Rate                                /////REVIEW: EMA Smoothing?
+  // Delay Rate
   // -Set analog read potentiometer input values
   pot_Val = analogRead(pot_Pin);
   // -Delay rate value mapped to input potentiometer

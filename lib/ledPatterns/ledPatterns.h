@@ -4,16 +4,16 @@
  * Revision #1 - See readMe
  */
 
-//==========Define==========
+//==========Defines==========
 
 #ifndef ledPatterns_h
 #define ledPatterns_h
 
-//==========Include==========
+//==========Includes==========
 
 #include "Arduino.h"
 
-//==========Class==========
+//==========Class: ledPatterns==========
 
 class ledPatterns
 {
@@ -22,7 +22,7 @@ class ledPatterns
 public:
   ledPatterns();
 
-  //----------Other----------
+  //----------Other variables/values----------
 
   // Random seed input variables/values
   int seedPin;
@@ -42,9 +42,9 @@ public:
 
   // Randomizer transition function
   void transitionRND();
-  // -Typedef for class function
+  // -Typedef for randomizer class function
   typedef void (ledPatterns::*transitionFn)();
-  // -Array of function pointers
+  // -Array of function pointers to be randomized
   ledPatterns::transitionFn transitionArray[3] =
       {
           &ledPatterns::transition0,
@@ -64,9 +64,9 @@ public:
 
   // Randomizer pattern function
   void patternRND(int pot_Pin, int pot_Val, unsigned long delay_Val);
-  // -Typedef for class function
+  // -Typedef for randomizer class function
   typedef void (ledPatterns::*patternFn)(int pot_Pin, int pot_Val, unsigned long delay_Val);
-  // -Array of function pointers
+  // -Array of function pointers to be randomized
   ledPatterns::patternFn patternArray[3] =
       {
           &ledPatterns::pattern0,
