@@ -13,4 +13,4 @@ void reset()
     patternReset[i] = true;
   }
   ledPatterns.off();
-}
+} // END: function

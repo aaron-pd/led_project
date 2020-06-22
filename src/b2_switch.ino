@@ -24,4 +24,4 @@ void ledSwitch()
   {
     ledSelect();
   }
-}
+} // END: function

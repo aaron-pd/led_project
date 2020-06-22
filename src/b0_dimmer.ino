@@ -27,4 +27,4 @@ void ledDimmer()
     // Dimness of lEDs sent to MOSFET output pin
     analogWrite(dimmerPin, dimmer_Val);
   }
-}
+} // END: function

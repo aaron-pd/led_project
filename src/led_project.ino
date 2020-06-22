@@ -117,7 +117,7 @@ void setup()
 
   // Final Initialization
   delay(1000);
-}
+} // END: setup
 
 //-------------------- Loop --------------------
 void loop()
@@ -125,4 +125,4 @@ void loop()
 
   ledSwitch();
   ledDimmer();
-}
+} // END: loop
