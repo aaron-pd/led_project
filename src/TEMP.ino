@@ -279,3 +279,81 @@ void setup()
 
 void loop() {}
 */
+//====================================================================================================
+/*
+class LEDPattern;
+class LEDPattern {
+	public:
+		virtual void transition() = 0;
+		virtual void pattern(int parameter) = 0;
+
+		static void skip(void) {
+			if (current) {
+				if (current->next)
+					current = current->next;
+				else
+					current = first;
+			}
+			else
+				current = first;
+			if (current)
+				current->transition();
+		}
+		static void run(int parameter) {
+			if (current)
+				current->pattern(parameter);
+			else
+				skip();
+		}
+	protected:
+		LEDPattern() {
+			next = first;
+			first = this;
+		}
+
+		static LEDPattern* first;
+		static LEDPattern* current;
+
+		LEDPattern* next = NULL;
+};
+
+class Pattern1 : LEDPattern {
+	public:
+		Pattern1() { // setup // };
+
+		void transition() { // code//  };
+		void pattern(int parameter) { // pattern1 code // };
+};
+
+class Pattern2 : LEDPattern {
+	public:
+		Pattern2() { // setup // };
+
+		void transition() { // code // };
+		void pattern(int parameter) { // pattern1 code // };
+};
+
+class Pattern3 : LEDPattern {
+	public:
+		Pattern3() { // setup // };
+
+		void transition() { // code // };
+		void pattern(int parameter) { // pattern1 code // };
+};
+
+void setup() {
+	Pattern1 p1();
+	Pattern2 p2();
+	Pattern3 p3();
+
+	unsigned long nextTime = 5000;
+
+	for (;;) {
+		if ((nextTime - millis()) & ~(~0UL >> 1)) {
+			nextTime += 5000;
+			LEDPattern::skip();
+		}
+		LEDPattern::run(analogRead(POT2));
+	}
+}
+*/
