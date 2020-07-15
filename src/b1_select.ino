@@ -4,11 +4,10 @@
 void select()
 {
 
-  // Pattern function object delcaration
+  // Pattern function object declarations
   Pattern1 pat1;
   Pattern2 pat2;
   Pattern3 pat3;
-  Pattern *pat[] = {&pat1, &pat2, &pat3};
 
   // Delay variables/values
   unsigned long currentMillis = millis();
@@ -52,7 +51,7 @@ void select()
         transitionRandom();
       }
       patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      pat[0]->pattern(delay_Val_AVG);
+      pat1.pattern(delay_Val_AVG);
       break;
 
     // -Pattern 2
@@ -65,7 +64,7 @@ void select()
         transitionRandom();
       }
       patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      pat[1]->pattern(delay_Val_AVG);
+      pat2.pattern(delay_Val_AVG);
       break;
 
     // -Pattern 3
@@ -78,7 +77,7 @@ void select()
         transitionRandom();
       }
       patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      pat[2]->pattern(delay_Val_AVG);
+      pat3.pattern(delay_Val_AVG);
       break;
 
     // -Default State

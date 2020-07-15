@@ -245,7 +245,7 @@ void patternRandom()
 
     patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
 
-    // Pattern function object delcaration
+    // Pattern function object declarations
     Pattern1 pat1;
     Pattern2 pat2;
     Pattern3 pat3;

@@ -32,6 +32,7 @@ public:
         digitalWrite(ledPinL[3], LOW);
         digitalWrite(ledPinR[3], LOW);
         delay(dTime);
+        off();
     };
 }; // END: transition1
 
@@ -96,7 +97,7 @@ public:
 void transitionRandom()
 {
 
-    // Transition function object delcaration
+    // Transition function object declarations
     Transition1 tra1;
     Transition2 tra2;
     Transition3 tra3;
