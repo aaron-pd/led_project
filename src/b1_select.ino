@@ -1,8 +1,14 @@
 //-------------------- Functions --------------------
 
 // LED pattern selection determined by potentiometer value
-void ledSelect()
+void select()
 {
+
+  // Pattern function object delcaration
+  Pattern1 pat1;
+  Pattern2 pat2;
+  Pattern3 pat3;
+  Pattern *pat[] = {&pat1, &pat2, &pat3};
 
   // Delay variables/values
   unsigned long currentMillis = millis();
@@ -33,54 +39,54 @@ void ledSelect()
     // --One-time LED reset, set all LEDs to always 'LOW'
     case 0 ... 249:
       reset();
-      ledPatterns.off();
+      off();
       break;
 
-    // -Pattern 0
+    // -Pattern 1
     // --One-time LED reset, play transition pattern, play pattern 0
     case 250 ... 499:
       if (patternReset[0] == true)
       {
         reset();
         patternReset[0] = false;
-        ledPatterns.transitionRND();
+        transitionRandom();
       }
-      ledPatterns.patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      ledPatterns.pattern0(ledPatterns.delay_Val_AVG);
+      patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
+      pat[0]->pattern(delay_Val_AVG);
       break;
 
-    // -Pattern 1
+    // -Pattern 2
     // --One-time LED reset, play transition pattern, play pattern 1
     case 500 ... 749:
       if (patternReset[1] == true)
       {
         reset();
         patternReset[1] = false;
-        ledPatterns.transitionRND();
+        transitionRandom();
       }
-      ledPatterns.patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      ledPatterns.pattern1(ledPatterns.delay_Val_AVG);
+      patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
+      pat[1]->pattern(delay_Val_AVG);
       break;
 
-    // -Pattern 2
+    // -Pattern 3
     // --One-time LED reset, play transition pattern, play pattern 2
     case 750 ... 850:
       if (patternReset[2] == true)
       {
         reset();
         patternReset[2] = false;
-        ledPatterns.transitionRND();
+        transitionRandom();
       }
-      ledPatterns.patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      ledPatterns.pattern2(ledPatterns.delay_Val_AVG);
+      patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
+      pat[2]->pattern(delay_Val_AVG);
       break;
 
     // -Default State
     // --One-time LED reset, set all LEDs to always 'HIGH'
     default:
       reset();
-      ledPatterns.on();
+      on();
       break;
     }
   }
-} // END: function
+} // END: select

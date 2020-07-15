@@ -1,7 +1,7 @@
 //-------------------- Functions --------------------
 
 // LED dimming control determined by potentiometer value
-void ledDimmer()
+void dimmer()
 {
 
   // Delay variables/values
@@ -27,4 +27,4 @@ void ledDimmer()
     // Dimness of lEDs sent to MOSFET output pin
     analogWrite(dimmerPin, dimmer_Val);
   }
-} // END: function
+} // END: dimmer

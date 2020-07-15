@@ -2,7 +2,7 @@
 
 // Control to switch between random pattern/manual pattern selection with 3-way
 // switch
-void ledSwitch()
+void switchAB()
 {
 
   // Set digital read switch input values
@@ -13,15 +13,14 @@ void ledSwitch()
   // -Play all patterns randomly
   if (switchPin_PosA_Val == HIGH)
   {
-    reset();
-    ledPatterns.patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-    ledPatterns.patternRND(ledPatterns.delay_Val_AVG);
+    transitionRandom();
+    patternRandom();
   }
 
   // Switch position 'B'
   // -Play selected patterns only
   if (switchPin_PosB_Val == HIGH)
   {
-    ledSelect();
+    select();
   }
-} // END: function
+} // END: switchAB
