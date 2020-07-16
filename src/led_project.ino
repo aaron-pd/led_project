@@ -20,8 +20,6 @@
 // *Exponential Moving Average (EMA) information:
 // EMA sampleRate value can be adjusted between 0.1 (slow;more samples) to
 // 0.9 (fast;less samples)
-// See following website for information:
-// https://www.norwegiancreations.com/2015/10/tutorial-potentiometers-with-arduino-and-filtering/
 
 //==========Libraries==========
 
@@ -72,10 +70,11 @@ int dimmer_Val = 0;
 // -Pins
 const int ledPinL[4] = {5, 4, 3, 2};
 const int ledPinR[4] = {7, 8, 12, 13};
-const int ledCount = 4;
 // -Pin values
 int ledPinL_Val[4] = {LOW, LOW, LOW, LOW};
 int ledPinR_Val[4] = {LOW, LOW, LOW, LOW};
+// -Other
+const int ledCount = 4;
 
 // Center tri-colour LED variables/values
 // -Pins
@@ -97,15 +96,14 @@ float sampleRate_Dimmer = 0.6;
 // --Select potentiometer
 int sampleAverage_Select = 0;
 float sampleRate_Select = 0.6;
-// --For variable delay input potentiometer
+// --Variable delay input potentiometer
 int sampleAverage_Delay = 0;
 float sampleRate_Delay = 0.6;
-// ---Variables used for delay in all pattern/transition functions after EMA smoothing
+// ---Variables used for delay in all pattern/transition functions after EMA smoothing calculations
 unsigned long delay_Val_AVG;
 
 // Pattern reset variables/values
 boolean patternReset[3] = {true, true, true};
-int patternResetCount = 3;
 
 // Delay variables/values
 // -Global variables required to remember previous loop values
@@ -116,7 +114,7 @@ unsigned long previousMillis_Select = 0;
 unsigned long previousMillis_Pattern = 0;
 unsigned long previousMillis_PatternRand = 0;
 // -Constant value used by all transition#() functions
-int dTime = 200;
+int tDelay = 200;
 
 //-------------------- Setup --------------------
 void setup()
@@ -126,13 +124,13 @@ void setup()
   Serial.begin(9600);
 
   // LED pin setup
-  // Left/Right solid colour LED sets
+  // -Left/Right solid colour LED sets
   for (int i = 0; i < ledCount; i++)
   {
     pinMode(ledPinL[i], OUTPUT);
     pinMode(ledPinR[i], OUTPUT);
   }
-  // Center tri-colour LED
+  // -Center tri-colour LED
   pinMode(ledPinCRed, OUTPUT);
   pinMode(ledPinCBlue, OUTPUT);
   pinMode(ledPinCGreen, OUTPUT);

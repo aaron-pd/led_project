@@ -1,14 +1,14 @@
 //-------------------- Functions --------------------
 
-// Set all of patternReset[] array to 'true' and set all LEDs to 'LOW'
-// Usage: Check if specific patternReset[#] array is 'true', run patternReset()
-// function, set specific patternReset[#] array to 'false' to prevent
-// patternReset() function from running agian (see ledSelect() function)
+// -Set all of patternReset[] array to 'true' and set all LEDs to 'LOW'
+// -Usage: Check if specific patternReset[#] array is 'true', run patternReset() function,
+//  set specific patternReset[#] array to 'false' to preventpatternReset() function from running agian.
+// -Used in function select()
 
 void reset()
 {
 
-  for (int i = 0; i < patternResetCount; i++)
+  for (unsigned int i = 0; i < sizeof(patternReset); i++)
   {
     patternReset[i] = true;
   }

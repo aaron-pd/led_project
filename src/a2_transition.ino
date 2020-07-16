@@ -1,6 +1,6 @@
 //-------------------- Transition Patterns Functions --------------------
 
-//==========Classes==========
+//==========Class==========
 
 // Base Class
 class Transition
@@ -8,6 +8,8 @@ class Transition
 public:
     virtual void transition() = 0;
 };
+
+//==========Derived==========
 
 // Derived Class 1
 // Transition LED pattern 0
@@ -27,11 +29,11 @@ public:
             digitalWrite(ledPinR[i - 1], LOW);
             digitalWrite(ledPinL[i], HIGH);
             digitalWrite(ledPinR[i], HIGH);
-            delay(dTime);
+            delay(tDelay);
         }
         digitalWrite(ledPinL[3], LOW);
         digitalWrite(ledPinR[3], LOW);
-        delay(dTime);
+        delay(tDelay);
         off();
     };
 }; // END: transition1
@@ -47,21 +49,21 @@ public:
 
         digitalWrite(ledPinL[0], HIGH);
         digitalWrite(ledPinR[0], HIGH);
-        delay(dTime);
+        delay(tDelay);
         for (int i = 0; i < (ledCount - 1); i++)
         {
             digitalWrite(ledPinL[i - 1], LOW);
             digitalWrite(ledPinR[i - 1], LOW);
             digitalWrite(ledPinL[i + 1], HIGH);
             digitalWrite(ledPinR[i + 1], HIGH);
-            delay(dTime);
+            delay(tDelay);
         }
         digitalWrite(ledPinL[2], LOW);
         digitalWrite(ledPinR[2], LOW);
-        delay(dTime);
+        delay(tDelay);
         digitalWrite(ledPinL[3], LOW);
         digitalWrite(ledPinR[3], LOW);
-        delay(dTime);
+        delay(tDelay);
         off();
     };
 }; // END: transition2
@@ -77,16 +79,16 @@ public:
 
         digitalWrite(ledPinL[0], HIGH);
         digitalWrite(ledPinL[1], HIGH);
-        delay(dTime);
+        delay(tDelay);
         digitalWrite(ledPinR[0], HIGH);
         digitalWrite(ledPinR[1], HIGH);
-        delay(dTime);
+        delay(tDelay);
         digitalWrite(ledPinL[2], HIGH);
         digitalWrite(ledPinL[3], HIGH);
-        delay(dTime);
+        delay(tDelay);
         digitalWrite(ledPinR[2], HIGH);
         digitalWrite(ledPinR[3], HIGH);
-        delay(dTime);
+        delay(tDelay);
         off();
     };
 }; // END: transition3

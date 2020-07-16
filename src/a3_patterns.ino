@@ -28,7 +28,7 @@ void patternDelay(int pot_Pin, int pot_Val, unsigned long delay_Val_EMA)
     }
 } // END: patternDelay
 
-//==========Classes==========
+//==========Class==========
 
 // Base Class
 class Pattern
@@ -37,10 +37,12 @@ public:
     virtual void pattern(unsigned long delay_val);
 };
 
+//==========Derived==========
+
 // Derived Class 1
-// Sets LED pattern, delay based on variable delay value
+// Sets LED pattern
 // -Pattern will flash all LEDs simultaneously
-// -delay_Val = user custom value or smoothed input variable 'delay_Val_AVG' from 'patternDelay()' function
+// -delay_Val = user custom value or EMA smoothed input variable 'delay_Val_AVG'
 class Pattern1 : public Pattern
 {
 public:
@@ -100,9 +102,9 @@ public:
 }; // END: pattern1
 
 // Derived Class 2
-// Sets LED pattern, delay based on variable delay value
+// Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards
-// -delay_Val = user custom value or smoothed input variable 'delay_Val_AVG' from 'patternDelay()' function
+// -delay_Val = user custom value or EMA smoothed input variable 'delay_Val_AVG'
 class Pattern2 : public Pattern
 {
 public:
@@ -155,9 +157,9 @@ public:
 }; // END: pattern2
 
 // Derived Class 3
-// Sets LED pattern, delay based on variable delay value
-// -Pattern will flash center LED, then fade through the following LEDs outwards, center LED flashes through each colour
-// -delay_Val = user custom value or smoothed input variable 'delay_Val_AVG' from 'patternDelay()' function
+// Sets LED pattern
+// -Pattern will flash center LED, then fade through the following LEDs outwards, center LED flashes matching colours with pattern
+// -delay_Val = user custom value or EMA smoothed input variable 'delay_Val_AVG'
 class Pattern3 : public Pattern
 {
 public:
@@ -242,7 +244,6 @@ void patternRandom()
 
     // Function initialization
     int r = random(3);
-
     patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
 
     // Pattern function object declarations
@@ -255,6 +256,5 @@ void patternRandom()
     for (int i = 0; i < 10; i++)
     {
         pat[r]->pattern(delay_Val_AVG);
-        delay(1);
     }
 } //END: patternRandom

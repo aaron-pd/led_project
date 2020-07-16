@@ -42,7 +42,7 @@ void select()
       break;
 
     // -Pattern 1
-    // --One-time LED reset, play transition pattern, play pattern 0
+    // --One-time LED reset, play transition pattern, play pattern 1
     case 250 ... 499:
       if (patternReset[0] == true)
       {
@@ -55,7 +55,7 @@ void select()
       break;
 
     // -Pattern 2
-    // --One-time LED reset, play transition pattern, play pattern 1
+    // --One-time LED reset, play transition pattern, play pattern 2
     case 500 ... 749:
       if (patternReset[1] == true)
       {
@@ -68,7 +68,7 @@ void select()
       break;
 
     // -Pattern 3
-    // --One-time LED reset, play transition pattern, play pattern 2
+    // --One-time LED reset, play transition pattern, play pattern 3
     case 750 ... 850:
       if (patternReset[2] == true)
       {
