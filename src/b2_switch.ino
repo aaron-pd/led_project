@@ -2,16 +2,16 @@
 
 // Control to switch between random pattern/manual pattern selection with 3-way
 // switch
-void switchAB()
+void switch_AB()
 {
 
   // Set digital read switch input values
-  switchPin_PosA_Val = digitalRead(switchPin_PosA);
-  switchPin_PosB_Val = digitalRead(switchPin_PosB);
+  pinI_switch_PosA_Val = digitalRead(pinI_switch_PosA);
+  pinI_switch_PosB_Val = digitalRead(pinI_switch_PosB);
 
   // Switch position 'A'
   // -Play all patterns randomly
-  if (switchPin_PosA_Val == HIGH)
+  if (pinI_switch_PosA_Val == HIGH)
   {
     transitionRandom();
     patternRandom();
@@ -19,8 +19,8 @@ void switchAB()
 
   // Switch position 'B'
   // -Play selected patterns only
-  if (switchPin_PosB_Val == HIGH)
+  if (pinI_switch_PosB_Val == HIGH)
   {
     select();
   }
-} // END: switchAB
+} // END: switch_AB

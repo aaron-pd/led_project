@@ -1,30 +1,30 @@
 //-------------------- Repeating Pattern Functions --------------------
 
-// Pattern delay calculations with EMA smoothing
+// Pattern delay calculations with EMA filtering
 // -Function requires potentiometer input pin, input pin value and outside-of-function delay value
-void patternDelay(int pot_Pin, int pot_Val, unsigned long delay_Val_EMA)
+void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_Raw)
 {
 
     // Delay variables/values
-    unsigned long currentMillis = millis();
-    unsigned long intervalMillis = 50;
+    unsigned long ms_Current = millis();
+    unsigned long ms_Interval = 50;
 
     // Delay
-    if (currentMillis - previousMillis_Delay >= intervalMillis)
+    if (ms_Current - ms_Previous_Delay >= ms_Interval)
     {
-        previousMillis_Delay = currentMillis;
+        ms_Previous_Delay = ms_Current;
 
-        // EMA smoothing
+        // EMA filtering
         // -Set analog read input values
-        pot_Val = analogRead(pot_Pin);
+        pinI_pot_Val = analogRead(pinI_pot);
         // -calculations
-        sampleAverage_Delay =
-            (sampleRate_Delay * pot_Val) + ((1 - sampleRate_Delay) * sampleAverage_Delay);
-        // Delay value set by delay potentiometer with Smoothing calculations
-        delay_Val_EMA = sampleAverage_Delay;
-        delay_Val_EMA = map(pot_Val, 8, 1015, 0, 255);
+        sample_Average_Delay =
+            (sample_Rate_Delay * pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
+        // Delay value set by delay potentiometer with filtering calculations
+        Delay_Val_Raw = sample_Average_Delay;
+        Delay_Val_Raw = map(pinI_pot_Val, 8, 1015, 0, 255);
         // Set value for global variable
-        delay_Val_AVG = delay_Val_EMA;
+        Delay_Val_Avg = Delay_Val_Raw;
     }
 } // END: patternDelay
 
@@ -34,207 +34,204 @@ void patternDelay(int pot_Pin, int pot_Val, unsigned long delay_Val_EMA)
 class Pattern
 {
 public:
-    virtual void pattern(unsigned long delay_val);
+    virtual void pattern(unsigned long Delay_Val);
 };
 
 //==========Derived==========
 
-// Derived Class 1
+// Derived 1 : Pattern
 // Sets LED pattern
 // -Pattern will flash all LEDs simultaneously
-// -delay_Val = user custom value or EMA smoothed input variable 'delay_Val_AVG'
+// -Delay_Val = user custom value or EMA smoothed input variable 'Delay_Val_Avg'
 class Pattern1 : public Pattern
 {
 public:
-    void pattern(unsigned long delay_Val)
+    void pattern(unsigned long Delay_Val)
     {
 
         // Delay variables/values
-        unsigned long currentMillis = millis();
+        unsigned long ms_Current = millis();
 
         // Delay
-        if (currentMillis - previousMillis_Pattern >= delay_Val)
+        if (ms_Current - ms_Previous_Pattern >= Delay_Val)
         {
-            previousMillis_Pattern = currentMillis;
+            ms_Previous_Pattern = ms_Current;
 
             // LED pattern
-            if (ledPinCRed_Val == LOW && ledPinCBlue_Val == LOW &&
-                ledPinCGreen_Val == LOW)
+            if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Gre_Val == LOW)
             {
-                ledPinCRed_Val = HIGH;
-                ledPinCBlue_Val = HIGH;
-                ledPinCGreen_Val = HIGH;
-                for (int i = 0; i < ledCount; i++)
+                pinO_led_C_Red_Val = HIGH;
+                pinO_led_C_Blu_Val = HIGH;
+                pinO_led_C_Gre_Val = HIGH;
+                for (int i = 0; i < led_Count; i++)
                 {
-                    if (ledPinL_Val[i] == LOW && ledPinR_Val[i] == LOW)
+                    if (pinO_led_L_Val[i] == LOW && pinO_led_R_Val[i] == LOW)
                     {
-                        ledPinL_Val[i] = HIGH;
-                        ledPinR_Val[i] = HIGH;
+                        pinO_led_L_Val[i] = HIGH;
+                        pinO_led_R_Val[i] = HIGH;
                     }
                 }
             }
             else
             {
-                ledPinCRed_Val = LOW;
-                ledPinCBlue_Val = LOW;
-                ledPinCGreen_Val = LOW;
-                for (int i = 0; i < ledCount; i++)
+                pinO_led_C_Red_Val = LOW;
+                pinO_led_C_Blu_Val = LOW;
+                pinO_led_C_Gre_Val = LOW;
+                for (int i = 0; i < led_Count; i++)
                 {
-                    if (ledPinL_Val[i] == HIGH && ledPinR_Val[i] == HIGH)
+                    if (pinO_led_L_Val[i] == HIGH && pinO_led_R_Val[i] == HIGH)
                     {
-                        ledPinL_Val[i] = LOW;
-                        ledPinR_Val[i] = LOW;
+                        pinO_led_L_Val[i] = LOW;
+                        pinO_led_R_Val[i] = LOW;
                     }
                 }
             }
         }
 
         // Display LEDs based on values from previous if/else statement
-        digitalWrite(ledPinCRed, ledPinCRed_Val);
-        digitalWrite(ledPinCBlue, ledPinCBlue_Val);
-        digitalWrite(ledPinCGreen, ledPinCGreen_Val);
-        for (int i = 0; i < ledCount; i++)
+        digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
+        digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
+        digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+        for (int i = 0; i < led_Count; i++)
         {
-            digitalWrite(ledPinL[i], ledPinL_Val[i]);
-            digitalWrite(ledPinR[i], ledPinR_Val[i]);
+            digitalWrite(pinO_led_L[i], pinO_led_L_Val[i]);
+            digitalWrite(pinO_led_R[i], pinO_led_R_Val[i]);
         }
     };
-}; // END: pattern1
+}; // END: pattern : Pattern1
 
-// Derived Class 2
+// Derived 2 : Pattern
 // Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards
-// -delay_Val = user custom value or EMA smoothed input variable 'delay_Val_AVG'
+// -Delay_Val = user custom value or EMA smoothed input variable 'Delay_Val_Avg'
 class Pattern2 : public Pattern
 {
 public:
-    void pattern(unsigned long delay_Val)
+    void pattern(unsigned long Delay_Val)
     {
 
         // Delay variables/values
-        unsigned long currentMillis = millis();
+        unsigned long ms_Current = millis();
 
         // Delay
-        if (currentMillis - previousMillis_Pattern >= delay_Val)
+        if (ms_Current - ms_Previous_Pattern >= Delay_Val)
         {
-            previousMillis_Pattern = currentMillis;
+            ms_Previous_Pattern = ms_Current;
 
             // LED pattern
-            if (ledPinCRed_Val == LOW && ledPinCBlue_Val == LOW &&
-                ledPinCGreen_Val == LOW)
+            if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Gre_Val == LOW)
             {
-                ledPinCRed_Val = HIGH;
-                ledPinCBlue_Val = HIGH;
-                ledPinCGreen_Val = HIGH;
-                digitalWrite(ledPinCRed, ledPinCRed_Val);
-                digitalWrite(ledPinCBlue, ledPinCBlue_Val);
-                digitalWrite(ledPinCGreen, ledPinCGreen_Val);
-                for (int i = 0; i < ledCount; i++)
+                pinO_led_C_Red_Val = HIGH;
+                pinO_led_C_Blu_Val = HIGH;
+                pinO_led_C_Gre_Val = HIGH;
+                digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
+                digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
+                digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+                for (int i = 0; i < led_Count; i++)
                 {
-                    digitalWrite(ledPinL[i], LOW);
-                    digitalWrite(ledPinR[i], LOW);
+                    digitalWrite(pinO_led_L[i], LOW);
+                    digitalWrite(pinO_led_R[i], LOW);
                 }
             }
             else
             {
-                ledPinCRed_Val = LOW;
-                ledPinCBlue_Val = LOW;
-                ledPinCGreen_Val = LOW;
-                digitalWrite(ledPinCRed, ledPinCRed_Val);
-                digitalWrite(ledPinCBlue, ledPinCBlue_Val);
-                digitalWrite(ledPinCGreen, ledPinCGreen_Val);
-                for (int i = 0; i < ledCount; i++)
+                pinO_led_C_Red_Val = LOW;
+                pinO_led_C_Blu_Val = LOW;
+                pinO_led_C_Gre_Val = LOW;
+                digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
+                digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
+                digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+                for (int i = 0; i < led_Count; i++)
                 {
-                    digitalWrite(ledPinL[i], HIGH);
-                    digitalWrite(ledPinR[i], HIGH);
+                    digitalWrite(pinO_led_L[i], HIGH);
+                    digitalWrite(pinO_led_R[i], HIGH);
                     delay(50);
-                    digitalWrite(ledPinL[i], LOW);
-                    digitalWrite(ledPinR[i], LOW);
+                    digitalWrite(pinO_led_L[i], LOW);
+                    digitalWrite(pinO_led_R[i], LOW);
                 }
             }
         }
     };
-}; // END: pattern2
+}; // END: pattern : Pattern2
 
-// Derived Class 3
+// Derived 3 : Pattern
 // Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards, center LED flashes matching colours with pattern
-// -delay_Val = user custom value or EMA smoothed input variable 'delay_Val_AVG'
+// -Delay_Val = user custom value or EMA smoothed input variable 'Delay_Val_Avg'
 class Pattern3 : public Pattern
 {
 public:
-    void pattern(unsigned long delay_Val)
+    void pattern(unsigned long Delay_Val)
     {
 
         // Delay variables/values
-        unsigned long currentMillis = millis();
+        unsigned long ms_Current = millis();
 
         // Delay
-        if (currentMillis - previousMillis_Pattern >= delay_Val)
+        if (ms_Current - ms_Previous_Pattern >= Delay_Val)
         {
-            previousMillis_Pattern = currentMillis;
+            ms_Previous_Pattern = ms_Current;
 
             // LED pattern
-            if (ledPinCRed_Val == LOW && ledPinCBlue_Val == LOW &&
-                ledPinCGreen_Val == LOW)
+            if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Gre_Val == LOW)
             {
-                ledPinCRed_Val = HIGH;
-                ledPinCBlue_Val = HIGH;
-                ledPinCGreen_Val = HIGH;
-                digitalWrite(ledPinCRed, ledPinCRed_Val);
-                digitalWrite(ledPinCBlue, ledPinCBlue_Val);
-                digitalWrite(ledPinCGreen, ledPinCGreen_Val);
-                for (int i = 0; i < ledCount; i++)
+                pinO_led_C_Red_Val = HIGH;
+                pinO_led_C_Blu_Val = HIGH;
+                pinO_led_C_Gre_Val = HIGH;
+                digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
+                digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
+                digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+                for (int i = 0; i < led_Count; i++)
                 {
-                    digitalWrite(ledPinL[i], LOW);
-                    digitalWrite(ledPinR[i], LOW);
+                    digitalWrite(pinO_led_L[i], LOW);
+                    digitalWrite(pinO_led_R[i], LOW);
                 }
             }
             else
             {
-                ledPinCRed_Val = LOW;
-                ledPinCBlue_Val = LOW;
-                ledPinCGreen_Val = LOW;
-                digitalWrite(ledPinCRed, HIGH);
-                digitalWrite(ledPinCBlue, LOW);
-                digitalWrite(ledPinCGreen, LOW);
-                digitalWrite(ledPinL[0], HIGH);
-                digitalWrite(ledPinR[0], HIGH);
+                pinO_led_C_Red_Val = LOW;
+                pinO_led_C_Blu_Val = LOW;
+                pinO_led_C_Gre_Val = LOW;
+                digitalWrite(pinO_led_C_Red, HIGH);
+                digitalWrite(pinO_led_C_Blu, LOW);
+                digitalWrite(pinO_led_C_Gre, LOW);
+                digitalWrite(pinO_led_L[0], HIGH);
+                digitalWrite(pinO_led_R[0], HIGH);
                 delay(50);
-                digitalWrite(ledPinCRed, HIGH);
-                digitalWrite(ledPinCBlue, LOW);
-                digitalWrite(ledPinCGreen, HIGH);
-                digitalWrite(ledPinL[0], LOW);
-                digitalWrite(ledPinR[0], LOW);
-                digitalWrite(ledPinL[1], HIGH);
-                digitalWrite(ledPinR[1], HIGH);
+                digitalWrite(pinO_led_C_Red, HIGH);
+                digitalWrite(pinO_led_C_Blu, LOW);
+                digitalWrite(pinO_led_C_Gre, HIGH);
+                digitalWrite(pinO_led_L[0], LOW);
+                digitalWrite(pinO_led_R[0], LOW);
+                digitalWrite(pinO_led_L[1], HIGH);
+                digitalWrite(pinO_led_R[1], HIGH);
                 delay(50);
-                digitalWrite(ledPinCRed, LOW);
-                digitalWrite(ledPinCBlue, HIGH);
-                digitalWrite(ledPinCGreen, LOW);
-                digitalWrite(ledPinL[1], LOW);
-                digitalWrite(ledPinR[1], LOW);
-                digitalWrite(ledPinL[2], HIGH);
-                digitalWrite(ledPinR[2], HIGH);
+                digitalWrite(pinO_led_C_Red, LOW);
+                digitalWrite(pinO_led_C_Blu, HIGH);
+                digitalWrite(pinO_led_C_Gre, LOW);
+                digitalWrite(pinO_led_L[1], LOW);
+                digitalWrite(pinO_led_R[1], LOW);
+                digitalWrite(pinO_led_L[2], HIGH);
+                digitalWrite(pinO_led_R[2], HIGH);
                 delay(50);
-                digitalWrite(ledPinCRed, LOW);
-                digitalWrite(ledPinCBlue, LOW);
-                digitalWrite(ledPinCGreen, HIGH);
-                digitalWrite(ledPinL[2], LOW);
-                digitalWrite(ledPinR[2], LOW);
-                digitalWrite(ledPinL[3], HIGH);
-                digitalWrite(ledPinR[3], HIGH);
+                digitalWrite(pinO_led_C_Red, LOW);
+                digitalWrite(pinO_led_C_Blu, LOW);
+                digitalWrite(pinO_led_C_Gre, HIGH);
+                digitalWrite(pinO_led_L[2], LOW);
+                digitalWrite(pinO_led_R[2], LOW);
+                digitalWrite(pinO_led_L[3], HIGH);
+                digitalWrite(pinO_led_R[3], HIGH);
                 delay(50);
-                digitalWrite(ledPinCRed, LOW);
-                digitalWrite(ledPinCBlue, LOW);
-                digitalWrite(ledPinCGreen, LOW);
-                digitalWrite(ledPinL[3], LOW);
-                digitalWrite(ledPinR[3], LOW);
+                digitalWrite(pinO_led_C_Red, LOW);
+                digitalWrite(pinO_led_C_Blu, LOW);
+                digitalWrite(pinO_led_C_Gre, LOW);
+                digitalWrite(pinO_led_L[3], LOW);
+                digitalWrite(pinO_led_R[3], LOW);
                 delay(50);
             }
         }
     };
-}; // END: pattern3
+}; // END: pattern : Pattern3
 
 //==========Pattern Randomizer==========
 
@@ -244,7 +241,7 @@ void patternRandom()
 
     // Function initialization
     int r = random(3);
-    patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
+    patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
 
     // Pattern function object declarations
     Pattern1 pat1;
@@ -255,6 +252,6 @@ void patternRandom()
     // Run pattern
     for (int i = 0; i < 10; i++)
     {
-        pat[r]->pattern(delay_Val_AVG);
+        pat[r]->pattern(Delay_Val_Avg);
     }
 } //END: patternRandom

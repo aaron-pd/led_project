@@ -11,7 +11,7 @@ public:
 
 //==========Derived==========
 
-// Derived Class 1
+// Derived 1 : Transition
 // Transition LED pattern 0
 // -Fade through LEDs outwards from the center
 class Transition1 : public Transition
@@ -20,25 +20,25 @@ public:
     void transition()
     {
 
-        digitalWrite(ledPinL[0], HIGH);
-        digitalWrite(ledPinR[0], HIGH);
+        digitalWrite(pinO_led_L[0], HIGH);
+        digitalWrite(pinO_led_R[0], HIGH);
 
-        for (int i = 0; i < ledCount; i++)
+        for (int i = 0; i < led_Count; i++)
         {
-            digitalWrite(ledPinL[i - 1], LOW);
-            digitalWrite(ledPinR[i - 1], LOW);
-            digitalWrite(ledPinL[i], HIGH);
-            digitalWrite(ledPinR[i], HIGH);
-            delay(tDelay);
+            digitalWrite(pinO_led_L[i - 1], LOW);
+            digitalWrite(pinO_led_R[i - 1], LOW);
+            digitalWrite(pinO_led_L[i], HIGH);
+            digitalWrite(pinO_led_R[i], HIGH);
+            delay(transition_Delay);
         }
-        digitalWrite(ledPinL[3], LOW);
-        digitalWrite(ledPinR[3], LOW);
-        delay(tDelay);
+        digitalWrite(pinO_led_L[3], LOW);
+        digitalWrite(pinO_led_R[3], LOW);
+        delay(transition_Delay);
         off();
     };
-}; // END: transition1
+}; // END: transition : Transition1
 
-// Derived Class 2
+// Derived 2 : Transition
 // Transition LED pattern 1
 // -Fade through LEDs outwards from the center, with one LED following
 class Transition2 : public Transition
@@ -47,28 +47,28 @@ public:
     void transition()
     {
 
-        digitalWrite(ledPinL[0], HIGH);
-        digitalWrite(ledPinR[0], HIGH);
-        delay(tDelay);
-        for (int i = 0; i < (ledCount - 1); i++)
+        digitalWrite(pinO_led_L[0], HIGH);
+        digitalWrite(pinO_led_R[0], HIGH);
+        delay(transition_Delay);
+        for (int i = 0; i < (led_Count - 1); i++)
         {
-            digitalWrite(ledPinL[i - 1], LOW);
-            digitalWrite(ledPinR[i - 1], LOW);
-            digitalWrite(ledPinL[i + 1], HIGH);
-            digitalWrite(ledPinR[i + 1], HIGH);
-            delay(tDelay);
+            digitalWrite(pinO_led_L[i - 1], LOW);
+            digitalWrite(pinO_led_R[i - 1], LOW);
+            digitalWrite(pinO_led_L[i + 1], HIGH);
+            digitalWrite(pinO_led_R[i + 1], HIGH);
+            delay(transition_Delay);
         }
-        digitalWrite(ledPinL[2], LOW);
-        digitalWrite(ledPinR[2], LOW);
-        delay(tDelay);
-        digitalWrite(ledPinL[3], LOW);
-        digitalWrite(ledPinR[3], LOW);
-        delay(tDelay);
+        digitalWrite(pinO_led_L[2], LOW);
+        digitalWrite(pinO_led_R[2], LOW);
+        delay(transition_Delay);
+        digitalWrite(pinO_led_L[3], LOW);
+        digitalWrite(pinO_led_R[3], LOW);
+        delay(transition_Delay);
         off();
     };
-}; // END: transition2
+}; // END: transition : Transition2
 
-// Derived Class 3
+// Derived 3 : Transition
 // Transition LED pattern 2
 // -Turn on two sets of LEDs at a time until all LEDs are on
 class Transition3 : public Transition
@@ -77,21 +77,21 @@ public:
     void transition()
     {
 
-        digitalWrite(ledPinL[0], HIGH);
-        digitalWrite(ledPinL[1], HIGH);
-        delay(tDelay);
-        digitalWrite(ledPinR[0], HIGH);
-        digitalWrite(ledPinR[1], HIGH);
-        delay(tDelay);
-        digitalWrite(ledPinL[2], HIGH);
-        digitalWrite(ledPinL[3], HIGH);
-        delay(tDelay);
-        digitalWrite(ledPinR[2], HIGH);
-        digitalWrite(ledPinR[3], HIGH);
-        delay(tDelay);
+        digitalWrite(pinO_led_L[0], HIGH);
+        digitalWrite(pinO_led_L[1], HIGH);
+        delay(transition_Delay);
+        digitalWrite(pinO_led_R[0], HIGH);
+        digitalWrite(pinO_led_R[1], HIGH);
+        delay(transition_Delay);
+        digitalWrite(pinO_led_L[2], HIGH);
+        digitalWrite(pinO_led_L[3], HIGH);
+        delay(transition_Delay);
+        digitalWrite(pinO_led_R[2], HIGH);
+        digitalWrite(pinO_led_R[3], HIGH);
+        delay(transition_Delay);
         off();
     };
-}; // END: transition3
+}; // END: transition : Transition3
 
 //==========Transition Randomizer==========
 

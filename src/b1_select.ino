@@ -1,6 +1,6 @@
 //-------------------- Functions --------------------
 
-// LED pattern selection determined by potentiometer value
+// LED pattern selection determined by potentiometer position/value
 void select()
 {
 
@@ -10,28 +10,28 @@ void select()
   Pattern3 pat3;
 
   // Delay variables/values
-  unsigned long currentMillis = millis();
-  unsigned long intervalMillis = 25;
+  unsigned long ms_Current = millis();
+  unsigned long ms_Interval = 25;
 
   // Delay
-  if (currentMillis - previousMillis_Select >= intervalMillis)
+  if (ms_Current - ms_Previous_Select >= ms_Interval)
   {
-    previousMillis_Select = currentMillis;
+    ms_Previous_Select = ms_Current;
 
-    // EMA smoothing
+    // EMA filtering
     // -Set analog read input values
-    potPinSelect_Val = analogRead(potPinSelect);
+    pinI_pot_Select_Val = analogRead(pinI_pot_Select);
     // -calculations
-    sampleAverage_Select =
-        (sampleRate_Select * potPinSelect_Val) + ((1 - sampleRate_Select) * sampleAverage_Select);
+    sample_Average_Select =
+        (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_Average_Select);
 
-    // Pattern select value set by selection potentiometer with Smoothing
+    // Pattern select value set by selection potentiometer with filtering
     // calculations
-    select_Val = sampleAverage_Select;
-    select_Val = map(potPinSelect_Val, 8, 1015, 0, 999);
+    Select_Val = sample_Average_Select;
+    Select_Val = map(pinI_pot_Select_Val, 8, 1015, 0, 999);
 
-    // Switch/Case used to select pattern from select_Val variable
-    switch (select_Val)
+    // Switch/Case used to select pattern from Select_Val variable
+    switch (Select_Val)
     {
 
     // -Off
@@ -44,40 +44,40 @@ void select()
     // -Pattern 1
     // --One-time LED reset, play transition pattern, play pattern 1
     case 250 ... 499:
-      if (patternReset[0] == true)
+      if (reset_Key[0] == true)
       {
         reset();
-        patternReset[0] = false;
+        reset_Key[0] = false;
         transitionRandom();
       }
-      patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      pat1.pattern(delay_Val_AVG);
+      patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+      pat1.pattern(Delay_Val_Avg);
       break;
 
     // -Pattern 2
     // --One-time LED reset, play transition pattern, play pattern 2
     case 500 ... 749:
-      if (patternReset[1] == true)
+      if (reset_Key[1] == true)
       {
         reset();
-        patternReset[1] = false;
+        reset_Key[1] = false;
         transitionRandom();
       }
-      patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      pat2.pattern(delay_Val_AVG);
+      patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+      pat2.pattern(Delay_Val_Avg);
       break;
 
     // -Pattern 3
     // --One-time LED reset, play transition pattern, play pattern 3
     case 750 ... 850:
-      if (patternReset[2] == true)
+      if (reset_Key[2] == true)
       {
         reset();
-        patternReset[2] = false;
+        reset_Key[2] = false;
         transitionRandom();
       }
-      patternDelay(potPinDelay, potPinDelay_Val, delayRate_Val);
-      pat3.pattern(delay_Val_AVG);
+      patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+      pat3.pattern(Delay_Val_Avg);
       break;
 
     // -Default State

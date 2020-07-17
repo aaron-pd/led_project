@@ -1,16 +1,16 @@
 //-------------------- Functions --------------------
 
-// -Set all of patternReset[] array to 'true' and set all LEDs to 'LOW'
-// -Usage: Check if specific patternReset[#] array is 'true', run patternReset() function,
-//  set specific patternReset[#] array to 'false' to preventpatternReset() function from running agian.
-// -Used in function select()
+// -Set all reset_Key[] array values to 'true' and set all LEDs to 'LOW'
+// -Usage: Check if specific reset_Key[#] array is 'true', run reset() function and
+//  set specific reset_Key[#] array to 'false' to prevent reset() function from looping
+// -Used in select() function
 
 void reset()
 {
 
-  for (unsigned int i = 0; i < sizeof(patternReset); i++)
+  for (unsigned int i = 0; i < sizeof(reset_Key); i++)
   {
-    patternReset[i] = true;
+    reset_Key[i] = true;
   }
   off();
 } // END: reset
@@ -19,18 +19,18 @@ void reset()
 void on()
 {
 
-  ledPinCRed_Val = HIGH;
-  ledPinCBlue_Val = HIGH;
-  ledPinCGreen_Val = HIGH;
-  digitalWrite(ledPinCRed, ledPinCRed_Val);
-  digitalWrite(ledPinCBlue, ledPinCBlue_Val);
-  digitalWrite(ledPinCGreen, ledPinCGreen_Val);
-  for (int i = 0; i < ledCount; i++)
+  pinO_led_C_Red_Val = HIGH;
+  pinO_led_C_Blu_Val = HIGH;
+  pinO_led_C_Gre_Val = HIGH;
+  digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
+  digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
+  digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+  for (int i = 0; i < led_Count; i++)
   {
-    ledPinL_Val[i] = HIGH;
-    ledPinR_Val[i] = HIGH;
-    digitalWrite(ledPinL[i], ledPinL_Val[i]);
-    digitalWrite(ledPinR[i], ledPinR_Val[i]);
+    pinO_led_L_Val[i] = HIGH;
+    pinO_led_R_Val[i] = HIGH;
+    digitalWrite(pinO_led_L[i], pinO_led_L_Val[i]);
+    digitalWrite(pinO_led_R[i], pinO_led_R_Val[i]);
   }
 } // END: on
 
@@ -38,17 +38,17 @@ void on()
 void off()
 {
 
-  ledPinCRed_Val = LOW;
-  ledPinCBlue_Val = LOW;
-  ledPinCGreen_Val = LOW;
-  digitalWrite(ledPinCRed, ledPinCRed_Val);
-  digitalWrite(ledPinCBlue, ledPinCBlue_Val);
-  digitalWrite(ledPinCGreen, ledPinCGreen_Val);
-  for (int i = 0; i < ledCount; i++)
+  pinO_led_C_Red_Val = LOW;
+  pinO_led_C_Blu_Val = LOW;
+  pinO_led_C_Gre_Val = LOW;
+  digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
+  digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
+  digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+  for (int i = 0; i < led_Count; i++)
   {
-    ledPinL_Val[i] = LOW;
-    ledPinR_Val[i] = LOW;
-    digitalWrite(ledPinL[i], ledPinL_Val[i]);
-    digitalWrite(ledPinR[i], ledPinR_Val[i]);
+    pinO_led_L_Val[i] = LOW;
+    pinO_led_R_Val[i] = LOW;
+    digitalWrite(pinO_led_L[i], pinO_led_L_Val[i]);
+    digitalWrite(pinO_led_R[i], pinO_led_R_Val[i]);
   }
 } // END: off

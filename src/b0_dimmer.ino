@@ -5,26 +5,26 @@ void dimmer()
 {
 
   // Delay variables/values
-  unsigned long currentMillis = millis();
-  unsigned long intervalMillis = 50;
+  unsigned long ms_Current = millis();
+  unsigned long ms_Interval = 50;
 
   // Delay
-  if (currentMillis - previousMillis_Dimmer >= intervalMillis)
+  if (ms_Current - ms_Previous_Dimmer >= ms_Interval)
   {
-    previousMillis_Dimmer = currentMillis;
+    ms_Previous_Dimmer = ms_Current;
 
-    // EMA smoothing
+    // EMA filtering
     // -Set analog read input values
-    potPinDimmer_Val = analogRead(potPinDimmer);
+    pinI_pot_Dimmer_Val = analogRead(pinI_pot_Dimmer);
     // -calculations
-    sampleAverage_Dimmer =
-        (sampleRate_Dimmer * potPinDimmer_Val) + ((1 - sampleRate_Dimmer) * sampleAverage_Dimmer);
+    sample_Average_Dimmer =
+        (sample_Rate_Dimmer * pinI_pot_Dimmer_Val) + ((1 - sample_Rate_Dimmer) * sample_Average_Dimmer);
 
-    // Dimmer value set by dimmer potentiometer with Smoothing calculations
-    dimmer_Val = sampleAverage_Dimmer;
-    dimmer_Val = map(potPinDimmer_Val, 8, 1015, 0, 255);
+    // Dimmer value set by dimmer potentiometer with filtering calculations
+    pinO_Dimmer_Val = sample_Average_Dimmer;
+    pinO_Dimmer_Val = map(pinI_pot_Dimmer_Val, 8, 1015, 0, 255);
 
     // Dimness of lEDs sent to MOSFET output pin
-    analogWrite(dimmerPin, dimmer_Val);
+    analogWrite(pinO_Dimmer, pinO_Dimmer_Val);
   }
 } // END: dimmer

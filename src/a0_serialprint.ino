@@ -5,50 +5,50 @@ void serialPrint()
 {
 
   // Delay variables/values
-  unsigned long currentMillis = millis();
-  unsigned long intervalMillis = 500;
+  unsigned long ms_Current = millis();
+  unsigned long ms_Interval = 500;
 
   // Delay
-  if (currentMillis - previousMillis_Print >= intervalMillis)
+  if (ms_Current - ms_Previous_Print >= ms_Interval)
   {
-    previousMillis_Print = currentMillis;
+    ms_Previous_Print = ms_Current;
 
     // -Delay Potentiometer
     Serial.print("Delay Potentiometer:");
     Serial.print("\t");
-    Serial.print(potPinDelay_Val);
+    Serial.print(pinI_pot_Delay_Val);
     Serial.println();
     Serial.print("Delay Rate:");
     Serial.print("\t");
-    Serial.print(delayRate_Val);
+    Serial.print(Delay_Val);
     Serial.println();
     // -Dimmer Potentiometer
     Serial.print("Dimmer Potentiometer:");
     Serial.print("\t");
-    Serial.print(potPinDimmer_Val);
+    Serial.print(pinI_pot_Dimmer_Val);
     Serial.println();
     Serial.print("Dimmer Value:");
     Serial.print("\t");
-    Serial.print(dimmer_Val);
+    Serial.print(pinO_Dimmer_Val);
     Serial.println();
     // -Select Potentiometer
     Serial.print("Select Potentiometer:");
     Serial.print("\t");
-    Serial.print(potPinSelect_Val);
+    Serial.print(pinI_pot_Select_Val);
     Serial.println();
     Serial.print("Select Value:");
     Serial.print("\t");
-    Serial.print(select_Val);
+    Serial.print(Select_Val);
     Serial.println();
     Serial.println();
     // -Switch
     Serial.print("Switch A:");
     Serial.print("\t");
-    Serial.print(switchPin_PosA_Val);
+    Serial.print(pinI_switch_PosA_Val);
     Serial.print("\t");
     Serial.print("Switch B:");
     Serial.print("\t");
-    Serial.print(switchPin_PosB_Val);
+    Serial.print(pinI_switch_PosB_Val);
     Serial.println();
     Serial.println();
   }
