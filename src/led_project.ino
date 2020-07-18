@@ -1,7 +1,7 @@
 //-------------------- Variables --------------------
 //
 //  Variable Naming Legend
-// 
+//
 //  R               - Right
 //  L               - Left
 //  C               - Center
