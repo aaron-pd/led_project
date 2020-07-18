@@ -17,8 +17,7 @@ void dimmer()
     // -Set analog read input values
     pinI_pot_Dimmer_Val = analogRead(pinI_pot_Dimmer);
     // -calculations
-    sample_Average_Dimmer =
-        (sample_Rate_Dimmer * pinI_pot_Dimmer_Val) + ((1 - sample_Rate_Dimmer) * sample_Average_Dimmer);
+    sample_Average_Dimmer = (sample_Rate_Dimmer * pinI_pot_Dimmer_Val) + ((1 - sample_Rate_Dimmer) * sample_Average_Dimmer);
 
     // Dimmer value set by dimmer potentiometer with filtering calculations
     pinO_Dimmer_Val = sample_Average_Dimmer;

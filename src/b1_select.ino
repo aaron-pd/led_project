@@ -25,7 +25,6 @@ void select()
     sample_Average_Select = (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_Average_Select);
 
     // Pattern select value set by selection potentiometer with filtering
-    // calculations
     Select_Val = sample_Average_Select;
     Select_Val = map(pinI_pot_Select_Val, 8, 1015, 0, 999);
 

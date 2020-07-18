@@ -18,11 +18,12 @@ void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_MAvg)
         // -Set analog read input values
         pinI_pot_Val = analogRead(pinI_pot);
         // -calculations
-        sample_Average_Delay =
-            (sample_Rate_Delay * pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
+        sample_Average_Delay = (sample_Rate_Delay * pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
+        
         // Delay value set by delay potentiometer with filtering calculations
         Delay_Val_MAvg = sample_Average_Delay;
         Delay_Val_MAvg = map(pinI_pot_Val, 8, 1015, 0, 255);
+        
         // Set value for global variable
         Delay_Val_Avg = Delay_Val_MAvg;
     }
