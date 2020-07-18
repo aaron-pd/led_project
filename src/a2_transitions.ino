@@ -7,7 +7,7 @@ class Transition
 {
 public:
     virtual void transition() = 0;
-};
+}; // END: Transition
 
 //==========Derived==========
 

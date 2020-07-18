@@ -1,34 +1,5 @@
 //-------------------- Repeating Pattern Functions --------------------
 
-// Pattern delay calculations with EMA filtering
-// -Function requires potentiometer input pin, input pin value and outside-of-function delay value
-void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_MAvg)
-{
-
-    // Delay variables/values
-    unsigned long ms_Current = millis();
-    unsigned long ms_Interval = 50;
-
-    // Delay
-    if (ms_Current - ms_Previous_Delay >= ms_Interval)
-    {
-        ms_Previous_Delay = ms_Current;
-
-        // EMA filtering
-        // -Set analog read input values
-        pinI_pot_Val = analogRead(pinI_pot);
-        // -calculations
-        sample_Average_Delay = (sample_Rate_Delay * pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
-
-        // Delay value set by delay potentiometer with filtering calculations
-        Delay_Val_MAvg = sample_Average_Delay;
-        Delay_Val_MAvg = map(pinI_pot_Val, 8, 1015, 0, 255);
-
-        // Set value for global variable
-        Delay_Val_Avg = Delay_Val_MAvg;
-    }
-} // END: patternDelay()
-
 //==========Class==========
 
 // Base Class
@@ -36,7 +7,7 @@ class Pattern
 {
 public:
     virtual void pattern(unsigned long Delay_Val);
-};
+}; // END: Pattern
 
 //==========Derived==========
 
@@ -233,6 +204,37 @@ public:
         }
     };
 }; // END: pattern() : Pattern3
+
+//==========Pattern Delay Input Filtering==========
+
+// Pattern delay calculations with EMA filtering
+// -Function requires potentiometer input pin, input pin value and outside-of-function delay value
+void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_MAvg)
+{
+
+    // Delay variables/values
+    unsigned long ms_Current = millis();
+    unsigned long ms_Interval = 50;
+
+    // Delay
+    if (ms_Current - ms_Previous_Delay >= ms_Interval)
+    {
+        ms_Previous_Delay = ms_Current;
+
+        // EMA filtering
+        // -Set analog read input values
+        pinI_pot_Val = analogRead(pinI_pot);
+        // -calculations
+        sample_Average_Delay = (sample_Rate_Delay * pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
+
+        // Delay value set by delay potentiometer with filtering calculations
+        Delay_Val_MAvg = sample_Average_Delay;
+        Delay_Val_MAvg = map(pinI_pot_Val, 8, 1015, 0, 255);
+
+        // Set value for global variable
+        Delay_Val_Avg = Delay_Val_MAvg;
+    }
+} // END: patternDelay()
 
 //==========Pattern Randomizer==========
 

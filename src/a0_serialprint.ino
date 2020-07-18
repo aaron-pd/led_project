@@ -41,7 +41,7 @@ void serialPrint()
     Serial.print(Select_Val);
     Serial.println();
     Serial.println();
-    // -Switch
+    // -3-Way Switch A/B
     Serial.print("Switch A:");
     Serial.print("\t");
     Serial.print(pinI_switch_PosA_Val);
