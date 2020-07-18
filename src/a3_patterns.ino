@@ -205,7 +205,7 @@ public:
     };
 }; // END: pattern() : Pattern3
 
-//==========Pattern Delay Input Filtering==========
+//-------------------- Pattern Delay Input Filtering --------------------
 
 // Pattern delay calculations with EMA filtering
 // -Function requires potentiometer input pin, input pin value and outside-of-function delay value
@@ -236,7 +236,7 @@ void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_MAvg)
     }
 } // END: patternDelay()
 
-//==========Pattern Randomizer==========
+//-------------------- Pattern Randomizer --------------------
 
 // Randomly play a pattern
 void patternRandom()

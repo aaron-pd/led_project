@@ -93,7 +93,7 @@ public:
     };
 }; // END: transition() : Transition3
 
-//==========Transition Randomizer==========
+//-------------------- Transition Randomizer --------------------
 
 // Randomly play a transition pattern
 void transitionRandom()
