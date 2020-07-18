@@ -2,7 +2,7 @@
 
 // Pattern delay calculations with EMA filtering
 // -Function requires potentiometer input pin, input pin value and outside-of-function delay value
-void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_Raw)
+void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_MAvg)
 {
 
     // Delay variables/values
@@ -21,12 +21,12 @@ void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_Raw)
         sample_Average_Delay =
             (sample_Rate_Delay * pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
         // Delay value set by delay potentiometer with filtering calculations
-        Delay_Val_Raw = sample_Average_Delay;
-        Delay_Val_Raw = map(pinI_pot_Val, 8, 1015, 0, 255);
+        Delay_Val_MAvg = sample_Average_Delay;
+        Delay_Val_MAvg = map(pinI_pot_Val, 8, 1015, 0, 255);
         // Set value for global variable
-        Delay_Val_Avg = Delay_Val_Raw;
+        Delay_Val_Avg = Delay_Val_MAvg;
     }
-} // END: patternDelay
+} // END: patternDelay()
 
 //==========Class==========
 
@@ -42,7 +42,7 @@ public:
 // Derived 1 : Pattern
 // Sets LED pattern
 // -Pattern will flash all LEDs simultaneously
-// -Delay_Val = user custom value or EMA smoothed input variable 'Delay_Val_Avg'
+// -Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_Avg'
 class Pattern1 : public Pattern
 {
 public:
@@ -63,7 +63,7 @@ public:
                 pinO_led_C_Red_Val = HIGH;
                 pinO_led_C_Blu_Val = HIGH;
                 pinO_led_C_Gre_Val = HIGH;
-                for (int i = 0; i < led_Count; i++)
+                for (int i = 0; i < led_LR_Count; i++)
                 {
                     if (pinO_led_L_Val[i] == LOW && pinO_led_R_Val[i] == LOW)
                     {
@@ -77,7 +77,7 @@ public:
                 pinO_led_C_Red_Val = LOW;
                 pinO_led_C_Blu_Val = LOW;
                 pinO_led_C_Gre_Val = LOW;
-                for (int i = 0; i < led_Count; i++)
+                for (int i = 0; i < led_LR_Count; i++)
                 {
                     if (pinO_led_L_Val[i] == HIGH && pinO_led_R_Val[i] == HIGH)
                     {
@@ -92,18 +92,18 @@ public:
         digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
         digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
         digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
-        for (int i = 0; i < led_Count; i++)
+        for (int i = 0; i < led_LR_Count; i++)
         {
             digitalWrite(pinO_led_L[i], pinO_led_L_Val[i]);
             digitalWrite(pinO_led_R[i], pinO_led_R_Val[i]);
         }
     };
-}; // END: pattern : Pattern1
+}; // END: pattern() : Pattern1
 
 // Derived 2 : Pattern
 // Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards
-// -Delay_Val = user custom value or EMA smoothed input variable 'Delay_Val_Avg'
+// -Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_Avg'
 class Pattern2 : public Pattern
 {
 public:
@@ -127,7 +127,7 @@ public:
                 digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
                 digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
                 digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
-                for (int i = 0; i < led_Count; i++)
+                for (int i = 0; i < led_LR_Count; i++)
                 {
                     digitalWrite(pinO_led_L[i], LOW);
                     digitalWrite(pinO_led_R[i], LOW);
@@ -141,7 +141,7 @@ public:
                 digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
                 digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
                 digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
-                for (int i = 0; i < led_Count; i++)
+                for (int i = 0; i < led_LR_Count; i++)
                 {
                     digitalWrite(pinO_led_L[i], HIGH);
                     digitalWrite(pinO_led_R[i], HIGH);
@@ -152,12 +152,12 @@ public:
             }
         }
     };
-}; // END: pattern : Pattern2
+}; // END: pattern() : Pattern2
 
 // Derived 3 : Pattern
 // Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards, center LED flashes matching colours with pattern
-// -Delay_Val = user custom value or EMA smoothed input variable 'Delay_Val_Avg'
+// -Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_Avg'
 class Pattern3 : public Pattern
 {
 public:
@@ -181,7 +181,7 @@ public:
                 digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
                 digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
                 digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
-                for (int i = 0; i < led_Count; i++)
+                for (int i = 0; i < led_LR_Count; i++)
                 {
                     digitalWrite(pinO_led_L[i], LOW);
                     digitalWrite(pinO_led_R[i], LOW);
@@ -231,7 +231,7 @@ public:
             }
         }
     };
-}; // END: pattern : Pattern3
+}; // END: pattern() : Pattern3
 
 //==========Pattern Randomizer==========
 
@@ -243,15 +243,15 @@ void patternRandom()
     int r = random(3);
     patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
 
-    // Pattern function object declarations
+    // Pattern class object declarations
     Pattern1 pat1;
     Pattern2 pat2;
     Pattern3 pat3;
     Pattern *pat[] = {&pat1, &pat2, &pat3};
 
-    // Run pattern
+    // Run random pattern
     for (int i = 0; i < 10; i++)
     {
         pat[r]->pattern(Delay_Val_Avg);
     }
-} //END: patternRandom
+} //END: patternRandom()

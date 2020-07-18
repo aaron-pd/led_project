@@ -1,6 +1,7 @@
 //-------------------- Variables --------------------
 //
-//  Variable Shorthand Legend
+//  Variable Naming Legend
+// 
 //  R               - Right
 //  L               - Left
 //  C               - Center
@@ -10,7 +11,9 @@
 //  PosA            - Position A
 //  PosB            - Position B
 //  Val             - Value
-//  EMA             - *Exponential Moving Average (for analog input filtering)
+//  EMA             - *Exponential Moving Average (analog input filtering)
+//  MAvg            - Moving Average (analog input filtering: pre-filtering)
+//  Avg             - Average (analog input filtering: post-filtering)
 //
 //  Code Tags
 //  /////REVIEW     - May require changes; see related comments near tag
@@ -19,7 +22,7 @@
 //
 // -------------------- Additional Notes --------------------
 // *Exponential Moving Average (EMA) information:
-// EMA sampleRate value can be adjusted between 0.1 (slow;higher quality) to 0.9 (fast;lower quality)
+// EMA sample_Rate value can be adjusted between 0.1 (slow;higher quality) to 0.9 (fast;lower quality)
 
 //==========Libraries==========
 
@@ -40,7 +43,7 @@ int pinI_switch_PosB_Val = 0;
 const int pinI_pot_Delay = A0;
 // -Pin values
 int pinI_pot_Delay_Val = 0;
-// -Other
+// -Mapped variables/values
 unsigned long Delay_Val = 0;
 
 // Dimmer variables/values for 10kOhm potentiometer
@@ -54,7 +57,7 @@ int pinI_pot_Dimmer_Val = 0;
 const int pinI_pot_Select = A2;
 // -Pin values
 int pinI_pot_Select_Val = 0;
-// -Other
+// -Mapped variables/values
 int Select_Val = 0;
 
 //==========Outputs==========
@@ -73,8 +76,9 @@ const int pinO_led_R[4] = {7, 8, 12, 13};
 // -Pin values
 int pinO_led_L_Val[4] = {LOW, LOW, LOW, LOW};
 int pinO_led_R_Val[4] = {LOW, LOW, LOW, LOW};
-// -Other
-const int led_Count = 4;
+// -Array count variable
+// --Used when including both L and R arrays
+const int led_LR_Count = 4;
 
 // Center tri-colour LED variables/values
 // -Pins
@@ -125,7 +129,7 @@ void setup()
 
   // LED pin setup
   // -Left/Right solid colour LED sets
-  for (int i = 0; i < led_Count; i++)
+  for (int i = 0; i < led_LR_Count; i++)
   {
     pinMode(pinO_led_L[i], OUTPUT);
     pinMode(pinO_led_R[i], OUTPUT);
@@ -148,7 +152,7 @@ void setup()
 
   // Final Initialization
   delay(1000);
-} // END: setup
+} // END: setup()
 
 //-------------------- Loop --------------------
 void loop()
@@ -156,4 +160,4 @@ void loop()
 
   switch_AB();
   dimmer();
-} // END: loop
+} // END: loop()

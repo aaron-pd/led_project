@@ -1,4 +1,4 @@
-//-------------------- Functions --------------------
+//-------------------- Diagnostic Functions --------------------
 
 // Input values for serial monitor print display
 void serialPrint()
@@ -52,4 +52,4 @@ void serialPrint()
     Serial.println();
     Serial.println();
   }
-} // END: serialPrint
+} // END: serialPrint()

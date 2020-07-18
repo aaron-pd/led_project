@@ -1,4 +1,4 @@
-//-------------------- Functions --------------------
+//-------------------- Input Functions --------------------
 
 // LED dimming control determined by potentiometer value
 void dimmer()
@@ -27,4 +27,4 @@ void dimmer()
     // Dimness of lEDs sent to MOSFET output pin
     analogWrite(pinO_Dimmer, pinO_Dimmer_Val);
   }
-} // END: dimmer
+} // END: dimmer()

@@ -1,10 +1,10 @@
-//-------------------- Functions --------------------
+//-------------------- Input Functions --------------------
 
 // LED pattern selection determined by potentiometer position/value
 void select()
 {
 
-  // Pattern function object declarations
+  // Pattern class object declarations
   Pattern1 pat1;
   Pattern2 pat2;
   Pattern3 pat3;
@@ -22,8 +22,7 @@ void select()
     // -Set analog read input values
     pinI_pot_Select_Val = analogRead(pinI_pot_Select);
     // -calculations
-    sample_Average_Select =
-        (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_Average_Select);
+    sample_Average_Select = (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_Average_Select);
 
     // Pattern select value set by selection potentiometer with filtering
     // calculations
@@ -39,7 +38,7 @@ void select()
     case 0 ... 249:
       reset();
       off();
-      break;
+      break; // END: Case
 
     // -Pattern 1
     // --One-time LED reset, play transition pattern, play pattern 1
@@ -52,7 +51,7 @@ void select()
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
       pat1.pattern(Delay_Val_Avg);
-      break;
+      break; // END: Case
 
     // -Pattern 2
     // --One-time LED reset, play transition pattern, play pattern 2
@@ -65,7 +64,7 @@ void select()
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
       pat2.pattern(Delay_Val_Avg);
-      break;
+      break; // END: Case
 
     // -Pattern 3
     // --One-time LED reset, play transition pattern, play pattern 3
@@ -78,14 +77,14 @@ void select()
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
       pat3.pattern(Delay_Val_Avg);
-      break;
+      break; // END: Case
 
     // -Default State
     // --One-time LED reset, set all LEDs to always 'HIGH'
     default:
       reset();
       on();
-      break;
+      break; // END: Default Case
     }
   }
-} // END: select
+} // END: select()

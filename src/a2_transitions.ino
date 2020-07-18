@@ -1,4 +1,4 @@
-//-------------------- Transition Patterns Functions --------------------
+//-------------------- Transition Pattern Functions --------------------
 
 //==========Class==========
 
@@ -23,7 +23,7 @@ public:
         digitalWrite(pinO_led_L[0], HIGH);
         digitalWrite(pinO_led_R[0], HIGH);
 
-        for (int i = 0; i < led_Count; i++)
+        for (int i = 0; i < led_LR_Count; i++)
         {
             digitalWrite(pinO_led_L[i - 1], LOW);
             digitalWrite(pinO_led_R[i - 1], LOW);
@@ -36,7 +36,7 @@ public:
         delay(transition_Delay);
         off();
     };
-}; // END: transition : Transition1
+}; // END: transition() : Transition1
 
 // Derived 2 : Transition
 // Transition LED pattern 1
@@ -50,7 +50,7 @@ public:
         digitalWrite(pinO_led_L[0], HIGH);
         digitalWrite(pinO_led_R[0], HIGH);
         delay(transition_Delay);
-        for (int i = 0; i < (led_Count - 1); i++)
+        for (int i = 0; i < (led_LR_Count - 1); i++)
         {
             digitalWrite(pinO_led_L[i - 1], LOW);
             digitalWrite(pinO_led_R[i - 1], LOW);
@@ -66,7 +66,7 @@ public:
         delay(transition_Delay);
         off();
     };
-}; // END: transition : Transition2
+}; // END: transition() : Transition2
 
 // Derived 3 : Transition
 // Transition LED pattern 2
@@ -91,7 +91,7 @@ public:
         delay(transition_Delay);
         off();
     };
-}; // END: transition : Transition3
+}; // END: transition() : Transition3
 
 //==========Transition Randomizer==========
 
@@ -105,6 +105,6 @@ void transitionRandom()
     Transition3 tra3;
     Transition *tra[] = {&tra1, &tra2, &tra3};
 
-    // Run transition
+    // Run random transition
     tra[random(3)]->transition();
-} // END: transitionRandom
+} // END: transitionRandom()

@@ -1,4 +1,4 @@
-//-------------------- Functions --------------------
+//-------------------- Input Functions --------------------
 
 // Control to switch between random pattern/manual pattern selection with 3-way
 // switch
@@ -23,4 +23,4 @@ void switch_AB()
   {
     select();
   }
-} // END: switch_AB
+} // END: switch_AB()
