@@ -6,7 +6,7 @@
 class Pattern
 {
 public:
-    virtual void pattern(unsigned long Delay_Val);
+    virtual void pattern(unsigned long func_Delay_Val) = 0;
 }; // END: Pattern
 
 //==========Derived==========
@@ -14,18 +14,18 @@ public:
 // Derived 1 : Pattern
 // Sets LED pattern
 // -Pattern will flash all LEDs simultaneously
-// -Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_Avg'
+// -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_MapAvg'
 class Pattern1 : public Pattern
 {
 public:
-    void pattern(unsigned long Delay_Val)
+    void pattern(unsigned long func_Delay_Val)
     {
 
         // Delay variables/values
         unsigned long ms_Current = millis();
 
         // Delay
-        if (ms_Current - ms_Previous_Pattern >= Delay_Val)
+        if (ms_Current - ms_Previous_Pattern >= func_Delay_Val)
         {
             ms_Previous_Pattern = ms_Current;
 
@@ -75,18 +75,18 @@ public:
 // Derived 2 : Pattern
 // Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards
-// -Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_Avg'
+// -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_MapAvg'
 class Pattern2 : public Pattern
 {
 public:
-    void pattern(unsigned long Delay_Val)
+    void pattern(unsigned long func_Delay_Val)
     {
 
         // Delay variables/values
         unsigned long ms_Current = millis();
 
         // Delay
-        if (ms_Current - ms_Previous_Pattern >= Delay_Val)
+        if (ms_Current - ms_Previous_Pattern >= func_Delay_Val)
         {
             ms_Previous_Pattern = ms_Current;
 
@@ -129,18 +129,18 @@ public:
 // Derived 3 : Pattern
 // Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards, center LED flashes matching colours with pattern
-// -Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_Avg'
+// -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_MapAvg'
 class Pattern3 : public Pattern
 {
 public:
-    void pattern(unsigned long Delay_Val)
+    void pattern(unsigned long func_Delay_Val)
     {
 
         // Delay variables/values
         unsigned long ms_Current = millis();
 
         // Delay
-        if (ms_Current - ms_Previous_Pattern >= Delay_Val)
+        if (ms_Current - ms_Previous_Pattern >= func_Delay_Val)
         {
             ms_Previous_Pattern = ms_Current;
 
@@ -208,8 +208,8 @@ public:
 //-------------------- Pattern Delay Input Filtering --------------------
 
 // Pattern delay calculations with EMA filtering
-// -Function requires potentiometer input pin, input pin value and outside-of-function delay value
-void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_MAvg)
+// -Function requires potentiometer input pin, potentiometer input pin value and a global variable required to remember previous loop values
+void patternDelay(int func_pinI_pot, int func_pinI_pot_Val, unsigned long func_Delay_Val_MovAvg)
 {
 
     // Delay variables/values
@@ -223,16 +223,16 @@ void patternDelay(int pinI_pot, int pinI_pot_Val, unsigned long Delay_Val_MAvg)
 
         // EMA filtering
         // -Set analog read input values
-        pinI_pot_Val = analogRead(pinI_pot);
-        // -calculations
-        sample_Average_Delay = (sample_Rate_Delay * pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
+        func_pinI_pot_Val = analogRead(func_pinI_pot);
+        // -Calculations
+        sample_Average_Delay = (sample_Rate_Delay * func_pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
+        // -Saved values required to remember previous loop values
+        func_Delay_Val_MovAvg = sample_Average_Delay;
 
-        // Delay value set by delay potentiometer with filtering calculations
-        Delay_Val_MAvg = sample_Average_Delay;
-        Delay_Val_MAvg = map(pinI_pot_Val, 8, 1015, 0, 255);
-
-        // Set value for global variable
-        Delay_Val_Avg = Delay_Val_MAvg;
+        // Set global delay value
+        Delay_Val_MapAvg = func_Delay_Val_MovAvg;
+        // Delay value mapped to delay potentiometer value with filtering calculations
+        Delay_Val_MapAvg = map(func_pinI_pot_Val, 8, 1015, 0, 255);
     }
 } // END: patternDelay()
 
@@ -246,7 +246,7 @@ void patternRandom()
     int r = random(3);
     patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
 
-    // Pattern class object declarations
+    // Pattern object declarations
     Pattern1 pat1;
     Pattern2 pat2;
     Pattern3 pat3;
@@ -255,6 +255,6 @@ void patternRandom()
     // Run random pattern
     for (int i = 0; i < 10; i++)
     {
-        pat[r]->pattern(Delay_Val_Avg);
+        pat[r]->pattern(Delay_Val_MapAvg);
     }
 } //END: patternRandom()

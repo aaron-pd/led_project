@@ -4,7 +4,7 @@
 void select()
 {
 
-  // Pattern class object declarations
+  // Pattern object declarations
   Pattern1 pat1;
   Pattern2 pat2;
   Pattern3 pat3;
@@ -21,15 +21,16 @@ void select()
     // EMA filtering
     // -Set analog read input values
     pinI_pot_Select_Val = analogRead(pinI_pot_Select);
-    // -calculations
+    // -Calculations
     sample_Average_Select = (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_Average_Select);
+    // -Saved values required to remember previous loop values
+    Select_MapVal = sample_Average_Select;
 
-    // Pattern select value set by selection potentiometer with filtering
-    Select_Val = sample_Average_Select;
-    Select_Val = map(pinI_pot_Select_Val, 8, 1015, 0, 999);
+    // Pattern select value mapped to select potentiometer value with filtering calculations
+    Select_MapVal = map(pinI_pot_Select_Val, 8, 1015, 0, 999);
 
-    // Switch/Case used to select pattern from Select_Val variable
-    switch (Select_Val)
+    // Switch/Case used to select pattern from Select_MapVal variable
+    switch (Select_MapVal)
     {
 
     // -Off
@@ -49,7 +50,7 @@ void select()
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-      pat1.pattern(Delay_Val_Avg);
+      pat1.pattern(Delay_Val_MapAvg);
       break; // END: Case
 
     // -Pattern 2
@@ -62,7 +63,7 @@ void select()
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-      pat2.pattern(Delay_Val_Avg);
+      pat2.pattern(Delay_Val_MapAvg);
       break; // END: Case
 
     // -Pattern 3
@@ -75,7 +76,7 @@ void select()
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-      pat3.pattern(Delay_Val_Avg);
+      pat3.pattern(Delay_Val_MapAvg);
       break; // END: Case
 
     // -Default State

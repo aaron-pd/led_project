@@ -99,7 +99,7 @@ public:
 void transitionRandom()
 {
 
-    // Transition function object declarations
+    // Transition object declarations
     Transition1 tra1;
     Transition2 tra2;
     Transition3 tra3;

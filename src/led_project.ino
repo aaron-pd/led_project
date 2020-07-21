@@ -10,10 +10,12 @@
 //  pinO            - Output board pin
 //  PosA            - Position A
 //  PosB            - Position B
+//  func            - Function specific variables taking incoming global variables
 //  Val             - Value
-//  EMA             - *Exponential Moving Average (analog input filtering)
-//  MAvg            - Moving Average (analog input filtering: pre-filtering)
-//  Avg             - Average (analog input filtering: post-filtering)
+//  MapVal          - Values mapped to potentiometer values
+//  EMA             - *Exponential Moving Average (analog input filtering calculations)
+//  MovAvg          - Moving Average (analog input filtering: saved values)
+//  MapAvg          - Mapped Average to potentiometer values (analog input filtered value)
 //
 //  Code Tags
 //  /////REVIEW     - May require changes; see related comments near tag
@@ -43,7 +45,9 @@ int pinI_switch_PosB_Val = 0;
 const int pinI_pot_Delay = A0;
 // -Pin values
 int pinI_pot_Delay_Val = 0;
-// -Mapped variables/values
+// -Global variables required to remember previous loop values
+// --Used in all pattern/transition functions
+// --Unsigned long to compare with millis()
 unsigned long Delay_Val = 0;
 
 // Dimmer variables/values for 10kOhm potentiometer
@@ -51,6 +55,8 @@ unsigned long Delay_Val = 0;
 const int pinI_pot_Dimmer = A1;
 // -Pin values
 int pinI_pot_Dimmer_Val = 0;
+// -Mapped variables/values
+int Dimmer_MapVal = 0;
 
 // Pattern selection variables/values for 10kOhm potentiometer
 // -Pins
@@ -58,15 +64,13 @@ const int pinI_pot_Select = A2;
 // -Pin values
 int pinI_pot_Select_Val = 0;
 // -Mapped variables/values
-int Select_Val = 0;
+int Select_MapVal = 0;
 
 //==========Outputs==========
 
 // Dimmer variables/values for MOSFET
 // -Pins
 const int pinO_Dimmer = 6;
-// -Pin values
-int pinO_Dimmer_Val = 0;
 
 // Solid colour LED variables/values
 // Left/Right position based on center tri-colour LED
@@ -103,14 +107,15 @@ int sample_Average_Select = 0;
 // --Variable delay input potentiometer
 float sample_Rate_Delay = 0.6;
 int sample_Average_Delay = 0;
-// ---Variables used for delay in all pattern/transition functions after EMA filtering calculations
-unsigned long Delay_Val_Avg;
+// ---Mapped variables used for delay in all pattern/transition functions after EMA filtering calculations
+unsigned long Delay_Val_MapAvg;
 
 // Pattern reset variables/values
 boolean reset_Key[3] = {true, true, true};
 
 // Delay variables/values
 // -Global variables required to remember previous loop values
+// --Unsigned long to compare with millis()
 unsigned long ms_Previous_Delay = 0;
 unsigned long ms_Previous_Print = 0;
 unsigned long ms_Previous_Dimmer = 0;
