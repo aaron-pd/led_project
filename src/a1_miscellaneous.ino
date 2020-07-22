@@ -1,16 +1,16 @@
 //-------------------- Miscellaneous Functions --------------------
 
-// -Set all pattern_reset_Key[] array values to 'true' and set all LEDs to 'LOW'
-// -Usage: Check if specific pattern_reset_Key[#] array is 'true', run reset() function and
-//  set specific pattern_reset_Key[#] array to 'false' to prevent reset() function from looping
+// -Set all reset_Key[] array values to 'true' and set all LEDs to 'LOW'
+// -Usage: Check if specific reset_Key[#] array is 'true', run reset() function and
+//  set specific reset_Key[#] array to 'false' to prevent reset() function from looping
 // -Used in select() function
 
 void reset()
 {
 
-  for (unsigned int i = 0; i < sizeof(pattern_reset_Key); i++)
+  for (unsigned int i = 0; i < sizeof(reset_Key); i++)
   {
-    pattern_reset_Key[i] = true;
+    reset_Key[i] = true;
   }
   off();
 } // END: reset()

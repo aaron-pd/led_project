@@ -112,10 +112,10 @@ unsigned long Delay_Val_MapAvg;
 
 // Reset key variables/values
 // -Patterns
-boolean pattern_reset_Key[3] = {true, true, true};
-// -3-way switch  /////REVIEW: Move to switch_AB() as passed function (?)
-boolean switch_PosA_reset_Key = true;
-boolean switch_PosB_reset_Key = true;
+boolean reset_Key[3] = {true, true, true};
+// -3-way switch
+boolean switch_PosA_Key = true;
+boolean switch_PosB_Key = true;
 
 // Delay variables/values
 // -Global variables required to remember previous loop values

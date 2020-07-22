@@ -13,11 +13,11 @@ void switch_AB()
   // -Play all patterns randomly
   if (pinI_switch_PosA_Val == HIGH)
   {
-    if (switch_PosA_reset_Key == true)
+    if (switch_PosA_Key == true)
     {
-      off();
-      switch_PosA_reset_Key = false;
-      switch_PosB_reset_Key = true;
+      reset();
+      switch_PosA_Key = false;
+      switch_PosB_Key = true;
       transitionRandom();
     }
     patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
@@ -28,11 +28,11 @@ void switch_AB()
   // -Play selected patterns only
   if (pinI_switch_PosB_Val == HIGH)
   {
-    if (switch_PosB_reset_Key == true)
+    if (switch_PosB_Key == true)
     {
       reset();
-      switch_PosA_reset_Key = true;
-      switch_PosB_reset_Key = false;
+      switch_PosA_Key = true;
+      switch_PosB_Key = false;
     }
     select();
   }

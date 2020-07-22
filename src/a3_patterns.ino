@@ -258,7 +258,7 @@ void patternRandom()
         {
             pat1.pattern(Delay_Val_MapAvg);
         }
-        switch_PosA_reset_Key = true;
+        switch_PosA_Key = true;
         break;
 
     case 2:
@@ -266,7 +266,7 @@ void patternRandom()
         {
             pat2.pattern(Delay_Val_MapAvg);
         }
-        switch_PosA_reset_Key = true;
+        switch_PosA_Key = true;
         break;
 
     case 3:
@@ -274,7 +274,7 @@ void patternRandom()
         {
             pat3.pattern(Delay_Val_MapAvg);
         }
-        switch_PosA_reset_Key = true;
+        switch_PosA_Key = true;
         break;
     }
 } //END: patternRandom()
