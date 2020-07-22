@@ -242,19 +242,39 @@ void patternDelay(int func_pinI_pot, int func_pinI_pot_Val, unsigned long func_D
 void patternRandom()
 {
 
-    // Function initialization
-    int r = random(3);
-    patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+    // Initialization
+    int r = random(1, 3);
 
     // Pattern object declarations
     Pattern1 pat1;
     Pattern2 pat2;
     Pattern3 pat3;
-    Pattern *pat[] = {&pat1, &pat2, &pat3};
 
     // Run random pattern
-    for (int i = 0; i < 10; i++)
+    switch (r)
     {
-        pat[r]->pattern(Delay_Val_MapAvg);
+    case 1:
+        for (int i = 0; i < 10; i++)
+        {
+            pat1.pattern(Delay_Val_MapAvg);
+        }
+        switch_PosA_reset_Key = true;
+        break;
+
+    case 2:
+        for (int i = 0; i < 10; i++)
+        {
+            pat2.pattern(Delay_Val_MapAvg);
+        }
+        switch_PosA_reset_Key = true;
+        break;
+
+    case 3:
+        for (int i = 0; i < 10; i++)
+        {
+            pat3.pattern(Delay_Val_MapAvg);
+        }
+        switch_PosA_reset_Key = true;
+        break;
     }
 } //END: patternRandom()

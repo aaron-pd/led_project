@@ -110,8 +110,12 @@ int sample_Average_Delay = 0;
 // ---Mapped variables used for delay in all pattern/transition functions after EMA filtering calculations
 unsigned long Delay_Val_MapAvg;
 
-// Pattern reset variables/values
-boolean reset_Key[3] = {true, true, true};
+// Reset key variables/values
+// -Patterns
+boolean pattern_reset_Key[3] = {true, true, true};
+// -3-way switch  /////REVIEW: Move to switch_AB() as passed function (?)
+boolean switch_PosA_reset_Key = true;
+boolean switch_PosB_reset_Key = true;
 
 // Delay variables/values
 // -Global variables required to remember previous loop values

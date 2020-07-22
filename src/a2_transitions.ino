@@ -106,5 +106,5 @@ void transitionRandom()
     Transition *tra[] = {&tra1, &tra2, &tra3};
 
     // Run random transition
-    tra[random(3)]->transition();
+    tra[random(1, 3)]->transition();
 } // END: transitionRandom()

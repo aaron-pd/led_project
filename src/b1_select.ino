@@ -43,10 +43,10 @@ void select()
     // -Pattern 1
     // --One-time LED reset, play transition pattern, play pattern 1
     case 250 ... 499:
-      if (reset_Key[0] == true)
+      if (pattern_reset_Key[0] == true)
       {
         reset();
-        reset_Key[0] = false;
+        pattern_reset_Key[0] = false;
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
@@ -56,10 +56,10 @@ void select()
     // -Pattern 2
     // --One-time LED reset, play transition pattern, play pattern 2
     case 500 ... 749:
-      if (reset_Key[1] == true)
+      if (pattern_reset_Key[1] == true)
       {
         reset();
-        reset_Key[1] = false;
+        pattern_reset_Key[1] = false;
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
@@ -69,10 +69,10 @@ void select()
     // -Pattern 3
     // --One-time LED reset, play transition pattern, play pattern 3
     case 750 ... 850:
-      if (reset_Key[2] == true)
+      if (pattern_reset_Key[2] == true)
       {
         reset();
-        reset_Key[2] = false;
+        pattern_reset_Key[2] = false;
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
