@@ -1,7 +1,6 @@
 //-------------------- Input Functions --------------------
 
-// Control to switch between random pattern/manual pattern selection with 3-way
-// switch
+// Control to switch between random pattern/manual pattern selection with 3-way switch
 void switch_AB()
 {
 
@@ -13,14 +12,13 @@ void switch_AB()
   // -Play all patterns randomly
   if (pinI_switch_PosA_Val == HIGH)
   {
-    if (switch_PosA_Key == true)
+    while (switch_PosA_Key == true)
     {
       reset();
       switch_PosA_Key = false;
       switch_PosB_Key = true;
-      transitionRandom();
+      //transitionRandom();
     }
-    patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
     patternRandom();
   }
 
@@ -28,7 +26,7 @@ void switch_AB()
   // -Play selected patterns only
   if (pinI_switch_PosB_Val == HIGH)
   {
-    if (switch_PosB_Key == true)
+    while (switch_PosB_Key == true)
     {
       reset();
       switch_PosA_Key = true;

@@ -43,7 +43,7 @@ void select()
     // -Pattern 1
     // --One-time LED reset, play transition pattern, play pattern 1
     case 250 ... 499:
-      if (reset_Key[0] == true)
+      while (reset_Key[0] == true)
       {
         reset();
         reset_Key[0] = false;
@@ -56,7 +56,7 @@ void select()
     // -Pattern 2
     // --One-time LED reset, play transition pattern, play pattern 2
     case 500 ... 749:
-      if (reset_Key[1] == true)
+      while (reset_Key[1] == true)
       {
         reset();
         reset_Key[1] = false;
@@ -69,7 +69,7 @@ void select()
     // -Pattern 3
     // --One-time LED reset, play transition pattern, play pattern 3
     case 750 ... 850:
-      if (reset_Key[2] == true)
+      while (reset_Key[2] == true)
       {
         reset();
         reset_Key[2] = false;

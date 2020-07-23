@@ -253,25 +253,32 @@ void patternRandom()
     // Run random pattern
     switch (r)
     {
+        
     case 1:
+        off();
         for (int i = 0; i < 10; i++)
         {
+            patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
             pat1.pattern(Delay_Val_MapAvg);
         }
         switch_PosA_Key = true;
         break;
 
     case 2:
+        off();
         for (int i = 0; i < 10; i++)
         {
+            patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
             pat2.pattern(Delay_Val_MapAvg);
         }
         switch_PosA_Key = true;
         break;
 
     case 3:
+        off();
         for (int i = 0; i < 10; i++)
         {
+            patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
             pat3.pattern(Delay_Val_MapAvg);
         }
         switch_PosA_Key = true;
