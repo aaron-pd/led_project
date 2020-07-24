@@ -17,7 +17,7 @@ void switch_AB()
       reset();
       switch_PosA_Key = false;
       switch_PosB_Key = true;
-      //transitionRandom();
+      transitionRandom();
     }
     patternRandom();
   }

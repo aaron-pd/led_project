@@ -242,8 +242,11 @@ void patternDelay(int func_pinI_pot, int func_pinI_pot_Val, unsigned long func_D
 void patternRandom()
 {
 
+    // variables/values
+    boolean randomizer_Key[] = {true, true, true};
+
     // Initialization
-    int r = random(1, 3);
+    int r = random(sizeof(randomizer_Key));
 
     // Pattern object declarations
     Pattern1 pat1;
@@ -253,35 +256,56 @@ void patternRandom()
     // Run random pattern
     switch (r)
     {
-        
-    case 1:
-        off();
-        for (int i = 0; i < 10; i++)
+
+    case 0:
+        while (randomizer_Key[0] == true)
+        {
+            for (unsigned int i = 0; i < sizeof(randomizer_Key); i++)
+            {
+                randomizer_Key[i] = true;
+            }
+            //off();
+            randomizer_Key[0] = false;
+        }
+        for (int i = 0; i <= 3; i++)
         {
             patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
             pat1.pattern(Delay_Val_MapAvg);
         }
-        switch_PosA_Key = true;
         break;
 
-    case 2:
-        off();
-        for (int i = 0; i < 10; i++)
+    case 1:
+        while (randomizer_Key[1] == true)
+        {
+            for (unsigned int i = 0; i < sizeof(randomizer_Key); i++)
+            {
+                randomizer_Key[i] = true;
+            }
+            //off();
+            randomizer_Key[1] = false;
+        }
+        for (int i = 0; i <= 3; i++)
         {
             patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
             pat2.pattern(Delay_Val_MapAvg);
         }
-        switch_PosA_Key = true;
         break;
 
-    case 3:
-        off();
-        for (int i = 0; i < 10; i++)
+    case 2:
+        while (randomizer_Key[2] == true)
+        {
+            for (unsigned int i = 0; i < sizeof(randomizer_Key); i++)
+            {
+                randomizer_Key[i] = true;
+            }
+            //off();
+            randomizer_Key[2] = false;
+        }
+        for (int i = 0; i <= 3; i++)
         {
             patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
             pat3.pattern(Delay_Val_MapAvg);
         }
-        switch_PosA_Key = true;
         break;
     }
 } //END: patternRandom()
