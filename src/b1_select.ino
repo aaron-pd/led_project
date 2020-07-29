@@ -5,9 +5,9 @@ void select()
 {
 
   // Pattern object declarations
-  Pattern1 pat1;
-  Pattern2 pat2;
-  Pattern3 pat3;
+  Pattern1 p1;
+  Pattern2 p2;
+  Pattern3 p3;
 
   // Delay variables/values
   unsigned long ms_Current = millis();
@@ -38,7 +38,7 @@ void select()
     case 0 ... 249:
       reset();
       off();
-      break; // END: Case
+      break; // END: case
 
     // -Pattern 1
     // --One-time LED reset, play transition pattern, play pattern 1
@@ -50,8 +50,8 @@ void select()
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-      pat1.pattern(Delay_Val_MapAvg);
-      break; // END: Case
+      p1.pattern(Delay_Val_MapAvg);
+      break; // END: case
 
     // -Pattern 2
     // --One-time LED reset, play transition pattern, play pattern 2
@@ -63,8 +63,8 @@ void select()
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-      pat2.pattern(Delay_Val_MapAvg);
-      break; // END: Case
+      p2.pattern(Delay_Val_MapAvg);
+      break; // END: case
 
     // -Pattern 3
     // --One-time LED reset, play transition pattern, play pattern 3
@@ -76,15 +76,15 @@ void select()
         transitionRandom();
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-      pat3.pattern(Delay_Val_MapAvg);
-      break; // END: Case
+      p3.pattern(Delay_Val_MapAvg);
+      break; // END: case
 
-    // -Default State
+    // -Default case
     // --One-time LED reset, set all LEDs to always 'HIGH'
     default:
       reset();
       on();
-      break; // END: Default Case
+      break; // END: default case
     }
   }
 } // END: select()

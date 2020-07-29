@@ -242,21 +242,19 @@ void patternDelay(int func_pinI_pot, int func_pinI_pot_Val, unsigned long func_D
 void patternRandom()
 {
 
-    // variables/values
-    boolean randomizer_Key[] = {true, true, true};
-
     // Initialization
     int r = random(sizeof(randomizer_Key));
 
     // Pattern object declarations
-    Pattern1 pat1;
-    Pattern2 pat2;
-    Pattern3 pat3;
+    Pattern1 p1;
+    Pattern2 p2;
+    Pattern3 p3;
 
-    // Run random pattern
+    // Switch/Case to run random pattern
     switch (r)
     {
 
+    // -Case 0
     case 0:
         while (randomizer_Key[0] == true)
         {
@@ -270,10 +268,12 @@ void patternRandom()
         for (int i = 0; i <= 3; i++)
         {
             patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-            pat1.pattern(Delay_Val_MapAvg);
+            p1.pattern(Delay_Val_MapAvg);
         }
-        break;
+        delay(10);
+        break; // END: case
 
+    // -Case 1
     case 1:
         while (randomizer_Key[1] == true)
         {
@@ -287,10 +287,12 @@ void patternRandom()
         for (int i = 0; i <= 3; i++)
         {
             patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-            pat2.pattern(Delay_Val_MapAvg);
+            p2.pattern(Delay_Val_MapAvg);
         }
-        break;
+        delay(10);
+        break; // END: case
 
+    // -Case 2
     case 2:
         while (randomizer_Key[2] == true)
         {
@@ -304,8 +306,14 @@ void patternRandom()
         for (int i = 0; i <= 3; i++)
         {
             patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-            pat3.pattern(Delay_Val_MapAvg);
+            p3.pattern(Delay_Val_MapAvg);
         }
-        break;
+        delay(10);
+        break; // END: case
+
+    // -Default case
+    default:
+        off();
+        break; // END: default case
     }
 } //END: patternRandom()

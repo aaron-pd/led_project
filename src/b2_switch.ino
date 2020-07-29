@@ -20,7 +20,7 @@ void switch_AB()
       transitionRandom();
     }
     patternRandom();
-  }
+  } // END: if
 
   // Switch position 'B'
   // -Play selected patterns only
@@ -33,5 +33,11 @@ void switch_AB()
       switch_PosB_Key = false;
     }
     select();
-  }
+  } // END: if
+
+  // Turn all LEDs off if switch state is undetermined
+  else
+  {
+    off();
+  } // END: else
 } // END: switch_AB()

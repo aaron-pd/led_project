@@ -52,3 +52,16 @@ void off()
     digitalWrite(pinO_led_R[i], pinO_led_R_Val[i]);
   }
 } // END: off()
+
+// Set LED values to 'LOW'
+void low()
+{
+  pinO_led_C_Red_Val = LOW;
+  pinO_led_C_Blu_Val = LOW;
+  pinO_led_C_Gre_Val = LOW;
+  for (int i = 0; i < led_LR_Count; i++)
+  {
+    pinO_led_L_Val[i] = LOW;
+    pinO_led_R_Val[i] = LOW;
+  }
+} // END: low()

@@ -100,11 +100,11 @@ void transitionRandom()
 {
 
     // Transition object declarations
-    Transition1 tra1;
-    Transition2 tra2;
-    Transition3 tra3;
-    Transition *tra[] = {&tra1, &tra2, &tra3};
+    Transition1 t1;
+    Transition2 t2;
+    Transition3 t3;
+    Transition *transition[] = {&t1, &t2, &t3};
 
     // Run random transition
-    tra[random(1, 3)]->transition();
+    transition[random(1, 3)]->transition();
 } // END: transitionRandom()

@@ -11,6 +11,7 @@
 //  PosA            - Position A
 //  PosB            - Position B
 //  func            - Function specific variables taking incoming global variables
+//  Key             - Boolean variables used to run a function once followed by disabling itself
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values
 //  EMA             - *Exponential Moving Average (analog input filtering calculations)
@@ -111,11 +112,13 @@ int sample_Average_Delay = 0;
 unsigned long Delay_Val_MapAvg;
 
 // Reset key variables/values
-// -Patterns
-boolean reset_Key[3] = {true, true, true};
 // -3-way switch
 boolean switch_PosA_Key = true;
 boolean switch_PosB_Key = true;
+// -Pattern reset
+boolean reset_Key[3] = {true, true, true};
+// -Pattern randomizer
+boolean randomizer_Key[] = {true, true, true};
 
 // Delay variables/values
 // -Global variables required to remember previous loop values
