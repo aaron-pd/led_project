@@ -36,13 +36,15 @@ void select()
     // -Off
     // --One-time LED reset, set all LEDs to always 'LOW'
     case 0 ... 249:
+    {
       reset();
-      off();
-      break; // END: case
+    }
+    break; // END: case
 
     // -Pattern 1
     // --One-time LED reset, play transition pattern, play pattern 1
     case 250 ... 499:
+    {
       while (reset_Key[0] == true)
       {
         reset();
@@ -51,11 +53,13 @@ void select()
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
       p1.pattern(Delay_Val_MapAvg);
-      break; // END: case
+    }
+    break; // END: case
 
     // -Pattern 2
     // --One-time LED reset, play transition pattern, play pattern 2
     case 500 ... 749:
+    {
       while (reset_Key[1] == true)
       {
         reset();
@@ -64,11 +68,13 @@ void select()
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
       p2.pattern(Delay_Val_MapAvg);
-      break; // END: case
+    }
+    break; // END: case
 
     // -Pattern 3
     // --One-time LED reset, play transition pattern, play pattern 3
     case 750 ... 850:
+    {
       while (reset_Key[2] == true)
       {
         reset();
@@ -77,14 +83,17 @@ void select()
       }
       patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
       p3.pattern(Delay_Val_MapAvg);
-      break; // END: case
+    }
+    break; // END: case
 
     // -Default case
     // --One-time LED reset, set all LEDs to always 'HIGH'
     default:
+    {
       reset();
       on();
-      break; // END: default case
+    }
+    break; // END: default case
     }
   }
 } // END: select()

@@ -20,6 +20,7 @@ void serialPrint()
     Serial.println();
     Serial.print("Delay Rate:");
     Serial.print("\t");
+    Serial.print("\t");
     Serial.print(Delay_Val_MapAvg);
     Serial.println();
     // -Dimmer Potentiometer
@@ -29,6 +30,7 @@ void serialPrint()
     Serial.println();
     Serial.print("Dimmer Value:");
     Serial.print("\t");
+    Serial.print("\t");
     Serial.print(Dimmer_MapVal);
     Serial.println();
     // -Select Potentiometer
@@ -37,6 +39,7 @@ void serialPrint()
     Serial.print(pinI_pot_Select_Val);
     Serial.println();
     Serial.print("Select Value:");
+    Serial.print("\t");
     Serial.print("\t");
     Serial.print(Select_MapVal);
     Serial.println();

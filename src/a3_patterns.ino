@@ -32,42 +32,12 @@ public:
             // LED pattern
             if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Gre_Val == LOW)
             {
-                pinO_led_C_Red_Val = HIGH;
-                pinO_led_C_Blu_Val = HIGH;
-                pinO_led_C_Gre_Val = HIGH;
-                for (int i = 0; i < led_LR_Count; i++)
-                {
-                    if (pinO_led_L_Val[i] == LOW && pinO_led_R_Val[i] == LOW)
-                    {
-                        pinO_led_L_Val[i] = HIGH;
-                        pinO_led_R_Val[i] = HIGH;
-                    }
-                }
+                on();
             }
             else
             {
-                pinO_led_C_Red_Val = LOW;
-                pinO_led_C_Blu_Val = LOW;
-                pinO_led_C_Gre_Val = LOW;
-                for (int i = 0; i < led_LR_Count; i++)
-                {
-                    if (pinO_led_L_Val[i] == HIGH && pinO_led_R_Val[i] == HIGH)
-                    {
-                        pinO_led_L_Val[i] = LOW;
-                        pinO_led_R_Val[i] = LOW;
-                    }
-                }
+                off();
             }
-        }
-
-        // Display LEDs based on values from previous if/else statement
-        digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
-        digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
-        digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
-        for (int i = 0; i < led_LR_Count; i++)
-        {
-            digitalWrite(pinO_led_L[i], pinO_led_L_Val[i]);
-            digitalWrite(pinO_led_R[i], pinO_led_R_Val[i]);
         }
     };
 }; // END: pattern() : Pattern1
@@ -107,20 +77,18 @@ public:
             }
             else
             {
-                pinO_led_C_Red_Val = LOW;
-                pinO_led_C_Blu_Val = LOW;
-                pinO_led_C_Gre_Val = LOW;
-                digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
-                digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
-                digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+                digitalWrite(pinO_led_C_Red, LOW);
+                digitalWrite(pinO_led_C_Blu, LOW);
+                digitalWrite(pinO_led_C_Gre, LOW);
                 for (int i = 0; i < led_LR_Count; i++)
                 {
                     digitalWrite(pinO_led_L[i], HIGH);
                     digitalWrite(pinO_led_R[i], HIGH);
-                    delay(50);
+                    delay(pattern_Delay);
                     digitalWrite(pinO_led_L[i], LOW);
                     digitalWrite(pinO_led_R[i], LOW);
                 }
+                off();
             }
         }
     };
@@ -153,15 +121,9 @@ public:
                 digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
                 digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
                 digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
-                for (int i = 0; i < led_LR_Count; i++)
-                {
-                    digitalWrite(pinO_led_L[i], LOW);
-                    digitalWrite(pinO_led_R[i], LOW);
-                }
             }
             else
             {
-                pinO_led_C_Red_Val = LOW;
                 pinO_led_C_Blu_Val = LOW;
                 pinO_led_C_Gre_Val = LOW;
                 digitalWrite(pinO_led_C_Red, HIGH);
@@ -169,7 +131,7 @@ public:
                 digitalWrite(pinO_led_C_Gre, LOW);
                 digitalWrite(pinO_led_L[0], HIGH);
                 digitalWrite(pinO_led_R[0], HIGH);
-                delay(50);
+                delay(pattern_Delay);
                 digitalWrite(pinO_led_C_Red, HIGH);
                 digitalWrite(pinO_led_C_Blu, LOW);
                 digitalWrite(pinO_led_C_Gre, HIGH);
@@ -177,7 +139,7 @@ public:
                 digitalWrite(pinO_led_R[0], LOW);
                 digitalWrite(pinO_led_L[1], HIGH);
                 digitalWrite(pinO_led_R[1], HIGH);
-                delay(50);
+                delay(pattern_Delay);
                 digitalWrite(pinO_led_C_Red, LOW);
                 digitalWrite(pinO_led_C_Blu, HIGH);
                 digitalWrite(pinO_led_C_Gre, LOW);
@@ -185,7 +147,7 @@ public:
                 digitalWrite(pinO_led_R[1], LOW);
                 digitalWrite(pinO_led_L[2], HIGH);
                 digitalWrite(pinO_led_R[2], HIGH);
-                delay(50);
+                delay(pattern_Delay);
                 digitalWrite(pinO_led_C_Red, LOW);
                 digitalWrite(pinO_led_C_Blu, LOW);
                 digitalWrite(pinO_led_C_Gre, HIGH);
@@ -193,13 +155,9 @@ public:
                 digitalWrite(pinO_led_R[2], LOW);
                 digitalWrite(pinO_led_L[3], HIGH);
                 digitalWrite(pinO_led_R[3], HIGH);
-                delay(50);
-                digitalWrite(pinO_led_C_Red, LOW);
-                digitalWrite(pinO_led_C_Blu, LOW);
-                digitalWrite(pinO_led_C_Gre, LOW);
-                digitalWrite(pinO_led_L[3], LOW);
-                digitalWrite(pinO_led_R[3], LOW);
-                delay(50);
+                delay(pattern_Delay);
+                off();
+                delay(pattern_Delay);
             }
         }
     };
@@ -231,6 +189,9 @@ void patternDelay(int func_pinI_pot, int func_pinI_pot_Val, unsigned long func_D
 
         // Set global delay value
         Delay_Val_MapAvg = func_Delay_Val_MovAvg;
+        // -For serial monitor reading output
+        pinI_pot_Delay_Val = func_pinI_pot_Val;
+
         // Delay value mapped to delay potentiometer value with filtering calculations
         Delay_Val_MapAvg = map(func_pinI_pot_Val, 8, 1015, 0, 255);
     }
@@ -242,8 +203,20 @@ void patternDelay(int func_pinI_pot, int func_pinI_pot_Val, unsigned long func_D
 void patternRandom()
 {
 
-    // Initialization
-    int r = random(sizeof(randomizer_Key));
+    // Randomizer variables/values
+    int r;
+    // Delay variables/values
+    unsigned long ms_Current = millis();
+    unsigned long ms_Interval = 3000;
+
+    // Delay
+    if (ms_Current - ms_Previous_PatternRand >= ms_Interval)
+    {
+        ms_Previous_PatternRand = ms_Current;
+
+        // Randomizer
+        r = random(sizeof(randomizer_Key));
+    }
 
     // Pattern object declarations
     Pattern1 p1;
@@ -256,64 +229,52 @@ void patternRandom()
 
     // -Case 0
     case 0:
+    {
         while (randomizer_Key[0] == true)
         {
-            for (unsigned int i = 0; i < sizeof(randomizer_Key); i++)
-            {
-                randomizer_Key[i] = true;
-            }
-            //off();
+            reset();
             randomizer_Key[0] = false;
+            transitionRandom();
         }
-        for (int i = 0; i <= 3; i++)
-        {
-            patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-            p1.pattern(Delay_Val_MapAvg);
-        }
-        delay(10);
-        break; // END: case
+        patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+        p1.pattern(Delay_Val_MapAvg);
+    }
+    break; // END: case
 
     // -Case 1
     case 1:
+    {
         while (randomizer_Key[1] == true)
         {
-            for (unsigned int i = 0; i < sizeof(randomizer_Key); i++)
-            {
-                randomizer_Key[i] = true;
-            }
-            //off();
+            reset();
             randomizer_Key[1] = false;
+            transitionRandom();
         }
-        for (int i = 0; i <= 3; i++)
-        {
-            patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-            p2.pattern(Delay_Val_MapAvg);
-        }
-        delay(10);
-        break; // END: case
+        patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+        p2.pattern(Delay_Val_MapAvg);
+    }
+    break; // END: case
 
     // -Case 2
     case 2:
+    {
         while (randomizer_Key[2] == true)
         {
-            for (unsigned int i = 0; i < sizeof(randomizer_Key); i++)
-            {
-                randomizer_Key[i] = true;
-            }
-            //off();
+            reset();
             randomizer_Key[2] = false;
+            transitionRandom();
         }
-        for (int i = 0; i <= 3; i++)
-        {
-            patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
-            p3.pattern(Delay_Val_MapAvg);
-        }
-        delay(10);
-        break; // END: case
+        patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+        p3.pattern(Delay_Val_MapAvg);
+    }
+    break; // END: case
 
     // -Default case
+    // --Bug avoidance code
     default:
-        off();
-        break; // END: default case
+    {
+        reset();
+    }
+    break; // END: default case
     }
 } //END: patternRandom()

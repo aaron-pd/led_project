@@ -17,7 +17,6 @@ void switch_AB()
       reset();
       switch_PosA_Key = false;
       switch_PosB_Key = true;
-      transitionRandom();
     }
     patternRandom();
   } // END: if
@@ -36,8 +35,12 @@ void switch_AB()
   } // END: if
 
   // Turn all LEDs off if switch state is undetermined
+  // --Bug avoidance code
+
   else
   {
     off();
+    switch_PosA_Key = true;
+    switch_PosB_Key = true;
   } // END: else
 } // END: switch_AB()

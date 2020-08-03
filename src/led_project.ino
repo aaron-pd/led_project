@@ -116,7 +116,7 @@ unsigned long Delay_Val_MapAvg;
 boolean switch_PosA_Key = true;
 boolean switch_PosB_Key = true;
 // -Pattern reset
-boolean reset_Key[3] = {true, true, true};
+boolean reset_Key[] = {true, true, true};
 // -Pattern randomizer
 boolean randomizer_Key[] = {true, true, true};
 
@@ -130,7 +130,9 @@ unsigned long ms_Previous_Select = 0;
 unsigned long ms_Previous_Pattern = 0;
 unsigned long ms_Previous_PatternRand = 0;
 // -Constant value used by all transition#() functions
-int transition_Delay = 200;
+int transition_Delay = 250;
+// -Constant value used by all pattern#() functions
+int pattern_Delay = 100;
 
 //-------------------- Setup --------------------
 void setup()
@@ -172,4 +174,5 @@ void loop()
 
   switch_AB();
   dimmer();
+  //serialPrint();
 } // END: loop()
