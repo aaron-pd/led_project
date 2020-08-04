@@ -38,7 +38,7 @@ void switch_AB()
   // -Bug avoidance
   else
   {
-    off();
+    reset();
     switch_PosA_Key = true;
     switch_PosB_Key = true;
   } // END: else
