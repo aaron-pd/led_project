@@ -31,6 +31,10 @@
 
 #include <Arduino.h>
 
+//==========Defines==========
+
+#define ARRAYSIZE(x)  (sizeof(x) / sizeof(x[0]))
+
 //==========Inputs==========
 
 // 3-way switch variables/values

@@ -106,5 +106,5 @@ void transitionRandom()
     Transition *transition[] = {&t1, &t2, &t3};
 
     // Run random transition
-    transition[random(sizeof(&transition+1))]->transition();
+    transition[random(ARRAYSIZE(transition))]->transition();
 } // END: transitionRandom()
