@@ -35,7 +35,7 @@ void switch_AB()
   } // END: if
 
   // Turn all LEDs off if switch state is undetermined
-  // --Bug avoidance code
+  // -Bug avoidance code
   else
   {
     off();

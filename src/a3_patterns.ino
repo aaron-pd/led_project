@@ -204,18 +204,19 @@ void patternRandom()
 {
 
     // Randomizer variables/values
-    int r;
+    int rnd_Pattern;
+
     // Delay variables/values
     unsigned long ms_Current = millis();
     unsigned long ms_Interval = 3000;
 
     // Delay
-    if (ms_Current - ms_Previous_PatternRand >= ms_Interval)
+    if (ms_Current - ms_Previous_PatternRnd >= ms_Interval)
     {
-        ms_Previous_PatternRand = ms_Current;
+        ms_Previous_PatternRnd = ms_Current;
 
         // Randomizer
-        r = random(sizeof(randomizer_Key));
+        rnd_Pattern = random(sizeof(randomizer_Key));
     }
 
     // Pattern object declarations
@@ -224,10 +225,11 @@ void patternRandom()
     Pattern3 p3;
 
     // Switch/Case to run random pattern
-    switch (r)
+    switch (rnd_Pattern)
     {
 
     // -Case 0
+    // --One-time LED reset, play transition pattern, play pattern 1
     case 0:
     {
         while (randomizer_Key[0] == true)
@@ -242,6 +244,7 @@ void patternRandom()
     break; // END: case
 
     // -Case 1
+    // --One-time LED reset, play transition pattern, play pattern 2
     case 1:
     {
         while (randomizer_Key[1] == true)
@@ -256,6 +259,7 @@ void patternRandom()
     break; // END: case
 
     // -Case 2
+    // --One-time LED reset, play transition pattern, play pattern 3
     case 2:
     {
         while (randomizer_Key[2] == true)
