@@ -215,7 +215,7 @@ void patternRandom()
     {
         ms_Previous_PatternRnd = ms_Current;
 
-        // Randomizer
+        // Randomized pattern selection
         rnd_Pattern = random(sizeof(randomizer_Key));
     }
 
@@ -274,7 +274,7 @@ void patternRandom()
     break; // END: case
 
     // -Default case
-    // --Bug avoidance code
+    // --Bug avoidance
     default:
     {
         reset();
