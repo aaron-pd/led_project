@@ -33,6 +33,8 @@
 
 //==========Defines==========
 
+// Macro used to find array size
+// -Useful for object arrays
 #define ARRAYSIZE(x)  (sizeof(x) / sizeof(x[0]))
 
 //==========Inputs==========
