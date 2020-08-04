@@ -23,7 +23,7 @@ void switch_AB()
 
   // Switch position 'B'
   // -Play selected patterns only
-  if (pinI_switch_PosB_Val == HIGH)
+  else if (pinI_switch_PosB_Val == HIGH)
   {
     while (switch_PosB_Key == true)
     {
