@@ -24,7 +24,7 @@ void dimmer()
     // Dimmer value mapped to dimmer potentiometer value with filtering calculations
     Dimmer_MapVal = map(pinI_pot_Dimmer_Val, 8, 1015, 0, 255);
 
-    // Dimness of lEDs sent to MOSFET output pin
+    // Dimness of LEDs sent to MOSFET output pin
     analogWrite(pinO_Dimmer, Dimmer_MapVal);
   }
 } // END: dimmer()
