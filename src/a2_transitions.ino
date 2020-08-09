@@ -92,19 +92,3 @@ public:
         off();
     };
 }; // END: transition() : Transition3
-
-//-------------------- Transition Randomizer --------------------
-
-// Randomly play a transition pattern
-void transitionRandom()
-{
-
-    // Transition object declarations
-    Transition1 t1;
-    Transition2 t2;
-    Transition3 t3;
-    Transition *transition[] = {&t1, &t2, &t3};
-
-    // Run random transition
-    transition[random(ARRAYSIZE(transition))]->transition();
-} // END: transitionRandom()
