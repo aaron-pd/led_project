@@ -50,10 +50,6 @@ int pinI_pot_Delay_Val = 0;
 // -Mapped variables/values
 // --Unsigned long to compare with millis()
 unsigned long Delay_Val_MapAvg;
-// -Global variables required to remember previous loop values
-// --Used in all pattern/transition functions
-// --Unsigned long to compare with millis()
-unsigned long Delay_Val = 0;
 
 // Dimmer variables/values for 10kOhm potentiometer
 // -Pins
@@ -61,9 +57,7 @@ const int pinI_pot_Dimmer = A1;
 // -Pin values
 int pinI_pot_Dimmer_Val = 0;
 // -Mapped variables/values
-int Dimmer_MapVal = 0;
-// -EMA variables/values
-int Dimmer_Val = 0;
+int Dimmer_Val_MapVal = 0;
 
 // Pattern selection variables/values for 10kOhm potentiometer
 // -Pins
@@ -71,9 +65,7 @@ const int pinI_pot_Select = A2;
 // -Pin values
 int pinI_pot_Select_Val = 0;
 // -Mapped variables/values
-int Select_MapVal = 0;
-// -EMA variables/values
-int Select_Val = 0;
+int Select_Val_MapVal = 0;
 
 //==========Outputs==========
 
@@ -84,11 +76,11 @@ const int pinO_Dimmer = 6;
 // Solid colour LED variables/values
 // Left/Right position based on center tri-colour LED
 // -Pins
-const int pinO_led_L[4] = {5, 4, 3, 2};
-const int pinO_led_R[4] = {7, 8, 12, 13};
+const int pinO_led_L[4] ={ 5, 4, 3, 2 };
+const int pinO_led_R[4] ={ 7, 8, 12, 13 };
 // -Pin values
-int pinO_led_L_Val[4] = {LOW, LOW, LOW, LOW};
-int pinO_led_R_Val[4] = {LOW, LOW, LOW, LOW};
+int pinO_led_L_Val[4] ={ LOW, LOW, LOW, LOW };
+int pinO_led_R_Val[4] ={ LOW, LOW, LOW, LOW };
 // -Array count variable
 // --Used when including both L and R arrays
 const int led_LR_Count = 4;
@@ -122,9 +114,9 @@ int sample_Average_Delay = 0;
 boolean switch_PosA_Key = true;
 boolean switch_PosB_Key = true;
 // -Pattern reset
-boolean reset_Key[] = {true, true, true};
+boolean reset_Key[] ={ true, true, true };
 // -Pattern randomizer
-boolean randomizer_Key[] = {true, true, true};
+boolean randomizer_Key[] ={ true, true, true };
 
 // Delay variables/values
 // -Global variables required to remember previous loop values
@@ -144,41 +136,41 @@ int transition_Delay = 250;
 void setup()
 {
 
-  // Communication setup
-  Serial.begin(9600);
+    // Communication setup
+    Serial.begin(9600);
 
-  // LED pin setup
-  // -Left/Right solid colour LED sets
-  for (int i = 0; i < led_LR_Count; i++)
-  {
-    pinMode(pinO_led_L[i], OUTPUT);
-    pinMode(pinO_led_R[i], OUTPUT);
-  }
-  // -Center tri-colour LED
-  pinMode(pinO_led_C_Red, OUTPUT);
-  pinMode(pinO_led_C_Blu, OUTPUT);
-  pinMode(pinO_led_C_Gre, OUTPUT);
+    // LED pin setup
+    // -Left/Right solid colour LED sets
+    for (int i = 0; i < led_LR_Count; i++)
+    {
+        pinMode(pinO_led_L[i], OUTPUT);
+        pinMode(pinO_led_R[i], OUTPUT);
+    }
+    // -Center tri-colour LED
+    pinMode(pinO_led_C_Red, OUTPUT);
+    pinMode(pinO_led_C_Blu, OUTPUT);
+    pinMode(pinO_led_C_Gre, OUTPUT);
 
-  // Dimmer output pin setup
-  pinMode(pinO_Dimmer, OUTPUT);
+    // Dimmer output pin setup
+    pinMode(pinO_Dimmer, OUTPUT);
 
-  // EMA filtering setup
-  sample_Average_Delay = analogRead(pinI_pot_Delay);
-  sample_Average_Dimmer = analogRead(pinI_pot_Dimmer);
-  sample_Average_Select = analogRead(pinI_pot_Select);
+    // EMA filtering setup
+    sample_Average_Delay = analogRead(pinI_pot_Delay);
+    sample_Average_Dimmer = analogRead(pinI_pot_Dimmer);
+    sample_Average_Select = analogRead(pinI_pot_Select);
 
-  // Random seed setup
-  randomSeed(analogRead(A5));
+    // Random seed setup
+    randomSeed(analogRead(A5));
 
-  // Final Initialization
-  delay(1000);
+    // Final Initialization
+    delay(1000);
 } // END: setup()
 
 //-------------------- Loop --------------------
 void loop()
 {
 
-  dimmer();
-  switch_AB();
-  //serialPrint();
+    dimmer();
+    switch_AB();
+    //serialPrint();
 } // END: loop()

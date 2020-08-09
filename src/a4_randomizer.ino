@@ -8,7 +8,7 @@ void transitionRandom()
     Transition1 t1;
     Transition2 t2;
     Transition3 t3;
-    Transition *transition[] = {&t1, &t2, &t3};
+    Transition *transition[] ={ &t1, &t2, &t3 };
 
     // Run random transition
     transition[random(ARRAYSIZE(transition))]->transition();
@@ -42,11 +42,11 @@ void patternRandom()
     Pattern3 p3;
 
     // Switch/Case to run random pattern
-    switch (rnd_Pattern)
+    switch (0)
     {
 
-    // -Case 0
-    // --One-time LED reset, play transition pattern, play pattern 1
+        // -Case 0
+        // --One-time LED reset, play transition pattern, play pattern 1
     case 0:
     {
         while (randomizer_Key[0] == true)
