@@ -162,37 +162,3 @@ public:
         }
     };
 }; // END: pattern() : Pattern3
-
-//-------------------- Pattern Delay Input Filtering --------------------
-
-// Pattern delay calculations with EMA filtering
-// -Function requires potentiometer input pin, potentiometer input pin value and a global variable required to remember previous loop values
-void patternDelay(int func_pinI_pot, int func_pinI_pot_Val, unsigned long func_Delay_Val_MovAvg)
-{
-
-    // Delay variables/values
-    unsigned long ms_Current = millis();
-    unsigned long ms_Interval = 50;
-
-    // Delay
-    if (ms_Current - ms_Previous_Delay >= ms_Interval)
-    {
-        ms_Previous_Delay = ms_Current;
-
-        // EMA filtering
-        // -Set analog read input values
-        func_pinI_pot_Val = analogRead(func_pinI_pot);
-        // -Calculations
-        sample_Average_Delay = (sample_Rate_Delay * func_pinI_pot_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
-        // -Saved values required to remember previous loop values
-        func_Delay_Val_MovAvg = sample_Average_Delay;
-
-        // Set global delay value
-        Delay_Val_MapAvg = func_Delay_Val_MovAvg;
-        // -For serial monitor reading output
-        pinI_pot_Delay_Val = func_pinI_pot_Val;
-
-        // Delay value mapped to delay potentiometer value with filtering calculations
-        Delay_Val_MapAvg = map(func_pinI_pot_Val, 8, 1015, 0, 255);
-    }
-} // END: patternDelay()
