@@ -19,7 +19,7 @@ void dimmer()
     // -Calculations
     sample_Average_Dimmer = (sample_Rate_Dimmer * pinI_pot_Dimmer_Val) + ((1 - sample_Rate_Dimmer) * sample_Average_Dimmer);
     // -Saved values required to remember previous loop values
-    Dimmer_MapVal = sample_Average_Dimmer;
+    Dimmer_Val = sample_Average_Dimmer;
 
     // Dimmer value mapped to dimmer potentiometer value with filtering calculations
     Dimmer_MapVal = map(pinI_pot_Dimmer_Val, 8, 1015, 0, 255);

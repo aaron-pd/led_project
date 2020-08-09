@@ -55,7 +55,7 @@ void patternRandom()
             randomizer_Key[0] = false;
             transitionRandom();
         }
-        patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+        patternDelay();
         p1.pattern(Delay_Val_MapAvg);
     }
     break; // END: case
@@ -70,7 +70,7 @@ void patternRandom()
             randomizer_Key[1] = false;
             transitionRandom();
         }
-        patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+        patternDelay();
         p2.pattern(Delay_Val_MapAvg);
     }
     break; // END: case
@@ -85,7 +85,7 @@ void patternRandom()
             randomizer_Key[2] = false;
             transitionRandom();
         }
-        patternDelay(pinI_pot_Delay, pinI_pot_Delay_Val, Delay_Val);
+        patternDelay();
         p3.pattern(Delay_Val_MapAvg);
     }
     break; // END: case

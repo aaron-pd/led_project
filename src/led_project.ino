@@ -47,6 +47,9 @@ int pinI_switch_PosB_Val = 0;
 const int pinI_pot_Delay = A0;
 // -Pin values
 int pinI_pot_Delay_Val = 0;
+// -Mapped variables/values
+// --Unsigned long to compare with millis()
+unsigned long Delay_Val_MapAvg;
 // -Global variables required to remember previous loop values
 // --Used in all pattern/transition functions
 // --Unsigned long to compare with millis()
@@ -59,6 +62,8 @@ const int pinI_pot_Dimmer = A1;
 int pinI_pot_Dimmer_Val = 0;
 // -Mapped variables/values
 int Dimmer_MapVal = 0;
+// -EMA variables/values
+int Dimmer_Val = 0;
 
 // Pattern selection variables/values for 10kOhm potentiometer
 // -Pins
@@ -67,6 +72,8 @@ const int pinI_pot_Select = A2;
 int pinI_pot_Select_Val = 0;
 // -Mapped variables/values
 int Select_MapVal = 0;
+// -EMA variables/values
+int Select_Val = 0;
 
 //==========Outputs==========
 
@@ -109,8 +116,6 @@ int sample_Average_Select = 0;
 // --Variable delay input potentiometer
 float sample_Rate_Delay = 0.6;
 int sample_Average_Delay = 0;
-// ---Mapped variables used for delay in all pattern/transition functions after EMA filtering calculations
-unsigned long Delay_Val_MapAvg;
 
 // Reset key variables/values
 // -3-way switch
