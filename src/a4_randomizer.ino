@@ -20,7 +20,7 @@ void transitionRandom()
 void patternRandom()
 {
 
-    // Randomizer variables/values
+    // Random number variables/values
     int rnd_Pattern;
 
     // Delay variables/values

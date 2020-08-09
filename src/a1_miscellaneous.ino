@@ -1,8 +1,8 @@
 //-------------------- Miscellaneous Functions --------------------
 
-// -Set all reset_Key[] array values to 'true' and set all LEDs to 'LOW'
-// -Usage: Check if specific reset_Key[#] or randomzier_Key[#] array is 'true', run reset() function
-//  and set specific reset_Key[#] array to 'false' to prevent reset() function from looping again
+// -Set all reset_Key[] and randomizer_Key array values to 'true' and set all LEDs to 'LOW'
+// -Usage: Check if specific reset_Key[#] or randomzier_Key[#] array is 'true', run reset() function and set
+//  specific reset_Key[#] or randomizer_Key array to 'false' to prevent reset() function from looping again
 // -Used in select() and patternRandom() functions
 
 void reset()

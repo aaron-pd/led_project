@@ -9,7 +9,7 @@ void switch_AB()
   pinI_switch_PosB_Val = digitalRead(pinI_switch_PosB);
 
   // Switch position 'A'
-  // -Play all patterns randomly
+  // -Play selected patterns only
   if (pinI_switch_PosA_Val == HIGH)
   {
     while (switch_PosA_Key == true)
@@ -18,11 +18,11 @@ void switch_AB()
       switch_PosA_Key = false;
       switch_PosB_Key = true;
     }
-    patternRandom();
+    select();
   } // END: if
 
   // Switch position 'B'
-  // -Play selected patterns only
+  // -Play all patterns randomly
   else if (pinI_switch_PosB_Val == HIGH)
   {
     while (switch_PosB_Key == true)
@@ -31,7 +31,7 @@ void switch_AB()
       switch_PosA_Key = true;
       switch_PosB_Key = false;
     }
-    select();
+    patternRandom();
   } // END: if
 
   // Turn all LEDs off if switch state is undetermined

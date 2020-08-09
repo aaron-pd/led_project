@@ -96,7 +96,7 @@ public:
 
 // Derived 3 : Pattern
 // Sets LED pattern
-// -Pattern will flash center LED, then fade through the following LEDs outwards, center LED flashes matching colours with pattern
+// -Pattern will flash center LED, then fade through the following LEDs outwards, the center LED colours will match the currently lit LEDs
 // -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_Val_MapAvg'
 class Pattern3 : public Pattern
 {

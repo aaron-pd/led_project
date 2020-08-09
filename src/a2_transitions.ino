@@ -70,7 +70,7 @@ public:
 
 // Derived 3 : Transition
 // Transition LED pattern 2
-// -Turn on two sets of LEDs at a time until all LEDs are on
+// -Turn on two pairs of LEDs at a time until all LEDs are on
 class Transition3 : public Transition
 {
 public:

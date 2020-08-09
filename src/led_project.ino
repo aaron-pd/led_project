@@ -18,12 +18,7 @@
 //  MovAvg          - Moving Average (analog input filtering: saved values)
 //  MapAvg          - Mapped Average to potentiometer values (analog input filtered value)
 //
-//  Code Tags
-//  /////REVIEW     - May require changes; see related comments near tag
-//  /////UNUSED     - Variable set up but not used
-//  /////TEMPORARY  - To be removed or changed
-//
-// -------------------- Additional Notes --------------------
+//-------------------- Additional Notes --------------------
 // *Exponential Moving Average (EMA) information:
 // EMA sample_Rate value can be adjusted between 0.1 (slow;higher quality) to 0.9 (fast;lower quality)
 
@@ -33,16 +28,16 @@
 
 //==========Defines==========
 
-// Macro used to find array size
-// -Useful for object arrays
+// Macro to find the true size of an array
+// -Important for an array of objects
 #define ARRAYSIZE(x)  (sizeof(x) / sizeof(x[0]))
 
 //==========Inputs==========
 
 // 3-way switch variables/values
 // -Pins
-const int pinI_switch_PosA = A4;
-const int pinI_switch_PosB = A3;
+const int pinI_switch_PosA = A3;
+const int pinI_switch_PosB = A4;
 // -Pin values
 int pinI_switch_PosA_Val = 0;
 int pinI_switch_PosB_Val = 0;
@@ -178,7 +173,7 @@ void setup()
 void loop()
 {
 
-  switch_AB();
   dimmer();
+  switch_AB();
   //serialPrint();
 } // END: loop()
