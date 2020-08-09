@@ -208,7 +208,7 @@ void patternRandom()
 
     // Delay variables/values
     unsigned long ms_Current = millis();
-    unsigned long ms_Interval = 3000;
+    unsigned long ms_Interval = (random(4, 6) * 1000);
 
     // Delay
     if (ms_Current - ms_Previous_PatternRnd >= ms_Interval)
