@@ -37,7 +37,7 @@ void patternRandom()
     unsigned long ms2_Current = millis();
     unsigned long ms2_Interval = 100;
 
-    // Delay
+    // Delay 1
     if (ms1_Current - ms_Previous_PatternRnd >= ms1_Interval)
     {
         ms_Previous_PatternRnd = ms1_Current;
@@ -46,7 +46,7 @@ void patternRandom()
         rnd_Pattern = random(sizeof(randomizer_Key));
     }
 
-    // Delay
+    // Delay 2
     if (ms2_Current - ms_Previous_PatternRndRun >= ms2_Interval)
     {
         ms_Previous_PatternRndRun = ms2_Current;
