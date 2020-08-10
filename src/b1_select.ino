@@ -14,6 +14,7 @@ void select()
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = 100;
     // -Pattern run (switch/case)
+    // -Bug avoidance
     unsigned long ms2_Current = millis();
     unsigned long ms2_Interval = 100;
 
