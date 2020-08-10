@@ -126,6 +126,7 @@ unsigned long ms_Previous_Print = 0;
 unsigned long ms_Previous_Dimmer = 0;
 unsigned long ms_Previous_Select = 0;
 unsigned long ms_Previous_Pattern = 0;
+unsigned long ms_Previous_SelectRun = 0;
 unsigned long ms_Previous_PatternRnd = 0;
 unsigned long ms_Previous_PatternRndRun = 0;
 // -Constant value used by all pattern#() functions

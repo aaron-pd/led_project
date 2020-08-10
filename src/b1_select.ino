@@ -10,13 +10,17 @@ void select()
     Pattern3 p3;
 
     // Delay variables/values
-    unsigned long ms_Current = millis();
-    unsigned long ms_Interval = 100;
+    // -Potentiometer input filtering
+    unsigned long ms1_Current = millis();
+    unsigned long ms1_Interval = 100;
+    // -Pattern run (switch/case)
+    unsigned long ms2_Current = millis();
+    unsigned long ms2_Interval = 100;
 
-    // Delay
-    if (ms_Current - ms_Previous_Select >= ms_Interval)
+    // Delay 1
+    if (ms1_Current - ms_Previous_Select >= ms1_Interval)
     {
-        ms_Previous_Select = ms_Current;
+        ms_Previous_Select = ms1_Current;
 
         // EMA filtering
         // -Set analog read input values
@@ -26,6 +30,12 @@ void select()
 
         // Pattern select value mapped to select potentiometer value with filtering calculations
         Select_Val_MapVal = map(sample_Average_Select, 8, 1015, 0, 999);
+    }
+
+    // Delay 2
+    if (ms2_Current - ms_Previous_SelectRun >= ms2_Interval)
+    {
+        ms_Previous_SelectRun = ms2_Current;
 
         // Switch/Case used to select pattern from Select_Val_MapVal variable
         switch (Select_Val_MapVal)
