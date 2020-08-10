@@ -126,7 +126,7 @@ unsigned long ms_Previous_Dimmer = 0;
 // --select()
 unsigned long ms_Previous_Select = 0;
 unsigned long ms_Previous_SelectRun = 0;
-// --pattern(#)
+// --pattern#()
 unsigned long ms_Previous_Pattern = 0;
 // --patternRandom()
 unsigned long ms_Previous_PatternRnd = 0;
