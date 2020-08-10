@@ -20,6 +20,11 @@ void transitionRandom()
 void patternRandom()
 {
 
+    // Pattern object declarations
+    Pattern1 p1;
+    Pattern2 p2;
+    Pattern3 p3;
+
     // Random number variables/values
     int rnd_Pattern;
 
@@ -36,16 +41,11 @@ void patternRandom()
         rnd_Pattern = random(sizeof(randomizer_Key));
     }
 
-    // Pattern object declarations
-    Pattern1 p1;
-    Pattern2 p2;
-    Pattern3 p3;
-
     // Switch/Case to run random pattern
     switch (0)
     {
 
-        // -Case 0
+        // -Pattern 1
         // --One-time LED reset, play transition pattern, play pattern 1
     case 0:
     {
@@ -60,7 +60,7 @@ void patternRandom()
     }
     break; // END: case
 
-    // -Case 1
+    // -Pattern 2
     // --One-time LED reset, play transition pattern, play pattern 2
     case 1:
     {
@@ -75,7 +75,7 @@ void patternRandom()
     }
     break; // END: case
 
-    // -Case 2
+    // -Pattern 3
     // --One-time LED reset, play transition pattern, play pattern 3
     case 2:
     {
