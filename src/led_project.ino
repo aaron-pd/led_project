@@ -15,12 +15,7 @@
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values
 //  EMA             - *Exponential Moving Average (analog input filtering calculations)
-//  MovAvg          - Moving Average (analog input filtering: saved values)
 //  MapAvg          - Mapped Average to potentiometer values (analog input filtered value)
-//
-//-------------------- Additional Notes --------------------
-// *Exponential Moving Average (EMA) information:
-// EMA sample_Rate value can be adjusted between 0.1 (slow;higher quality) to 0.9 (fast;lower quality)
 
 //==========Libraries==========
 
@@ -98,6 +93,7 @@ int pinO_led_C_Gre_Val = LOW;
 //==========Other==========
 
 // EMA filtering variables/values
+// -EMA sample_Rate value can be adjusted between 0.1 (slow;higher quality) to 0.9 (fast;lower quality)
 // -Global variables required to remember previous loop values
 // --Dimmer potentiometer
 float sample_Rate_Dimmer = 0.6;
