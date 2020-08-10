@@ -49,7 +49,6 @@ void select()
                 reset_Key[0] = false;
                 transitionRandom();
             }
-            patternDelay();
             p1.pattern(Delay_Val_MapAvg);
         }
         break; // END: case
@@ -64,7 +63,6 @@ void select()
                 reset_Key[1] = false;
                 transitionRandom();
             }
-            patternDelay();
             p2.pattern(Delay_Val_MapAvg);
         }
         break; // END: case
@@ -79,7 +77,6 @@ void select()
                 reset_Key[2] = false;
                 transitionRandom();
             }
-            patternDelay();
             p3.pattern(Delay_Val_MapAvg);
         }
         break; // END: case
