@@ -25,10 +25,10 @@ void on()
 
     pinO_led_C_Red_Val = HIGH;
     pinO_led_C_Blu_Val = HIGH;
-    pinO_led_C_Gre_Val = HIGH;
+    pinO_led_C_Grn_Val = HIGH;
     digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
     digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
-    digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+    digitalWrite(pinO_led_C_Grn, pinO_led_C_Grn_Val);
     for (int i = 0; i < led_LR_Count; i++)
     {
         pinO_led_L_Val[i] = HIGH;
@@ -44,10 +44,10 @@ void off()
 
     pinO_led_C_Red_Val = LOW;
     pinO_led_C_Blu_Val = LOW;
-    pinO_led_C_Gre_Val = LOW;
+    pinO_led_C_Grn_Val = LOW;
     digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
     digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
-    digitalWrite(pinO_led_C_Gre, pinO_led_C_Gre_Val);
+    digitalWrite(pinO_led_C_Grn, pinO_led_C_Grn_Val);
     for (int i = 0; i < led_LR_Count; i++)
     {
         pinO_led_L_Val[i] = LOW;

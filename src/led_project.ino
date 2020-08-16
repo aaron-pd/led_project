@@ -94,11 +94,11 @@ const int led_LR_Count = 4;
 // -Pins
 const int pinO_led_C_Red = 9;
 const int pinO_led_C_Blu = 10;
-const int pinO_led_C_Gre = 11;
+const int pinO_led_C_Grn = 11;
 // -Pin values
 int pinO_led_C_Red_Val = LOW;
 int pinO_led_C_Blu_Val = LOW;
-int pinO_led_C_Gre_Val = LOW;
+int pinO_led_C_Grn_Val = LOW;
 
 //==========Other==========
 
@@ -163,7 +163,7 @@ void setup()
     // -Center tri-colour LED
     pinMode(pinO_led_C_Red, OUTPUT);
     pinMode(pinO_led_C_Blu, OUTPUT);
-    pinMode(pinO_led_C_Gre, OUTPUT);
+    pinMode(pinO_led_C_Grn, OUTPUT);
 
     // Dimmer output pin setup
     pinMode(pinO_Dimmer, OUTPUT);
