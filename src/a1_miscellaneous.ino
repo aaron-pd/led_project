@@ -66,7 +66,7 @@ void patternDelay()
 
     // Delay variables/values
     unsigned long ms1_Current = millis();
-    unsigned long ms1_Interval = 100;
+    unsigned long ms1_Interval = 115;
 
     // Delay 1
     if (ms1_Current - ms1_Previous_Delay >= ms1_Interval)
@@ -81,5 +81,9 @@ void patternDelay()
 
         // Delay value mapped to delay potentiometer value with filtering calculations
         Delay_MapVal = map(sample_MovAvg_Delay, 8, 1015, 0, 255);
+        
+        // Pattern/Transition delay value update
+        pattern_Delay = (sample_MovAvg_Delay / 4);
+        transition_Delay = (sample_MovAvg_Delay / 2);
     }
 } // END: patternDelay()
