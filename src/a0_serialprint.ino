@@ -5,13 +5,13 @@ void serialPrint()
 {
 
     // Delay variables/values
-    unsigned long ms_Current = millis();
-    unsigned long ms_Interval = 500;
+    unsigned long ms1_Current = millis();
+    unsigned long ms1_Interval = 500;
 
-    // Delay
-    if (ms_Current - ms_Previous_Print >= ms_Interval)
+    // Delay 1
+    if (ms1_Current - ms1_Previous_Print >= ms1_Interval)
     {
-        ms_Previous_Print = ms_Current;
+        ms1_Previous_Print = ms1_Current;
 
         // -Delay Potentiometer
         Serial.print("Delay Potentiometer:");

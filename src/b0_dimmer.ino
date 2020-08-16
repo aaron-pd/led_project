@@ -5,13 +5,13 @@ void dimmer()
 {
 
     // Delay variables/values
-    unsigned long ms_Current = millis();
-    unsigned long ms_Interval = 50;
+    unsigned long ms1_Current = millis();
+    unsigned long ms1_Interval = 50;
 
-    // Delay
-    if (ms_Current - ms_Previous_Dimmer >= ms_Interval)
+    // Delay 1
+    if (ms1_Current - ms1_Previous_Dimmer >= ms1_Interval)
     {
-        ms_Previous_Dimmer = ms_Current;
+        ms1_Previous_Dimmer = ms1_Current;
 
         // EMA filtering
         // -Set analog read input values

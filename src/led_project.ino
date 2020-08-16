@@ -126,19 +126,19 @@ boolean randomizer_Key[] ={ true, true, true };
 // -Global variables required to remember previous loop values
 // --Unsigned long to compare with millis()
 // --serialPrint()
-unsigned long ms_Previous_Print = 0;
+unsigned long ms1_Previous_Print = 0;
 // --patternDelay()
-unsigned long ms_Previous_Delay = 0;
+unsigned long ms1_Previous_Delay = 0;
 // --dimmer()
-unsigned long ms_Previous_Dimmer = 0;
+unsigned long ms1_Previous_Dimmer = 0;
 // --select()
-unsigned long ms_Previous_Select = 0;
-unsigned long ms_Previous_SelectRun = 0;
+unsigned long ms1_Previous_Select = 0;
+unsigned long ms2_Previous_SelectRun = 0;
 // --pattern#()
-unsigned long ms_Previous_Pattern = 0;
+unsigned long ms1_Previous_Pattern = 0;
 // --patternRandom()
-unsigned long ms_Previous_PatternRnd = 0;
-unsigned long ms_Previous_PatternRndRun = 0;
+unsigned long ms1_Previous_PatternRnd = 0;
+unsigned long ms2_Previous_PatternRndRun = 0;
 // -Constant value used by all pattern#() functions
 int pattern_Delay = 100;
 // -Constant value used by all transition#() functions

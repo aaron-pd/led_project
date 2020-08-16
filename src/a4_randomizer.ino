@@ -38,18 +38,18 @@ void patternRandom()
     unsigned long ms2_Interval = 100;
 
     // Delay 1
-    if (ms1_Current - ms_Previous_PatternRnd >= ms1_Interval)
+    if (ms1_Current - ms1_Previous_PatternRnd >= ms1_Interval)
     {
-        ms_Previous_PatternRnd = ms1_Current;
+        ms1_Previous_PatternRnd = ms1_Current;
 
         // Randomized pattern selection
         rnd_Pattern = random(sizeof(randomizer_Key));
     }
 
     // Delay 2
-    if (ms2_Current - ms_Previous_PatternRndRun >= ms2_Interval)
+    if (ms2_Current - ms2_Previous_PatternRndRun >= ms2_Interval)
     {
-        ms_Previous_PatternRndRun = ms2_Current;
+        ms2_Previous_PatternRndRun = ms2_Current;
 
         // Switch/Case to run random pattern
         switch (rnd_Pattern)

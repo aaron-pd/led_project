@@ -23,12 +23,12 @@ public:
     {
 
         // Delay variables/values
-        unsigned long ms_Current = millis();
+        unsigned long ms1_Current = millis();
 
-        // Delay
-        if (ms_Current - ms_Previous_Pattern >= func_Delay_Val)
+        // Delay 1
+        if (ms1_Current - ms1_Previous_Pattern >= func_Delay_Val)
         {
-            ms_Previous_Pattern = ms_Current;
+            ms1_Previous_Pattern = ms1_Current;
 
             // LED pattern
             if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Gre_Val == LOW)
@@ -54,12 +54,12 @@ public:
     {
 
         // Delay variables/values
-        unsigned long ms_Current = millis();
+        unsigned long ms1_Current = millis();
 
-        // Delay
-        if (ms_Current - ms_Previous_Pattern >= func_Delay_Val)
+        // Delay 1
+        if (ms1_Current - ms1_Previous_Pattern >= func_Delay_Val)
         {
-            ms_Previous_Pattern = ms_Current;
+            ms1_Previous_Pattern = ms1_Current;
 
             // LED pattern
             if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Gre_Val == LOW)
@@ -106,12 +106,12 @@ public:
     {
 
         // Delay variables/values
-        unsigned long ms_Current = millis();
+        unsigned long ms1_Current = millis();
 
-        // Delay
-        if (ms_Current - ms_Previous_Pattern >= func_Delay_Val)
+        // Delay 1
+        if (ms1_Current - ms1_Previous_Pattern >= func_Delay_Val)
         {
-            ms_Previous_Pattern = ms_Current;
+            ms1_Previous_Pattern = ms1_Current;
 
             // LED pattern
             if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Gre_Val == LOW)

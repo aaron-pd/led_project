@@ -65,13 +65,13 @@ void patternDelay()
 {
 
     // Delay variables/values
-    unsigned long ms_Current = millis();
-    unsigned long ms_Interval = 100;
+    unsigned long ms1_Current = millis();
+    unsigned long ms1_Interval = 100;
 
-    // Delay
-    if (ms_Current - ms_Previous_Delay >= ms_Interval)
+    // Delay 1
+    if (ms1_Current - ms1_Previous_Delay >= ms1_Interval)
     {
-        ms_Previous_Delay = ms_Current;
+        ms1_Previous_Delay = ms1_Current;
 
         // EMA filtering
         // -Set analog read input values

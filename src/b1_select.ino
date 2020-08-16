@@ -19,9 +19,9 @@ void select()
     unsigned long ms2_Interval = 100;
 
     // Delay 1
-    if (ms1_Current - ms_Previous_Select >= ms1_Interval)
+    if (ms1_Current - ms1_Previous_Select >= ms1_Interval)
     {
-        ms_Previous_Select = ms1_Current;
+        ms1_Previous_Select = ms1_Current;
 
         // EMA filtering
         // -Set analog read input values
@@ -34,9 +34,9 @@ void select()
     }
 
     // Delay 2
-    if (ms2_Current - ms_Previous_SelectRun >= ms2_Interval)
+    if (ms2_Current - ms2_Previous_SelectRun >= ms2_Interval)
     {
-        ms_Previous_SelectRun = ms2_Current;
+        ms2_Previous_SelectRun = ms2_Current;
 
         // Switch/Case used to select pattern from Select_Val_MapVal variable
         switch (Select_Val_MapVal)
