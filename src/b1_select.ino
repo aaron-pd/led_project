@@ -30,7 +30,7 @@ void select()
         sample_MovAvg_Select = (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_MovAvg_Select);
 
         // Pattern select value mapped to select potentiometer value with filtering calculations
-        Select_Val_MapVal = map(sample_MovAvg_Select, 8, 1015, 0, 999);
+        Select_MapVal = map(sample_MovAvg_Select, 8, 1015, 0, 999);
     }
 
     // Delay 2
@@ -38,8 +38,8 @@ void select()
     {
         ms2_Previous_SelectRun = ms2_Current;
 
-        // Switch/Case used to select pattern from Select_Val_MapVal variable
-        switch (Select_Val_MapVal)
+        // Switch/Case used to select pattern from Select_MapVal variable
+        switch (Select_MapVal)
         {
 
             // -Off
@@ -60,7 +60,7 @@ void select()
                 reset_Key[0] = false;
                 transitionRandom();
             }
-            p1.pattern(Delay_Val_MapAvg);
+            p1.pattern(Delay_MapVal);
         }
         break; // END: case
 
@@ -74,7 +74,7 @@ void select()
                 reset_Key[1] = false;
                 transitionRandom();
             }
-            p2.pattern(Delay_Val_MapAvg);
+            p2.pattern(Delay_MapVal);
         }
         break; // END: case
 
@@ -88,7 +88,7 @@ void select()
                 reset_Key[2] = false;
                 transitionRandom();
             }
-            p3.pattern(Delay_Val_MapAvg);
+            p3.pattern(Delay_MapVal);
         }
         break; // END: case
 

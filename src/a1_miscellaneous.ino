@@ -60,7 +60,7 @@ void off()
 //-------------------- Pattern Delay Input Filtering --------------------
 
 // Pattern delay calculations with EMA filtering
-// -Final calculated 'Delay_Val_MapAvg' used by pattern(#) functions
+// -Final calculated 'Delay_MapVal' used by pattern(#) functions
 void patternDelay()
 {
 
@@ -80,6 +80,6 @@ void patternDelay()
         sample_MovAvg_Delay = (sample_Rate_Delay * pinI_pot_Delay_Val) + ((1 - sample_Rate_Delay) * sample_MovAvg_Delay);
 
         // Delay value mapped to delay potentiometer value with filtering calculations
-        Delay_Val_MapAvg = map(sample_MovAvg_Delay, 8, 1015, 0, 255);
+        Delay_MapVal = map(sample_MovAvg_Delay, 8, 1015, 0, 255);
     }
 } // END: patternDelay()

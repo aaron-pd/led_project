@@ -65,7 +65,7 @@ void patternRandom()
                 randomizer_Key[0] = false;
                 transitionRandom();
             }
-            p1.pattern(Delay_Val_MapAvg);
+            p1.pattern(Delay_MapVal);
         }
         break; // END: case
 
@@ -79,7 +79,7 @@ void patternRandom()
                 randomizer_Key[1] = false;
                 transitionRandom();
             }
-            p2.pattern(Delay_Val_MapAvg);
+            p2.pattern(Delay_MapVal);
         }
         break; // END: case
 
@@ -93,7 +93,7 @@ void patternRandom()
                 randomizer_Key[2] = false;
                 transitionRandom();
             }
-            p3.pattern(Delay_Val_MapAvg);
+            p3.pattern(Delay_MapVal);
         }
         break; // END: case
 

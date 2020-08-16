@@ -19,7 +19,7 @@
 //  func            - Function specific variables taking incoming global variables
 //  Key             - Boolean variables used to run a function once followed by disabling itself
 //  Val             - Value
-//  MapVal          - Values mapped to potentiometer values
+//  MapVal          - Values mapped to potentiometer values (after EMA input filtering calculations)
 // --Exponential Moving Average/Input Filtering--
 //  rate            - Rate at which moving average is calculated
 //  sample          - EMA exclusive variables/values
@@ -54,7 +54,7 @@ const int pinI_pot_Delay = A0;
 int pinI_pot_Delay_Val = 0;
 // -Mapped variables/values
 // --Unsigned long to compare with millis()
-unsigned long Delay_Val_MapAvg;
+unsigned long Delay_MapVal;
 
 // Dimmer variables/values for 10kOhm potentiometer
 // -Pins
@@ -62,7 +62,7 @@ const int pinI_pot_Dimmer = A1;
 // -Pin values
 int pinI_pot_Dimmer_Val = 0;
 // -Mapped variables/values
-int Dimmer_Val_MapVal = 0;
+int Dimmer_MapVal = 0;
 
 // Pattern selection variables/values for 10kOhm potentiometer
 // -Pins
@@ -70,7 +70,7 @@ const int pinI_pot_Select = A2;
 // -Pin values
 int pinI_pot_Select_Val = 0;
 // -Mapped variables/values
-int Select_Val_MapVal = 0;
+int Select_MapVal = 0;
 
 //==========Outputs==========
 
