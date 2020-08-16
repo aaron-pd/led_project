@@ -6,8 +6,9 @@
 class Pattern
 {
 public:
+    // Polymorphic runtime pure virtual function declaration
     virtual void pattern(unsigned long func_Delay_Val) = 0;
-}; // END: Pattern
+}; // END: class Pattern
 
 //==========Derived==========
 

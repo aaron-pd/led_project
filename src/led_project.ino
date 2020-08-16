@@ -1,21 +1,29 @@
-//-------------------- Variables/Values --------------------
-//
 //  Variable Naming Legend
 //
+// --Devices--
 //  R               - Right
 //  L               - Left
 //  C               - Center
 //  pot             - Potentiometer
+//  switch          - 3-way switch
+// --Functions--
+//  delay           - User adjustable interval delay for patterns
+//  dimmer          - User adjustable brightness control
+//  select          - User manual pattern selection
+// --Miscellaneous--
 //  pinI            - Input board pin
 //  pinO            - Output board pin
 //  PosA            - Position A
 //  PosB            - Position B
+//  ms#             - Millisecond delay variables comparing against millis()
 //  func            - Function specific variables taking incoming global variables
 //  Key             - Boolean variables used to run a function once followed by disabling itself
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values
-//  EMA             - *Exponential Moving Average (analog input filtering calculations)
+//  EMA             - Exponential Moving Average (analog input filtering calculations)
 //  MapAvg          - Mapped Average to potentiometer values (analog input filtered value)
+
+//-------------------- Variables/Values --------------------
 
 //==========Libraries==========
 

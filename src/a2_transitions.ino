@@ -6,8 +6,9 @@
 class Transition
 {
 public:
+    // Polymorphic runtime pure virtual function declaration
     virtual void transition() = 0;
-}; // END: Transition
+}; // END: class Transition
 
 //==========Derived==========
 

@@ -32,7 +32,7 @@ void switch_AB()
             switch_PosB_Key = false;
         }
         patternRandom();
-    } // END: if
+    } // END: else if
 
     // Turn all LEDs off if switch state is undetermined
     // -Bug avoidance

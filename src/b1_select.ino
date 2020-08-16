@@ -10,7 +10,7 @@ void select()
     Pattern3 p3;
 
     // Delay variables/values
-    // -Potentiometer input filtering
+    // -Potentiometer input EMA filtering
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = 100;
     // -Pattern run (switch/case)
