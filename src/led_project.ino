@@ -20,8 +20,10 @@
 //  Key             - Boolean variables used to run a function once followed by disabling itself
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values
-//  EMA             - Exponential Moving Average (analog input filtering calculations)
-//  MapAvg          - Mapped Average to potentiometer values (analog input filtered value)
+// --Exponential Moving Average/Input Filtering--
+//  rate            - Rate at which moving average is calculated
+//  sample          - EMA exclusive variables/values
+//  MovAvg          - Moving Average (analog input filtering moving average value)
 
 //-------------------- Variables/Values --------------------
 
@@ -105,13 +107,13 @@ int pinO_led_C_Gre_Val = LOW;
 // -Global variables required to remember previous loop values
 // --Dimmer potentiometer
 float sample_Rate_Dimmer = 0.6;
-int sample_Average_Dimmer = 0;
+int sample_MovAvg_Dimmer = 0;
 // --Select potentiometer
 float sample_Rate_Select = 0.6;
-int sample_Average_Select = 0;
+int sample_MovAvg_Select = 0;
 // --Variable delay input potentiometer
 float sample_Rate_Delay = 0.6;
-int sample_Average_Delay = 0;
+int sample_MovAvg_Delay = 0;
 
 // Reset key variables/values
 // -3-way switch
@@ -167,9 +169,9 @@ void setup()
     pinMode(pinO_Dimmer, OUTPUT);
 
     // EMA filtering setup
-    sample_Average_Delay = analogRead(pinI_pot_Delay);
-    sample_Average_Dimmer = analogRead(pinI_pot_Dimmer);
-    sample_Average_Select = analogRead(pinI_pot_Select);
+    sample_MovAvg_Delay = analogRead(pinI_pot_Delay);
+    sample_MovAvg_Dimmer = analogRead(pinI_pot_Dimmer);
+    sample_MovAvg_Select = analogRead(pinI_pot_Select);
 
     // Random seed setup
     randomSeed(analogRead(A5));

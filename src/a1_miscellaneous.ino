@@ -77,9 +77,9 @@ void patternDelay()
         // -Set analog read input values
         pinI_pot_Delay_Val = analogRead(pinI_pot_Delay);
         // -Calculations
-        sample_Average_Delay = (sample_Rate_Delay * pinI_pot_Delay_Val) + ((1 - sample_Rate_Delay) * sample_Average_Delay);
+        sample_MovAvg_Delay = (sample_Rate_Delay * pinI_pot_Delay_Val) + ((1 - sample_Rate_Delay) * sample_MovAvg_Delay);
 
         // Delay value mapped to delay potentiometer value with filtering calculations
-        Delay_Val_MapAvg = map(sample_Average_Delay, 8, 1015, 0, 255);
+        Delay_Val_MapAvg = map(sample_MovAvg_Delay, 8, 1015, 0, 255);
     }
 } // END: patternDelay()

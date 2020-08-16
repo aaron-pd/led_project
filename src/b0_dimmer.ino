@@ -17,10 +17,10 @@ void dimmer()
         // -Set analog read input values
         pinI_pot_Dimmer_Val = analogRead(pinI_pot_Dimmer);
         // -Calculations
-        sample_Average_Dimmer = (sample_Rate_Dimmer * pinI_pot_Dimmer_Val) + ((1 - sample_Rate_Dimmer) * sample_Average_Dimmer);
+        sample_MovAvg_Dimmer = (sample_Rate_Dimmer * pinI_pot_Dimmer_Val) + ((1 - sample_Rate_Dimmer) * sample_MovAvg_Dimmer);
 
         // Dimmer value mapped to dimmer potentiometer value with filtering calculations
-        Dimmer_Val_MapVal = map(sample_Average_Dimmer, 8, 1015, 0, 255);
+        Dimmer_Val_MapVal = map(sample_MovAvg_Dimmer, 8, 1015, 0, 255);
 
         // Dimness of LEDs sent to MOSFET output pin
         analogWrite(pinO_Dimmer, Dimmer_Val_MapVal);

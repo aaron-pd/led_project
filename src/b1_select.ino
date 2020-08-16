@@ -27,10 +27,10 @@ void select()
         // -Set analog read input values
         pinI_pot_Select_Val = analogRead(pinI_pot_Select);
         // -Calculations
-        sample_Average_Select = (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_Average_Select);
+        sample_MovAvg_Select = (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_MovAvg_Select);
 
         // Pattern select value mapped to select potentiometer value with filtering calculations
-        Select_Val_MapVal = map(sample_Average_Select, 8, 1015, 0, 999);
+        Select_Val_MapVal = map(sample_MovAvg_Select, 8, 1015, 0, 999);
     }
 
     // Delay 2
