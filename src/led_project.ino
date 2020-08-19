@@ -6,10 +6,17 @@
 //  C               - Center
 //  pot             - Potentiometer
 //  switch          - 3-way switch
+//
 // --Functions--
-//  delay           - User adjustable interval delay for patterns
-//  dimmer          - User adjustable brightness control
-//  select          - User manual pattern selection
+//  Delay           - User adjustable interval delay for patterns
+//  Dimmer          - User adjustable brightness control
+//  Select          - User manual pattern selection
+//
+// --Exponential Moving Average/Input Filtering--
+//  rate            - Rate at which moving average is calculated
+//  sample          - EMA exclusive variables/values
+//  MovAvg          - Moving Average (analog input filtering moving average value)
+//
 // --Miscellaneous--
 //  pinI            - Input board pin
 //  pinO            - Output board pin
@@ -20,10 +27,6 @@
 //  Key             - Boolean variables used to run a function once followed by disabling itself
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values (after EMA input filtering calculations)
-// --Exponential Moving Average/Input Filtering--
-//  rate            - Rate at which moving average is calculated
-//  sample          - EMA exclusive variables/values
-//  MovAvg          - Moving Average (analog input filtering moving average value)
 
 //-------------------- Variables/Values --------------------
 
