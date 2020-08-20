@@ -4,6 +4,7 @@
 //  R               - Right
 //  L               - Left
 //  C               - Center
+//  led             - LED lights
 //  pot             - Potentiometer
 //  switch          - 3-way switch
 //
