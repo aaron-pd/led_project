@@ -12,12 +12,14 @@ void switch_AB()
     // -Play selected patterns only
     if (pinI_switch_PosA_Val == HIGH)
     {
+        // One time reset
         while (switch_PosA_Key == true)
         {
             reset();
             switch_PosA_Key = false;
             switch_PosB_Key = true;
         }
+        // Run selected pattern
         select();
     } // END: if
 
@@ -25,12 +27,14 @@ void switch_AB()
     // -Play all patterns randomly
     else if (pinI_switch_PosB_Val == HIGH)
     {
+        // One time reset
         while (switch_PosB_Key == true)
         {
             reset();
             switch_PosA_Key = true;
             switch_PosB_Key = false;
         }
+        // Run randomized pattern
         patternRandom();
     } // END: else if
 

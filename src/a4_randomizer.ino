@@ -8,7 +8,7 @@ void transitionRandom()
     Transition1 t1;
     Transition2 t2;
     Transition3 t3;
-    Transition *transition[] ={ &t1, &t2, &t3 };
+    Transition *transition[] = {&t1, &t2, &t3};
 
     // Run random transition
     transition[random(ARRAYSIZE(transition))]->transition();
@@ -55,16 +55,18 @@ void patternRandom()
         switch (rnd_Pattern)
         {
 
-            // -Pattern 1
-            // --One-time LED reset, play transition pattern, play pattern 1
+        // -Pattern 1
+        // --One-time LED reset, play transition pattern, play pattern 1
         case 0:
         {
+            // One time reset and transition pattern
             while (randomizer_Key[0] == true)
             {
                 reset();
                 randomizer_Key[0] = false;
                 transitionRandom();
             }
+            // Run pattern
             p1.pattern(Delay_MapVal);
         }
         break; // END: case
@@ -73,12 +75,14 @@ void patternRandom()
         // --One-time LED reset, play transition pattern, play pattern 2
         case 1:
         {
+            // One time reset and transition pattern
             while (randomizer_Key[1] == true)
             {
                 reset();
                 randomizer_Key[1] = false;
                 transitionRandom();
             }
+            // Run pattern
             p2.pattern(Delay_MapVal);
         }
         break; // END: case
@@ -87,12 +91,14 @@ void patternRandom()
         // --One-time LED reset, play transition pattern, play pattern 3
         case 2:
         {
+            // One time reset and transition pattern
             while (randomizer_Key[2] == true)
             {
                 reset();
                 randomizer_Key[2] = false;
                 transitionRandom();
             }
+            // Run pattern
             p3.pattern(Delay_MapVal);
         }
         break; // END: case

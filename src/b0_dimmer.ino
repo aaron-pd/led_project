@@ -6,7 +6,7 @@ void dimmer()
 
     // Delay variables/values
     unsigned long ms1_Current = millis();
-    unsigned long ms1_Interval = 50;
+    unsigned long ms1_Interval = 100;
 
     // Delay 1
     if (ms1_Current - ms1_Previous_Dimmer >= ms1_Interval)

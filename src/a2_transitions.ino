@@ -21,6 +21,7 @@ public:
     void transition()
     {
 
+        // LED Pattern
         digitalWrite(pinO_led_L[0], HIGH);
         digitalWrite(pinO_led_R[0], HIGH);
 
@@ -48,6 +49,7 @@ public:
     void transition()
     {
 
+        // LED Pattern
         digitalWrite(pinO_led_L[0], HIGH);
         digitalWrite(pinO_led_R[0], HIGH);
         delay(transition_Delay);
@@ -78,6 +80,7 @@ public:
     void transition()
     {
 
+        // LED Pattern
         digitalWrite(pinO_led_L[0], HIGH);
         digitalWrite(pinO_led_L[1], HIGH);
         delay(transition_Delay);

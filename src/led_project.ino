@@ -1,4 +1,4 @@
-//  Variable Naming Legend
+//  Variable Legend
 //
 // --Devices--
 //  R               - Right
@@ -39,7 +39,7 @@
 
 // Macro to find the true size of an array
 // -Important for an array of objects
-#define ARRAYSIZE(x)  (sizeof(x) / sizeof(x[0]))
+#define ARRAYSIZE(x) (sizeof(x) / sizeof(x[0]))
 
 //==========Inputs==========
 
@@ -85,11 +85,11 @@ const int pinO_Dimmer = 6;
 // Solid colour LED variables/values
 // Left/Right position based on center tri-colour LED
 // -Pins
-const int pinO_led_L[4] ={ 5, 4, 3, 2 };
-const int pinO_led_R[4] ={ 7, 8, 12, 13 };
+const int pinO_led_L[4] = {5, 4, 3, 2};
+const int pinO_led_R[4] = {7, 8, 12, 13};
 // -Pin values
-int pinO_led_L_Val[4] ={ LOW, LOW, LOW, LOW };
-int pinO_led_R_Val[4] ={ LOW, LOW, LOW, LOW };
+int pinO_led_L_Val[4] = {LOW, LOW, LOW, LOW};
+int pinO_led_R_Val[4] = {LOW, LOW, LOW, LOW};
 // -Array count variable
 // --Used when including both L and R arrays
 const int led_LR_Count = 4;
@@ -124,9 +124,9 @@ int sample_MovAvg_Delay = 0;
 boolean switch_PosA_Key = true;
 boolean switch_PosB_Key = true;
 // -Pattern reset
-boolean reset_Key[] ={ true, true, true };
+boolean reset_Key[] = {true, true, true};
 // -Pattern randomizer
-boolean randomizer_Key[] ={ true, true, true };
+boolean randomizer_Key[] = {true, true, true};
 
 // Delay variables/values
 // -Global variables required to remember previous loop values
