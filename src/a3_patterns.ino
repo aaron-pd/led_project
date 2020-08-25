@@ -251,4 +251,4 @@ public:
             }; // END: else
         }
     };
-}; // END: pattern() : Pattern1
+}; // END: pattern() : Pattern4
