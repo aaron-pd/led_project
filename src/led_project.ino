@@ -24,6 +24,7 @@
 //  PosA            - Position A
 //  PosB            - Position B
 //  ms#             - Millisecond delay variables comparing against millis()
+//  rnd             - Random
 //  func            - Function specific variables taking incoming global variables
 //  Key             - Boolean variables used to run a function once followed by disabling itself
 //  Val             - Value
@@ -126,7 +127,7 @@ boolean switch_PosB_Key = true;
 // -Pattern reset
 boolean reset_Key[] = {true, true, true};
 // -Pattern randomizer
-boolean randomizer_Key[] = {true, true, true};
+boolean randomizer_Key[] = {true, true, true, true};
 
 // Delay variables/values
 // -Global variables required to remember previous loop values

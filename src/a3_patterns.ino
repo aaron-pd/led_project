@@ -34,10 +34,12 @@ public:
             if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Grn_Val == LOW)
             {
                 on();
+                delay(pattern_Delay);
             }
             else
             {
                 off();
+                delay(pattern_Delay);
             }
         }
     };
@@ -163,3 +165,90 @@ public:
         }
     };
 }; // END: pattern() : Pattern3
+
+// Derived 4 : Pattern
+// Sets LED pattern
+// -Left and Right sets of LEDs will display the same pair (colour) with matching center LED colour
+// -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_MapVal'
+class Pattern4 : public Pattern
+{
+public:
+    void pattern(unsigned long func_Delay_Val)
+    {
+
+        // Delay variables/values
+        unsigned long ms1_Current = millis();
+
+        // Randomizer variables/values
+        int rnd_Pair;
+
+        // Delay 1
+        if (ms1_Current - ms1_Previous_Pattern >= func_Delay_Val)
+        {
+            ms1_Previous_Pattern = ms1_Current;
+
+            // Randomizer
+            rnd_Pair = random(led_LR_Count);
+
+            // LED pattern
+            if (pinO_led_C_Red_Val == LOW && pinO_led_C_Blu_Val == LOW && pinO_led_C_Grn_Val == LOW)
+            {
+                // Switch/Case
+                switch (rnd_Pair)
+                {
+
+                // Red
+                case 0:
+                {
+                    pinO_led_C_Red_Val = HIGH;
+                    digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
+                    digitalWrite(pinO_led_L[0], HIGH);
+                    digitalWrite(pinO_led_R[0], HIGH);
+                    delay(pattern_Delay);
+                }
+                break;
+
+                // Yellow
+                case 1:
+                {
+                    pinO_led_C_Red_Val = HIGH;
+                    pinO_led_C_Grn_Val = HIGH;
+                    digitalWrite(pinO_led_C_Red, pinO_led_C_Red_Val);
+                    digitalWrite(pinO_led_C_Grn, pinO_led_C_Grn_Val);
+                    digitalWrite(pinO_led_L[1], HIGH);
+                    digitalWrite(pinO_led_R[1], HIGH);
+                    delay(pattern_Delay);
+                }
+                break;
+
+                // Blue
+                case 2:
+                {
+                    pinO_led_C_Blu_Val = HIGH;
+                    digitalWrite(pinO_led_C_Blu, pinO_led_C_Blu_Val);
+                    digitalWrite(pinO_led_L[2], HIGH);
+                    digitalWrite(pinO_led_R[2], HIGH);
+                    delay(pattern_Delay);
+                }
+                break;
+
+                // Green
+                case 3:
+                {
+                    pinO_led_C_Grn_Val = HIGH;
+                    digitalWrite(pinO_led_C_Grn, pinO_led_C_Grn_Val);
+                    digitalWrite(pinO_led_L[3], HIGH);
+                    digitalWrite(pinO_led_R[3], HIGH);
+                    delay(pattern_Delay);
+                }
+                break;
+                }
+            }
+            else
+            {
+                off();
+                delay(pattern_Delay);
+            }
+        }
+    };
+}; // END: pattern() : Pattern1

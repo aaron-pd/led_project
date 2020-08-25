@@ -8,6 +8,7 @@ void select()
     Pattern1 p1;
     Pattern2 p2;
     Pattern3 p3;
+    Pattern4 p4;
 
     // Delay variables/values
     // -Potentiometer input EMA filtering
@@ -44,7 +45,7 @@ void select()
 
         // -Off
         // --One-time LED reset, set all LEDs to always 'LOW'
-        case 0 ... 249:
+        case 0 ... 100:
         {
             reset();
         }
@@ -52,14 +53,14 @@ void select()
 
         // -Pattern 1
         // --One-time LED reset, play transition pattern, play pattern 1
-        case 250 ... 499:
+        case 101 ... 200:
         {
             // One time reset and transition pattern
             while (reset_Key[0] == true)
             {
                 reset();
                 reset_Key[0] = false;
-                transitionRandom();
+                //transitionRandom();
             }
             // Run pattern
             p1.pattern(Delay_MapVal);
@@ -68,14 +69,14 @@ void select()
 
         // -Pattern 2
         // --One-time LED reset, play transition pattern, play pattern 2
-        case 500 ... 749:
+        case 201 ... 300:
         {
             // One time reset and transition pattern
             while (reset_Key[1] == true)
             {
                 reset();
                 reset_Key[1] = false;
-                transitionRandom();
+                //transitionRandom();
             }
             // Run pattern
             p2.pattern(Delay_MapVal);
@@ -84,17 +85,33 @@ void select()
 
         // -Pattern 3
         // --One-time LED reset, play transition pattern, play pattern 3
-        case 750 ... 850:
+        case 301 ... 400:
         {
             // One time reset and transition pattern
             while (reset_Key[2] == true)
             {
                 reset();
                 reset_Key[2] = false;
-                transitionRandom();
+                //transitionRandom();
             }
             // Run pattern
             p3.pattern(Delay_MapVal);
+        }
+        break; // END: case
+
+        // -Pattern 4
+        // --One-time LED reset, play transition pattern, play pattern 4
+        case 401 ... 500:
+        {
+            // One time reset and transition pattern
+            while (reset_Key[3] == true)
+            {
+                reset();
+                reset_Key[3] = false;
+                //transitionRandom();
+            }
+            // Run pattern
+            p4.pattern(Delay_MapVal);
         }
         break; // END: case
 

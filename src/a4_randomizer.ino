@@ -24,6 +24,7 @@ void patternRandom()
     Pattern1 p1;
     Pattern2 p2;
     Pattern3 p3;
+    Pattern4 p4;
 
     // Random number variables/values
     int rnd_Pattern;
@@ -100,6 +101,22 @@ void patternRandom()
             }
             // Run pattern
             p3.pattern(Delay_MapVal);
+        }
+        break; // END: case
+
+        // -Pattern 4
+        // --One-time LED reset, play transition pattern, play pattern 4
+        case 3:
+        {
+            // One time reset and transition pattern
+            while (randomizer_Key[3] == true)
+            {
+                reset();
+                randomizer_Key[3] = false;
+                transitionRandom();
+            }
+            // Run pattern
+            p4.pattern(Delay_MapVal);
         }
         break; // END: case
 
