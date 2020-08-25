@@ -206,7 +206,7 @@ public:
                     digitalWrite(pinO_led_R[0], HIGH);
                     delay(pattern_Delay);
                 }
-                break;
+                break; // END: case
 
                 // Yellow
                 case 1:
@@ -219,7 +219,7 @@ public:
                     digitalWrite(pinO_led_R[1], HIGH);
                     delay(pattern_Delay);
                 }
-                break;
+                break; // END: case
 
                 // Blue
                 case 2:
@@ -230,7 +230,7 @@ public:
                     digitalWrite(pinO_led_R[2], HIGH);
                     delay(pattern_Delay);
                 }
-                break;
+                break; // END: case
 
                 // Green
                 case 3:
@@ -241,14 +241,14 @@ public:
                     digitalWrite(pinO_led_R[3], HIGH);
                     delay(pattern_Delay);
                 }
-                break;
+                break; // END: case
                 }
-            }
+            }; // END: if
             else
             {
                 off();
                 delay(pattern_Delay);
-            }
+            }; // END: else
         }
     };
 }; // END: pattern() : Pattern1
