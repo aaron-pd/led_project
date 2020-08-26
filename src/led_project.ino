@@ -26,6 +26,7 @@
 //  ms#             - Millisecond delay variables comparing against millis()
 //  rnd             - Random
 //  func            - Function specific variables taking incoming global variables
+//  sequence        - Pattern sequence order
 //  Key             - Boolean variables used to run a function once followed by disabling itself
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values (after EMA input filtering calculations)
@@ -88,9 +89,6 @@ const int pinO_Dimmer = 6;
 // -Pins
 const int pinO_led_L[4] = {5, 4, 3, 2};
 const int pinO_led_R[4] = {7, 8, 12, 13};
-// -Pin values
-int pinO_led_L_Val[4] = {LOW, LOW, LOW, LOW};
-int pinO_led_R_Val[4] = {LOW, LOW, LOW, LOW};
 // -Array count variable
 // --Used when including both L and R arrays
 const int led_LR_Count = 4;
@@ -100,10 +98,6 @@ const int led_LR_Count = 4;
 const int pinO_led_C_Red = 9;
 const int pinO_led_C_Blu = 10;
 const int pinO_led_C_Grn = 11;
-// -Pin values
-int pinO_led_C_Red_Val = LOW;
-int pinO_led_C_Blu_Val = LOW;
-int pinO_led_C_Grn_Val = LOW;
 
 //==========Other==========
 
@@ -124,6 +118,8 @@ int sample_MovAvg_Delay = 0;
 // -3-way switch
 boolean switch_PosA_Key = true;
 boolean switch_PosB_Key = true;
+// -Pattern sequence
+boolean sequence_Key = true;
 // -Pattern reset
 boolean reset_Key[] = {true, true, true};
 // -Pattern randomizer
@@ -169,6 +165,9 @@ void setup()
     pinMode(pinO_led_C_Red, OUTPUT);
     pinMode(pinO_led_C_Blu, OUTPUT);
     pinMode(pinO_led_C_Grn, OUTPUT);
+
+    // -Set all LEDs to 'LOW'
+    off();
 
     // Dimmer output pin setup
     pinMode(pinO_Dimmer, OUTPUT);
