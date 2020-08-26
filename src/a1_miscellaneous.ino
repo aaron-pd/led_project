@@ -16,6 +16,7 @@ void reset()
     {
         randomizer_Key[i] = true;
     }
+    sequence_Key = true;
     off();
 } // END: reset()
 
