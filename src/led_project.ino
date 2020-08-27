@@ -127,13 +127,13 @@ const int patternSize = 4;
 boolean switch_PosA_Key = false;
 boolean switch_PosB_Key = false;
 // -Pattern sequence
-// --Value set by reset()
+// --Values set by reset()
 boolean sequence_Key;
 // -Pattern reset
-// --Value set by reset()
+// --Values set by reset()
 boolean reset_Key[patternSize];
 // -Pattern randomizer
-// --Value set by reset()
+// --Values set by reset()
 boolean randomizer_Key[patternSize];
 
 // Delay variables/values
