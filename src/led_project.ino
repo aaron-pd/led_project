@@ -60,7 +60,7 @@ const int pinI_pot_Delay = A0;
 int pinI_pot_Delay_Val = 0;
 // -Mapped variables/values
 // --Unsigned long to compare with millis()
-unsigned long Delay_MapVal;
+unsigned long Delay_MapVal = 0;
 
 // Dimmer variables/values for 10kOhm potentiometer
 // -Pins
@@ -116,15 +116,18 @@ float sample_Rate_Delay = 0.6;
 int sample_MovAvg_Delay = 0;
 
 // Reset key variables/values
+// -Total number of patterns for Key arrays
+// --Constant required for arrays
+const int patternSize = 4;
 // -3-way switch
-boolean switch_PosA_Key = true;
-boolean switch_PosB_Key = true;
+boolean switch_PosA_Key;
+boolean switch_PosB_Key;
 // -Pattern sequence
-boolean sequence_Key = true;
+boolean sequence_Key;
 // -Pattern reset
-boolean reset_Key[] = {true, true, true};
+boolean reset_Key[patternSize];
 // -Pattern randomizer
-boolean randomizer_Key[] = {true, true, true, true};
+boolean randomizer_Key[patternSize];
 
 // Delay variables/values
 // -Global variables required to remember previous loop values
