@@ -191,7 +191,7 @@ void select()
         // -Default case
         default:
         {
-             // One time reset and LED values set to 'HIGH'
+            // One time reset and LED values set to 'HIGH'
             reset();
             on();
         }

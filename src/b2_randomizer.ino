@@ -25,6 +25,7 @@ void patternRandom()
     Pattern2 p2;
     Pattern3 p3;
     Pattern4 p4;
+    Pattern *pattern[] = {&p1, &p2, &p3, &p4};
 
     // Random number variables/values
     int rnd_Pattern;
