@@ -44,11 +44,11 @@ void switch_AB()
     if (pinI_switch_PosA_Val == HIGH)
     {
         // One time reset
-        while (switch_PosA_Key == true)
+        while (switch_PosA_Key == false)
         {
             reset();
-            switch_PosA_Key = false;
-            switch_PosB_Key = true;
+            switch_PosA_Key = true;
+            switch_PosB_Key = false;
         }
         // Run selected pattern
         select();
@@ -59,11 +59,11 @@ void switch_AB()
     else if (pinI_switch_PosB_Val == HIGH)
     {
         // One time reset
-        while (switch_PosB_Key == true)
+        while (switch_PosB_Key == false)
         {
             reset();
-            switch_PosA_Key = true;
-            switch_PosB_Key = false;
+            switch_PosA_Key = false;
+            switch_PosB_Key = true;
         }
         // Run randomized pattern
         patternRandom();
@@ -74,8 +74,8 @@ void switch_AB()
     else
     {
         reset();
-        switch_PosA_Key = true;
-        switch_PosB_Key = true;
+        switch_PosA_Key = false;
+        switch_PosB_Key = false;
     } // END: else
 } // END: switch_AB()
 
@@ -136,10 +136,10 @@ void select()
         case 101 ... 200:
         {
             // One time reset
-            while (reset_Key[0] == true)
+            while (reset_Key[0] == false)
             {
                 reset();
-                reset_Key[0] = false;
+                reset_Key[0] = true;
             }
             // Run pattern
             p1.pattern(Delay_MapVal);
@@ -150,10 +150,10 @@ void select()
         case 201 ... 300:
         {
             // One time reset
-            while (reset_Key[1] == true)
+            while (reset_Key[1] == false)
             {
                 reset();
-                reset_Key[1] = false;
+                reset_Key[1] = true;
             }
             // Run pattern
             p2.pattern(Delay_MapVal);
@@ -164,10 +164,10 @@ void select()
         case 301 ... 400:
         {
             // One time reset
-            while (reset_Key[2] == true)
+            while (reset_Key[2] == false)
             {
                 reset();
-                reset_Key[2] = false;
+                reset_Key[2] = true;
             }
             // Run pattern
             p3.pattern(Delay_MapVal);
@@ -178,10 +178,10 @@ void select()
         case 401 ... 500:
         {
             // One time reset
-            while (reset_Key[3] == true)
+            while (reset_Key[3] == false)
             {
                 reset();
-                reset_Key[3] = false;
+                reset_Key[3] = true;
             }
             // Run pattern
             p4.pattern(Delay_MapVal);

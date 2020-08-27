@@ -31,16 +31,16 @@ public:
             ms1_Previous_Pattern = ms1_Current;
 
             // LED pattern
-            if (sequence_Key == true)
+            if (sequence_Key == false)
             {
                 on();
-                sequence_Key = false;
+                sequence_Key = true;
                 delay(pattern_Delay);
             }
             else
             {
                 off();
-                sequence_Key = true;
+                sequence_Key = false;
                 delay(pattern_Delay);
             }
         }
@@ -66,7 +66,7 @@ public:
             ms1_Previous_Pattern = ms1_Current;
 
             // LED pattern
-            if (sequence_Key == true)
+            if (sequence_Key == false)
             {
                 digitalWrite(pinO_led_C_Red, HIGH);
                 digitalWrite(pinO_led_C_Blu, HIGH);
@@ -76,7 +76,7 @@ public:
                     digitalWrite(pinO_led_L[i], LOW);
                     digitalWrite(pinO_led_R[i], LOW);
                 }
-                sequence_Key = false;
+                sequence_Key = true;
                 delay(pattern_Delay);
             }
             else
@@ -93,7 +93,7 @@ public:
                     digitalWrite(pinO_led_R[i], LOW);
                 }
                 off();
-                sequence_Key = true;
+                sequence_Key = false;
                 delay(pattern_Delay);
             }
         }
@@ -119,12 +119,12 @@ public:
             ms1_Previous_Pattern = ms1_Current;
 
             // LED pattern
-            if (sequence_Key == true)
+            if (sequence_Key == false)
             {
                 digitalWrite(pinO_led_C_Red, HIGH);
                 digitalWrite(pinO_led_C_Blu, HIGH);
                 digitalWrite(pinO_led_C_Grn, HIGH);
-                sequence_Key = false;
+                sequence_Key = true;
                 delay(pattern_Delay);
             }
             else
@@ -160,7 +160,7 @@ public:
                 digitalWrite(pinO_led_R[3], HIGH);
                 delay(pattern_Delay);
                 off();
-                sequence_Key = true;
+                sequence_Key = false;
                 delay(pattern_Delay);
             }
         }
@@ -192,7 +192,7 @@ public:
             rnd_sequence = random(led_LR_Count);
 
             // LED pattern
-            if (sequence_Key == true)
+            if (sequence_Key == false)
             {
                 // Switch/Case
                 switch (rnd_sequence)
@@ -204,7 +204,7 @@ public:
                     digitalWrite(pinO_led_C_Red, HIGH);
                     digitalWrite(pinO_led_L[0], HIGH);
                     digitalWrite(pinO_led_R[0], HIGH);
-                    sequence_Key = false;
+                    sequence_Key = true;
                     delay(pattern_Delay);
                 }
                 break; // END: case
@@ -216,7 +216,7 @@ public:
                     digitalWrite(pinO_led_C_Grn, HIGH);
                     digitalWrite(pinO_led_L[1], HIGH);
                     digitalWrite(pinO_led_R[1], HIGH);
-                    sequence_Key = false;
+                    sequence_Key = true;
                     delay(pattern_Delay);
                 }
                 break; // END: case
@@ -227,7 +227,7 @@ public:
                     digitalWrite(pinO_led_C_Blu, HIGH);
                     digitalWrite(pinO_led_L[2], HIGH);
                     digitalWrite(pinO_led_R[2], HIGH);
-                    sequence_Key = false;
+                    sequence_Key = true;
                     delay(pattern_Delay);
                 }
                 break; // END: case
@@ -238,7 +238,7 @@ public:
                     digitalWrite(pinO_led_C_Grn, HIGH);
                     digitalWrite(pinO_led_L[3], HIGH);
                     digitalWrite(pinO_led_R[3], HIGH);
-                    sequence_Key = false;
+                    sequence_Key = true;
                     delay(pattern_Delay);
                 }
                 break; // END: case
@@ -247,7 +247,7 @@ public:
             else
             {
                 off();
-                sequence_Key = true;
+                sequence_Key = false;
                 delay(pattern_Delay);
             }; // END: else
         }

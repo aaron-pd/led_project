@@ -88,8 +88,10 @@ const int pinO_Dimmer = 6;
 // Solid colour LED variables/values
 // Left/Right position based on center tri-colour LED
 // -Pins
+// --Separated arrays
 const int pinO_led_L[4] = {5, 4, 3, 2};
 const int pinO_led_R[4] = {7, 8, 12, 13};
+// --Combined array
 const int pinO_led_LR[8] = {5, 4, 3, 2, 7, 8, 12, 13};
 // -Array count variable
 // --Used when including both L and R arrays
@@ -121,13 +123,17 @@ float sample_Rate_Delay = 0.6;
 // --Constant required for arrays
 const int patternSize = 4;
 // -3-way switch
-boolean switch_PosA_Key;
-boolean switch_PosB_Key;
+// --'false' declaration to avoid delayed start up
+boolean switch_PosA_Key = false;
+boolean switch_PosB_Key = false;
 // -Pattern sequence
+// --Value set by reset()
 boolean sequence_Key;
 // -Pattern reset
+// --Value set by reset()
 boolean reset_Key[patternSize];
 // -Pattern randomizer
+// --Value set by reset()
 boolean randomizer_Key[patternSize];
 
 // Delay variables/values
@@ -147,9 +153,11 @@ unsigned long ms1_Previous_Pattern = 0;
 // --patternRandom()
 unsigned long ms1_Previous_PatternRnd = 0;
 unsigned long ms2_Previous_PatternRndRun = 0;
-// -Value used by all pattern() functions
+// -Variable used by all pattern() functions
+// --Initial value to avoid delayed start up
 int pattern_Delay = 250;
-// -Value used by all transition() functions
+// -Variable used by all transition() functions
+// --Initial value to avoid delayed start up
 int transition_Delay = 250;
 
 //-------------------- Setup --------------------
@@ -171,7 +179,7 @@ void setup()
     pinMode(pinO_led_C_Blu, OUTPUT);
     pinMode(pinO_led_C_Grn, OUTPUT);
 
-    // -Set all LEDs to 'LOW' and Key values to 'true'
+    // -Set all LEDs to 'LOW' and Key values to 'false'
     reset();
 
     // Dimmer output pin setup

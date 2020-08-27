@@ -1,23 +1,23 @@
 //-------------------- Miscellaneous Functions --------------------
 
-// Set reset_Key[#], randomizer_Key[#] and sequence_Key to 'true' and all LEDs to 'LOW'
+// Set reset_Key[#], randomizer_Key[#] and sequence_Key to 'false' and all LEDs to 'LOW'
 // -reset_Key[#] used in select() function
 // -randomizer_Key[#] used in patternRandom() function
 // -sequence_Key used in all pattern() functions
-// -Usage: run reset() function then set value to 'false' for chosen function or case
+// -Usage: run reset() function then set value to 'true' for chosen function or case
 
 void reset()
 {
 
     for (unsigned int i = 0; i < sizeof(reset_Key); i++)
     {
-        reset_Key[i] = true;
+        reset_Key[i] = false;
     }
     for (unsigned int i = 0; i < sizeof(randomizer_Key); i++)
     {
-        randomizer_Key[i] = true;
+        randomizer_Key[i] = false;
     }
-    sequence_Key = true;
+    sequence_Key = false;
     off();
 } // END: reset()
 

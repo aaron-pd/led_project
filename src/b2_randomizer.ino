@@ -60,10 +60,10 @@ void patternRandom()
         case 0:
         {
             // One time reset and transition pattern
-            while (randomizer_Key[0] == true)
+            while (randomizer_Key[0] == false)
             {
                 reset();
-                randomizer_Key[0] = false;
+                randomizer_Key[0] = true;
                 transitionRandom();
             }
             // Run pattern
@@ -75,10 +75,10 @@ void patternRandom()
         case 1:
         {
             // One time reset and transition pattern
-            while (randomizer_Key[1] == true)
+            while (randomizer_Key[1] == false)
             {
                 reset();
-                randomizer_Key[1] = false;
+                randomizer_Key[1] = true;
                 transitionRandom();
             }
             // Run pattern
@@ -90,10 +90,10 @@ void patternRandom()
         case 2:
         {
             // One time reset and transition pattern
-            while (randomizer_Key[2] == true)
+            while (randomizer_Key[2] == false)
             {
                 reset();
-                randomizer_Key[2] = false;
+                randomizer_Key[2] = true;
                 transitionRandom();
             }
             // Run pattern
@@ -105,10 +105,10 @@ void patternRandom()
         case 3:
         {
             // One time reset and transition pattern
-            while (randomizer_Key[3] == true)
+            while (randomizer_Key[3] == false)
             {
                 reset();
-                randomizer_Key[3] = false;
+                randomizer_Key[3] = true;
                 transitionRandom();
             }
             // Run pattern
