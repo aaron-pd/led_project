@@ -57,7 +57,6 @@ void patternRandom()
         {
 
         // -Pattern 1
-        // --One-time LED reset, play transition pattern, play pattern 1
         case 0:
         {
             // One time reset and transition pattern
@@ -73,7 +72,6 @@ void patternRandom()
         break; // END: case
 
         // -Pattern 2
-        // --One-time LED reset, play transition pattern, play pattern 2
         case 1:
         {
             // One time reset and transition pattern
@@ -89,7 +87,6 @@ void patternRandom()
         break; // END: case
 
         // -Pattern 3
-        // --One-time LED reset, play transition pattern, play pattern 3
         case 2:
         {
             // One time reset and transition pattern
@@ -105,7 +102,6 @@ void patternRandom()
         break; // END: case
 
         // -Pattern 4
-        // --One-time LED reset, play transition pattern, play pattern 4
         case 3:
         {
             // One time reset and transition pattern
@@ -124,6 +120,7 @@ void patternRandom()
         // --Bug avoidance
         default:
         {
+            // One time reset and LED values set to 'LOW'
             reset();
         }
         break; // END: default case

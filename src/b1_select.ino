@@ -39,28 +39,26 @@ void select()
     {
         ms2_Previous_SelectRun = ms2_Current;
 
-        // Switch/Case used to select pattern from Select_MapVal variable
+        // Switch/Case to run selected pattern
         switch (Select_MapVal)
         {
 
         // -Off
-        // --One-time LED reset, set all LEDs to always 'LOW'
         case 0 ... 100:
         {
+            // One time reset and LED values set to 'LOW'
             reset();
         }
         break; // END: case
 
         // -Pattern 1
-        // --One-time LED reset, play transition pattern, play pattern 1
         case 101 ... 200:
         {
-            // One time reset and transition pattern
+            // One time reset
             while (reset_Key[0] == true)
             {
                 reset();
                 reset_Key[0] = false;
-                //transitionRandom();
             }
             // Run pattern
             p1.pattern(Delay_MapVal);
@@ -68,15 +66,13 @@ void select()
         break; // END: case
 
         // -Pattern 2
-        // --One-time LED reset, play transition pattern, play pattern 2
         case 201 ... 300:
         {
-            // One time reset and transition pattern
+            // One time reset
             while (reset_Key[1] == true)
             {
                 reset();
                 reset_Key[1] = false;
-                //transitionRandom();
             }
             // Run pattern
             p2.pattern(Delay_MapVal);
@@ -84,15 +80,13 @@ void select()
         break; // END: case
 
         // -Pattern 3
-        // --One-time LED reset, play transition pattern, play pattern 3
         case 301 ... 400:
         {
-            // One time reset and transition pattern
+            // One time reset
             while (reset_Key[2] == true)
             {
                 reset();
                 reset_Key[2] = false;
-                //transitionRandom();
             }
             // Run pattern
             p3.pattern(Delay_MapVal);
@@ -100,15 +94,13 @@ void select()
         break; // END: case
 
         // -Pattern 4
-        // --One-time LED reset, play transition pattern, play pattern 4
         case 401 ... 500:
         {
-            // One time reset and transition pattern
+            // One time reset
             while (reset_Key[3] == true)
             {
                 reset();
                 reset_Key[3] = false;
-                //transitionRandom();
             }
             // Run pattern
             p4.pattern(Delay_MapVal);
@@ -116,9 +108,9 @@ void select()
         break; // END: case
 
         // -Default case
-        // --One-time LED reset, set all LEDs to always 'HIGH'
         default:
         {
+             // One time reset and LED values set to 'HIGH'
             reset();
             on();
         }

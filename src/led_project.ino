@@ -12,6 +12,8 @@
 //  Delay           - User adjustable interval delay for patterns
 //  Dimmer          - User adjustable brightness control
 //  Select          - User manual pattern selection
+//  pattern         - Continuously looping pattern
+//  transition      - One time pattern
 //
 // --Exponential Moving Average/Input Filtering--
 //  rate            - Rate at which moving average is calculated
@@ -40,7 +42,6 @@
 //==========Defines==========
 
 // Macro to find the true size of an array
-// -Important for an array of objects
 #define ARRAYSIZE(x) (sizeof(x) / sizeof(x[0]))
 
 //==========Inputs==========
@@ -106,14 +107,14 @@ const int pinO_led_C_Grn = 11;
 // -EMA sample_Rate value can be adjusted between 0.1 (slow;higher quality) to 0.9 (fast;lower quality)
 // -Global variables required to remember previous loop values
 // --Dimmer potentiometer
-float sample_Rate_Dimmer = 0.6;
 int sample_MovAvg_Dimmer = 0;
+float sample_Rate_Dimmer = 0.6;
 // --Select potentiometer
-float sample_Rate_Select = 0.6;
 int sample_MovAvg_Select = 0;
+float sample_Rate_Select = 0.6;
 // --Variable delay input potentiometer
-float sample_Rate_Delay = 0.6;
 int sample_MovAvg_Delay = 0;
+float sample_Rate_Delay = 0.6;
 
 // Reset key variables/values
 // -Total number of patterns for Key arrays
@@ -147,7 +148,7 @@ unsigned long ms1_Previous_Pattern = 0;
 unsigned long ms1_Previous_PatternRnd = 0;
 unsigned long ms2_Previous_PatternRndRun = 0;
 // -Constant value used by all pattern#() functions
-int pattern_Delay = 100;
+int pattern_Delay = 250;
 // -Constant value used by all transition#() functions
 int transition_Delay = 250;
 
@@ -170,7 +171,7 @@ void setup()
     pinMode(pinO_led_C_Blu, OUTPUT);
     pinMode(pinO_led_C_Grn, OUTPUT);
 
-    // -Set all LEDs to 'LOW'
+    // -Set all LEDs to 'LOW' and Key values to 'true'
     reset();
 
     // Dimmer output pin setup
@@ -185,7 +186,7 @@ void setup()
     randomSeed(analogRead(A5));
 
     // Final Initialization
-    delay(1000);
+    delay(100);
 } // END: setup()
 
 //-------------------- Loop --------------------
