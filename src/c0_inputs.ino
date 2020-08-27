@@ -1,5 +1,86 @@
 //-------------------- Input Functions --------------------
 
+//==========Dimmer==========
+
+// LED dimming control determined by potentiometer value
+void dimmer()
+{
+
+    // Delay variables/values
+    unsigned long ms1_Current = millis();
+    unsigned long ms1_Interval = 100;
+
+    // Delay 1
+    if (ms1_Current - ms1_Previous_Dimmer >= ms1_Interval)
+    {
+        ms1_Previous_Dimmer = ms1_Current;
+
+        // EMA filtering
+        // -Set analog read input values
+        pinI_pot_Dimmer_Val = analogRead(pinI_pot_Dimmer);
+        // -Calculations
+        sample_MovAvg_Dimmer = (sample_Rate_Dimmer * pinI_pot_Dimmer_Val) + ((1 - sample_Rate_Dimmer) * sample_MovAvg_Dimmer);
+
+        // Dimmer value mapped to dimmer potentiometer value with filtering calculations
+        Dimmer_MapVal = map(sample_MovAvg_Dimmer, 8, 1015, 0, 255);
+
+        // Dimness of LEDs sent to MOSFET output pin
+        analogWrite(pinO_Dimmer, Dimmer_MapVal);
+    }
+} // END: dimmer()
+
+//==========Switch_AB==========
+
+// Switch between random pattern/manual pattern selection
+void switch_AB()
+{
+
+    // Set digital read switch input values
+    pinI_switch_PosA_Val = digitalRead(pinI_switch_PosA);
+    pinI_switch_PosB_Val = digitalRead(pinI_switch_PosB);
+
+    // Switch position 'A'
+    // -Play selected patterns only
+    if (pinI_switch_PosA_Val == HIGH)
+    {
+        // One time reset
+        while (switch_PosA_Key == true)
+        {
+            reset();
+            switch_PosA_Key = false;
+            switch_PosB_Key = true;
+        }
+        // Run selected pattern
+        select();
+    } // END: if
+
+    // Switch position 'B'
+    // -Play all patterns randomly
+    else if (pinI_switch_PosB_Val == HIGH)
+    {
+        // One time reset
+        while (switch_PosB_Key == true)
+        {
+            reset();
+            switch_PosA_Key = true;
+            switch_PosB_Key = false;
+        }
+        // Run randomized pattern
+        patternRandom();
+    } // END: else if
+
+    // Turn all LEDs off if switch state is undetermined
+    // -Bug avoidance
+    else
+    {
+        reset();
+        switch_PosA_Key = true;
+        switch_PosB_Key = true;
+    } // END: else
+} // END: switch_AB()
+
+//==========Select==========
+
 // LED pattern selection determined by potentiometer position/value
 void select()
 {
