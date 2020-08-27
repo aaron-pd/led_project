@@ -147,9 +147,9 @@ unsigned long ms1_Previous_Pattern = 0;
 // --patternRandom()
 unsigned long ms1_Previous_PatternRnd = 0;
 unsigned long ms2_Previous_PatternRndRun = 0;
-// -Constant value used by all pattern#() functions
+// -Value used by all pattern() functions
 int pattern_Delay = 250;
-// -Constant value used by all transition#() functions
+// -Value used by all transition() functions
 int transition_Delay = 250;
 
 //-------------------- Setup --------------------
