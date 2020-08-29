@@ -45,7 +45,7 @@ void patternRandom()
         ms1_Previous_PatternRnd = ms1_Current;
 
         // Randomized pattern selection
-        rnd_Pattern = random(sizeof(randomizer_Key));
+        rnd_Pattern = random(sizeof(reset_Key));
     }
 
     // Delay 2
@@ -61,10 +61,10 @@ void patternRandom()
         case 0:
         {
             // One time reset and transition pattern
-            while (randomizer_Key[0] == false)
+            while (reset_Key[0] == false)
             {
                 reset();
-                randomizer_Key[0] = true;
+                reset_Key[0] = true;
                 transitionRandom();
             }
             // Run pattern
@@ -76,10 +76,10 @@ void patternRandom()
         case 1:
         {
             // One time reset and transition pattern
-            while (randomizer_Key[1] == false)
+            while (reset_Key[1] == false)
             {
                 reset();
-                randomizer_Key[1] = true;
+                reset_Key[1] = true;
                 transitionRandom();
             }
             // Run pattern
@@ -91,10 +91,10 @@ void patternRandom()
         case 2:
         {
             // One time reset and transition pattern
-            while (randomizer_Key[2] == false)
+            while (reset_Key[2] == false)
             {
                 reset();
-                randomizer_Key[2] = true;
+                reset_Key[2] = true;
                 transitionRandom();
             }
             // Run pattern
@@ -106,10 +106,10 @@ void patternRandom()
         case 3:
         {
             // One time reset and transition pattern
-            while (randomizer_Key[3] == false)
+            while (reset_Key[3] == false)
             {
                 reset();
-                randomizer_Key[3] = true;
+                reset_Key[3] = true;
                 transitionRandom();
             }
             // Run pattern

@@ -132,9 +132,6 @@ boolean sequence_Key;
 // -Pattern reset
 // --Values set by reset()
 boolean reset_Key[patternSize];
-// -Pattern randomizer
-// --Values set by reset()
-boolean randomizer_Key[patternSize];
 
 // Delay variables/values
 // -Global variables required to remember previous loop values
