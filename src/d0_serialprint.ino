@@ -13,7 +13,7 @@ void serialPrint()
     {
         ms1_Previous_Print = ms1_Current;
 
-        // -Delay Potentiometer
+        // Delay Potentiometer
         Serial.print("Delay Potentiometer:");
         Serial.print("\t");
         Serial.print(pinI_pot_Delay_Val);
@@ -23,7 +23,7 @@ void serialPrint()
         Serial.print("\t");
         Serial.print(Delay_MapVal);
         Serial.println();
-        // -Dimmer Potentiometer
+        // Dimmer Potentiometer
         Serial.print("Dimmer Potentiometer:");
         Serial.print("\t");
         Serial.print(pinI_pot_Dimmer_Val);
@@ -33,7 +33,7 @@ void serialPrint()
         Serial.print("\t");
         Serial.print(Dimmer_MapVal);
         Serial.println();
-        // -Select Potentiometer
+        // Select Potentiometer
         Serial.print("Select Potentiometer:");
         Serial.print("\t");
         Serial.print(pinI_pot_Select_Val);
@@ -43,8 +43,9 @@ void serialPrint()
         Serial.print("\t");
         Serial.print(Select_MapVal);
         Serial.println();
+        // Print separation line
         Serial.println();
-        // -3-Way Switch A/B
+        // Switch A/B
         Serial.print("Switch A:");
         Serial.print("\t");
         Serial.print(pinI_switch_PosA_Val);
@@ -53,6 +54,7 @@ void serialPrint()
         Serial.print("\t");
         Serial.print(pinI_switch_PosB_Val);
         Serial.println();
+        // Print separation line
         Serial.println();
     }
 } // END: serialPrint()

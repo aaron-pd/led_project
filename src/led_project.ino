@@ -6,7 +6,7 @@
 //  C               - Center
 //  led             - LED lights
 //  pot             - Potentiometer
-//  switch          - 3-way switch
+//  switch          - Two position switch
 //
 // --Functions--
 //  Delay           - User adjustable interval delay for patterns
@@ -46,7 +46,7 @@
 
 //==========Inputs==========
 
-// 3-way switch variables/values
+// Switch variables/values
 // -Pins
 const int pinI_switch_PosA = A3;
 const int pinI_switch_PosB = A4;
@@ -122,7 +122,7 @@ float sample_Rate_Delay = 0.6;
 // -Total number of patterns for Key arrays
 // --Constant required for arrays
 const int patternSize = 4;
-// -3-way switch
+// -Switch
 // --'false' declaration to avoid delayed start up
 boolean switch_PosA_Key = false;
 boolean switch_PosB_Key = false;

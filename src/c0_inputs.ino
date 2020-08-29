@@ -6,7 +6,7 @@
 void switch_AB()
 {
 
-    // Set digital read switch input values
+    // Read switch input values
     pinI_switch_PosA_Val = digitalRead(pinI_switch_PosA);
     pinI_switch_PosB_Val = digitalRead(pinI_switch_PosB);
 
