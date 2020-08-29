@@ -1,4 +1,4 @@
-//  Variable Legend
+//  Variables Legend
 //
 // --Devices--
 //  R               - Right
@@ -91,9 +91,9 @@ const int pinO_Dimmer = 6;
 // --Separated arrays
 const int pinO_led_L[4] = {5, 4, 3, 2};
 const int pinO_led_R[4] = {7, 8, 12, 13};
-// --Combined array
+// --Combined arrays
 const int pinO_led_LR[8] = {5, 4, 3, 2, 7, 8, 12, 13};
-// -Array count variable
+// -Array count variables
 // --Used when including both L and R arrays
 const int led_LR_Count = 4;
 
@@ -176,9 +176,6 @@ void setup()
     pinMode(pinO_led_C_Blu, OUTPUT);
     pinMode(pinO_led_C_Grn, OUTPUT);
 
-    // -Set all LEDs to 'LOW' and Key values to 'false'
-    reset();
-
     // Dimmer output pin setup
     pinMode(pinO_Dimmer, OUTPUT);
 
@@ -189,6 +186,9 @@ void setup()
 
     // Random seed setup
     randomSeed(analogRead(A5));
+
+    // Set all LEDs to 'LOW' and Key values to 'false'
+    reset();
 
     // Final Initialization
     delay(100);
