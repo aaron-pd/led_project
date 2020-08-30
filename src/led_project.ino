@@ -1,4 +1,4 @@
-//  Variables Legend
+//  _____Variables Legend_____
 //
 // --Devices--
 //  R               - Right
@@ -32,6 +32,14 @@
 //  Key             - Boolean variables used to run a function once followed by disabling itself
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values (after EMA input filtering calculations)
+//
+//_____Notes_____
+//  -When adding new transitions:
+//   -Update transitionRandom() object declarations and array
+//  -When adding new patterns:
+//   -Update global variable patternSize value
+//   -Update patternRandom() object declarations and array
+//   -Update select() object declaration and array
 
 //-------------------- Variables/Values --------------------
 
