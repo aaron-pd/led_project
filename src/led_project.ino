@@ -149,13 +149,17 @@ unsigned long ms2_Previous_SelectRun = 0;
 unsigned long ms1_Previous_Pattern = 0;
 // --patternRandom()
 unsigned long ms1_Previous_PatternRnd = 0;
-unsigned long ms2_Previous_PatternRndRun = 0;
 // -Variable used by all pattern() functions
 // --Initial value to avoid delayed start up
 int pattern_Delay = 250;
 // -Variable used by all transition() functions
 // --Initial value to avoid delayed start up
 int transition_Delay = 250;
+
+// Function variables/values
+// -patternRandom()
+// --Global variables required to remember previous loop values
+int rnd_Pattern;
 
 //-------------------- Setup --------------------
 void setup()

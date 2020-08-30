@@ -27,17 +27,10 @@ void patternRandom()
     Pattern4 p4;
     Pattern *pattern[] = {&p1, &p2, &p3, &p4};
 
-    // Random number variables/values
-    int rnd_Pattern;
-
     // Delay variables/values
     // -Random number selection
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = (random(4, 6) * 1000);
-    // -Pattern run (switch/case)
-    // --Bug avoidance (patternDelay() issue)
-    unsigned long ms2_Current = millis();
-    unsigned long ms2_Interval = 100;
 
     // Delay 1
     if (ms1_Current - ms1_Previous_PatternRnd >= ms1_Interval)
@@ -45,86 +38,16 @@ void patternRandom()
         ms1_Previous_PatternRnd = ms1_Current;
 
         // Randomized pattern selection
-        rnd_Pattern = random(sizeof(reset_Key));
+        rnd_Pattern = random(ARRAYSIZE(pattern));
     }
 
-    // Delay 2
-    if (ms2_Current - ms2_Previous_PatternRndRun >= ms2_Interval)
+    // One time reset and transition pattern
+    while (reset_Key[rnd_Pattern] == false)
     {
-        ms2_Previous_PatternRndRun = ms2_Current;
-
-        // Switch/Case to run random pattern
-        switch (rnd_Pattern)
-        {
-
-        // -Pattern 1
-        case 0:
-        {
-            // One time reset and transition pattern
-            while (reset_Key[0] == false)
-            {
-                reset();
-                reset_Key[0] = true;
-                transitionRandom();
-            }
-            // Run pattern
-            p1.pattern(Delay_MapVal);
-        }
-        break; // END: case
-
-        // -Pattern 2
-        case 1:
-        {
-            // One time reset and transition pattern
-            while (reset_Key[1] == false)
-            {
-                reset();
-                reset_Key[1] = true;
-                transitionRandom();
-            }
-            // Run pattern
-            p2.pattern(Delay_MapVal);
-        }
-        break; // END: case
-
-        // -Pattern 3
-        case 2:
-        {
-            // One time reset and transition pattern
-            while (reset_Key[2] == false)
-            {
-                reset();
-                reset_Key[2] = true;
-                transitionRandom();
-            }
-            // Run pattern
-            p3.pattern(Delay_MapVal);
-        }
-        break; // END: case
-
-        // -Pattern 4
-        case 3:
-        {
-            // One time reset and transition pattern
-            while (reset_Key[3] == false)
-            {
-                reset();
-                reset_Key[3] = true;
-                transitionRandom();
-            }
-            // Run pattern
-            p4.pattern(Delay_MapVal);
-        }
-        break; // END: case
-
-        // -Default case
-        // --Bug avoidance
-        default:
-        {
-            // One time reset and LED values set to 'LOW'
-            reset();
-        }
-        break; // END: default case
-        }
+        reset();
+        reset_Key[rnd_Pattern] = true;
+        transitionRandom();
     }
+    // Run pattern
+    pattern[rnd_Pattern]->pattern(Delay_MapVal);
 } //END: patternRandom()
