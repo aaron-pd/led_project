@@ -72,7 +72,7 @@ void dimmer()
         sample_MovAvg_Dimmer = (sample_Rate_Dimmer * pinI_pot_Dimmer_Val) + ((1 - sample_Rate_Dimmer) * sample_MovAvg_Dimmer);
 
         // Dimmer value mapped to dimmer potentiometer value with filtering calculations
-        Dimmer_MapVal = map(sample_MovAvg_Dimmer, 8, 1015, 0, 255);
+        Dimmer_MapVal = map(sample_MovAvg_Dimmer, 8, 1015, 50, 250);
 
         // Dimness of LEDs sent to MOSFET output pin
         analogWrite(pinO_Dimmer, Dimmer_MapVal);
@@ -102,7 +102,7 @@ void patternDelay()
         sample_MovAvg_Delay = (sample_Rate_Delay * pinI_pot_Delay_Val) + ((1 - sample_Rate_Delay) * sample_MovAvg_Delay);
 
         // Delay value mapped to delay potentiometer value with filtering calculations
-        Delay_MapVal = map(sample_MovAvg_Delay, 8, 1015, 0, 255);
+        Delay_MapVal = map(sample_MovAvg_Delay, 8, 1015, 50, 250);
 
         // Global pattern/transition delay values update
         pattern_Delay = (sample_MovAvg_Delay / 4);
@@ -143,7 +143,7 @@ void select()
         sample_MovAvg_Select = (sample_Rate_Select * pinI_pot_Select_Val) + ((1 - sample_Rate_Select) * sample_MovAvg_Select);
 
         // Pattern select value mapped to select potentiometer value with filtering calculations
-        Select_MapVal = map(sample_MovAvg_Select, 8, 1015, 0, 999);
+        Select_MapVal = map(sample_MovAvg_Select, 8, 1015, 0, (patternSize + 2));
     }
 
     // Delay 2
@@ -156,7 +156,7 @@ void select()
         {
 
         // -Off
-        case 0 ... 100:
+        case 0:
         {
             // One time reset and LED values set to 'LOW'
             reset();
@@ -164,7 +164,7 @@ void select()
         break; // END: case
 
         // -Pattern 1
-        case 101 ... 200:
+        case 1:
         {
             // One time reset
             while (reset_Key[0] == false)
@@ -178,7 +178,7 @@ void select()
         break; // END: case
 
         // -Pattern 2
-        case 201 ... 300:
+        case 2:
         {
             // One time reset
             while (reset_Key[1] == false)
@@ -192,7 +192,7 @@ void select()
         break; // END: case
 
         // -Pattern 3
-        case 301 ... 400:
+        case 3:
         {
             // One time reset
             while (reset_Key[2] == false)
@@ -206,7 +206,7 @@ void select()
         break; // END: case
 
         // -Pattern 4
-        case 401 ... 500:
+        case 4:
         {
             // One time reset
             while (reset_Key[3] == false)
