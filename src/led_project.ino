@@ -53,6 +53,7 @@
 #define ARRAYSIZE(x) (sizeof(x) / sizeof(x[0]))
 
 //==========Pattern Constants==========
+
 // Total number of patterns
 // -Constant required for arrays
 const int patternSize = 4;
