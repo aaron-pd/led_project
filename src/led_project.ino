@@ -52,6 +52,11 @@
 // Macro to find the true size of an array
 #define ARRAYSIZE(x) (sizeof(x) / sizeof(x[0]))
 
+//==========Pattern Constants==========
+// Total number of patterns
+// -Constant required for arrays
+const int patternSize = 4;
+
 //==========Inputs==========
 
 // Switch variables/values
@@ -127,9 +132,6 @@ int sample_MovAvg_Delay = 0;
 float sample_Rate_Delay = 0.6;
 
 // Reset key variables/values
-// -Total number of patterns for Key arrays
-// --Constant required for arrays
-const int patternSize = 4;
 // -Switch
 // --'false' declaration to avoid delayed start up
 boolean switch_PosA_Key = false;

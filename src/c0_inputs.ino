@@ -81,8 +81,8 @@ void dimmer()
 
 //==========Pattern Delay Input Filtering==========
 
-// Pattern delay calculations with EMA filtering
-// -Final calculated 'Delay_MapVal' used by pattern(#) functions
+// Pattern delay potentiometer input value calculations with EMA filtering
+// -Final calculated variable 'Delay_MapVal' used by pattern() functions
 void patternDelay()
 {
 
@@ -121,12 +121,13 @@ void select()
     Pattern2 p2;
     Pattern3 p3;
     Pattern4 p4;
+    Pattern *pattern[] = {&p1, &p2, &p3, &p4};
 
     // Delay variables/values
     // -Potentiometer input EMA filtering
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = 100;
-    // -Pattern run (switch/case)
+    // -Pattern run
     // -Bug avoidance
     unsigned long ms2_Current = millis();
     unsigned long ms2_Interval = 100;
@@ -151,82 +152,32 @@ void select()
     {
         ms2_Previous_SelectRun = ms2_Current;
 
-        // Switch/Case to run selected pattern
-        switch (Select_MapVal)
-        {
-
-        // -Off
-        case 0:
+        // Off
+        if (Select_MapVal == 0)
         {
             // One time reset and LED values set to 'LOW'
             reset();
         }
-        break; // END: case
 
-        // -Pattern 1
-        case 1:
+        // Play selected pattern
+        else if (Select_MapVal >= 1 && Select_MapVal <= patternSize)
         {
-            // One time reset
-            while (reset_Key[0] == false)
+            // One time reset and transition pattern
+            while (reset_Key[Select_MapVal - 1] == false)
             {
                 reset();
-                reset_Key[0] = true;
+                reset_Key[Select_MapVal - 1] = true;
             }
             // Run pattern
-            p1.pattern(Delay_MapVal);
+            pattern[Select_MapVal - 1]->pattern(Delay_MapVal);
         }
-        break; // END: case
 
-        // -Pattern 2
-        case 2:
-        {
-            // One time reset
-            while (reset_Key[1] == false)
-            {
-                reset();
-                reset_Key[1] = true;
-            }
-            // Run pattern
-            p2.pattern(Delay_MapVal);
-        }
-        break; // END: case
-
-        // -Pattern 3
-        case 3:
-        {
-            // One time reset
-            while (reset_Key[2] == false)
-            {
-                reset();
-                reset_Key[2] = true;
-            }
-            // Run pattern
-            p3.pattern(Delay_MapVal);
-        }
-        break; // END: case
-
-        // -Pattern 4
-        case 4:
-        {
-            // One time reset
-            while (reset_Key[3] == false)
-            {
-                reset();
-                reset_Key[3] = true;
-            }
-            // Run pattern
-            p4.pattern(Delay_MapVal);
-        }
-        break; // END: case
-
-        // -Default case
-        default:
+        // On
+        else
         {
             // One time reset and LED values set to 'HIGH'
             reset();
             on();
-        }
-        break; // END: default case
         }
     }
 } // END: select()
