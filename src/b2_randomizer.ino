@@ -48,6 +48,7 @@ void patternRandom()
         reset_Key[rnd_Pattern] = true;
         transitionRandom();
     }
+
     // Run pattern
     pattern[rnd_Pattern]->pattern(Delay_MapVal);
 } //END: patternRandom()
