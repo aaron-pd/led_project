@@ -28,7 +28,6 @@ void patternRandom()
     Pattern *pattern[] = {&p1, &p2, &p3, &p4};
 
     // Delay variables/values
-    // -Random number selection
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = (random(4, 6) * 1000);
 
@@ -48,6 +47,7 @@ void patternRandom()
         reset_Key[rnd_Pattern] = true;
         transitionRandom();
     }
+
     // Run pattern
     pattern[rnd_Pattern]->pattern(Delay_MapVal);
 } //END: patternRandom()
