@@ -3,7 +3,7 @@
 // Set reset_Key[#] and sequence_Key to 'false' and all LEDs to 'LOW'
 // -reset_Key[#] used in select() and patternRandom() functions
 // -sequence_Key used in all pattern() functions
-// -Usage: run reset() function then set value to 'true' for chosen function or case
+// -Usage: run reset() function then set value to 'true' for chosen array
 void reset()
 {
 
