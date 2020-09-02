@@ -12,7 +12,6 @@ void switch_AB()
 
     // Reset key variables/values
     // -'false' declaration to avoid delayed start up
-    // -Static variables required to remember previous loop values
     static boolean switch_PosA_Key = false;
     static boolean switch_PosB_Key = false;
 
@@ -65,11 +64,12 @@ void dimmer()
     // Delay variables/values
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = 100;
+    static unsigned long ms1_Previous = 0;
 
     // Delay 1
-    if (ms1_Current - ms1_Previous_Dimmer >= ms1_Interval)
+    if (ms1_Current - ms1_Previous >= ms1_Interval)
     {
-        ms1_Previous_Dimmer = ms1_Current;
+        ms1_Previous = ms1_Current;
 
         // EMA filtering
         // -Set analog read input values
@@ -95,11 +95,12 @@ void patternDelay()
     // Delay variables/values
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = 100;
+    static unsigned long ms1_Previous = 0;
 
     // Delay 1
-    if (ms1_Current - ms1_Previous_Delay >= ms1_Interval)
+    if (ms1_Current - ms1_Previous >= ms1_Interval)
     {
-        ms1_Previous_Delay = ms1_Current;
+        ms1_Previous = ms1_Current;
 
         // EMA filtering
         // -Set analog read input values
@@ -133,15 +134,17 @@ void select()
     // -Potentiometer input EMA filtering
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = 100;
+    static unsigned long ms1_Previous = 0;
     // -Pattern run
     // -Bug avoidance
     unsigned long ms2_Current = millis();
     unsigned long ms2_Interval = 100;
+    static unsigned long ms2_Previous = 0;
 
     // Delay 1
-    if (ms1_Current - ms1_Previous_Select >= ms1_Interval)
+    if (ms1_Current - ms1_Previous >= ms1_Interval)
     {
-        ms1_Previous_Select = ms1_Current;
+        ms1_Previous = ms1_Current;
 
         // EMA filtering
         // -Set analog read input values
@@ -154,9 +157,9 @@ void select()
     }
 
     // Delay 2
-    if (ms2_Current - ms2_Previous_SelectRun >= ms2_Interval)
+    if (ms2_Current - ms2_Previous >= ms2_Interval)
     {
-        ms2_Previous_SelectRun = ms2_Current;
+        ms2_Previous = ms2_Current;
 
         // Off
         if (Select_MapVal == 0)

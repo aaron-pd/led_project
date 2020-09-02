@@ -24,11 +24,12 @@ public:
 
         // Delay variables/values
         unsigned long ms1_Current = millis();
+        static unsigned long ms1_Previous = 0;
 
         // Delay 1
-        if (ms1_Current - ms1_Previous_Pattern >= func_Delay_Val)
+        if (ms1_Current - ms1_Previous >= func_Delay_Val)
         {
-            ms1_Previous_Pattern = ms1_Current;
+            ms1_Previous = ms1_Current;
 
             // LED pattern
             if (sequence_Key == false)
@@ -59,11 +60,12 @@ public:
 
         // Delay variables/values
         unsigned long ms1_Current = millis();
+        static unsigned long ms1_Previous = 0;
 
         // Delay 1
-        if (ms1_Current - ms1_Previous_Pattern >= func_Delay_Val)
+        if (ms1_Current - ms1_Previous >= func_Delay_Val)
         {
-            ms1_Previous_Pattern = ms1_Current;
+            ms1_Previous = ms1_Current;
 
             // LED pattern
             if (sequence_Key == false)
@@ -112,11 +114,12 @@ public:
 
         // Delay variables/values
         unsigned long ms1_Current = millis();
+        static unsigned long ms1_Previous = 0;
 
         // Delay 1
-        if (ms1_Current - ms1_Previous_Pattern >= func_Delay_Val)
+        if (ms1_Current - ms1_Previous >= func_Delay_Val)
         {
-            ms1_Previous_Pattern = ms1_Current;
+            ms1_Previous = ms1_Current;
 
             // LED pattern
             if (sequence_Key == false)
@@ -179,14 +182,15 @@ public:
 
         // Delay variables/values
         unsigned long ms1_Current = millis();
+        static unsigned long ms1_Previous = 0;
 
         // Randomizer variables/values
         int rnd_sequence;
 
         // Delay 1
-        if (ms1_Current - ms1_Previous_Pattern >= func_Delay_Val)
+        if (ms1_Current - ms1_Previous >= func_Delay_Val)
         {
-            ms1_Previous_Pattern = ms1_Current;
+            ms1_Previous = ms1_Current;
 
             // Randomizer
             rnd_sequence = random(led_LR_Count);

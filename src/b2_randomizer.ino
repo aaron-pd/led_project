@@ -30,24 +30,29 @@ void patternRandom()
     // Delay variables/values
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = (random(4, 6) * 1000);
+    static unsigned long ms1_Previous = 0;
+
+    // Randomizer variables/values
+    static int rnd;
+
 
     // Delay 1
-    if (ms1_Current - ms1_Previous_PatternRnd >= ms1_Interval)
+    if (ms1_Current - ms1_Previous >= ms1_Interval)
     {
-        ms1_Previous_PatternRnd = ms1_Current;
+        ms1_Previous = ms1_Current;
 
         // Randomized pattern selection
-        rnd_Pattern = random(ARRAYSIZE(pattern));
+        rnd = random(ARRAYSIZE(pattern));
     }
 
     // One time reset and transition pattern
-    while (reset_Key[rnd_Pattern] == false)
+    while (reset_Key[rnd] == false)
     {
         reset();
-        reset_Key[rnd_Pattern] = true;
+        reset_Key[rnd] = true;
         transitionRandom();
     }
 
     // Run pattern
-    pattern[rnd_Pattern]->pattern(Delay_MapVal);
+    pattern[rnd]->pattern(Delay_MapVal);
 } //END: patternRandom()

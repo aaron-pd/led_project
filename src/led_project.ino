@@ -141,32 +141,12 @@ boolean sequence_Key;
 boolean reset_Key[patternSize];
 
 // Delay variables/values
-// -Global variables required to remember previous loop values
-// --Unsigned long to compare with millis()
-// --serialPrint()
-unsigned long ms1_Previous_Print = 0;
-// --patternDelay()
-unsigned long ms1_Previous_Delay = 0;
-// --dimmer()
-unsigned long ms1_Previous_Dimmer = 0;
-// --select()
-unsigned long ms1_Previous_Select = 0;
-unsigned long ms2_Previous_SelectRun = 0;
-// --pattern#()
-unsigned long ms1_Previous_Pattern = 0;
-// --patternRandom()
-unsigned long ms1_Previous_PatternRnd = 0;
 // -Variable used by all pattern() functions
 // --Initial value to avoid delayed start up
 int pattern_Delay = 250;
 // -Variable used by all transition() functions
 // --Initial value to avoid delayed start up
 int transition_Delay = 250;
-
-// Function variables/values
-// -patternRandom()
-// --Global variables required to remember previous loop values
-int rnd_Pattern;
 
 //-------------------- Setup --------------------
 void setup()
