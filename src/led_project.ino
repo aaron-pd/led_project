@@ -192,5 +192,4 @@ void loop()
     dimmer();
     patternDelay();
     switch_AB();
-    //serialPrint();
 } // END: loop()
