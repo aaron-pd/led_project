@@ -1,4 +1,4 @@
-//  _____Variables Legend_____
+// _____Variables Legend_____
 //
 // --Devices--
 //  R               - Right
@@ -33,7 +33,7 @@
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values (after EMA input filtering calculations)
 //
-//_____Notes_____
+// _____Notes_____
 //  -When adding new transitions:
 //   -Update transitionRandom() object declarations and array
 //  -When adding new patterns:
@@ -133,10 +133,6 @@ int sample_MovAvg_Delay = 0;
 float sample_Rate_Delay = 0.6;
 
 // Reset key variables/values
-// -Switch
-// --'false' declaration to avoid delayed start up
-boolean switch_PosA_Key = false;
-boolean switch_PosB_Key = false;
 // -Pattern sequence
 // --Values set by reset()
 boolean sequence_Key;

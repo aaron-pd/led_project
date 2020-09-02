@@ -10,6 +10,12 @@ void switch_AB()
     pinI_switch_PosA_Val = digitalRead(pinI_switch_PosA);
     pinI_switch_PosB_Val = digitalRead(pinI_switch_PosB);
 
+    // Reset key variables/values
+    // -'false' declaration to avoid delayed start up
+    // -Static variables required to remember previous loop values
+    static boolean switch_PosA_Key = false;
+    static boolean switch_PosB_Key = false;
+
     // Switch position 'A'
     // -Play selected patterns only
     if (pinI_switch_PosA_Val == HIGH)
