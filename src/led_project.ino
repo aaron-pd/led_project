@@ -93,11 +93,8 @@ const int pinO_Dimmer = 6;
 // Solid colour LED variables/values
 // Left/Right position based on center tri-colour LED
 // -Pins
-// --Separated arrays
 const int pinO_led_L[4] = {5, 4, 3, 2};
 const int pinO_led_R[4] = {7, 8, 12, 13};
-// --Combined arrays
-const int pinO_led_LR[8] = {5, 4, 3, 2, 7, 8, 12, 13};
 // -Array count variables
 // --Used when including both L and R arrays
 const int led_LR_Count = 4;
