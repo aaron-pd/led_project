@@ -68,8 +68,6 @@ const int pinI_switch_PosB = A4;
 // Dimmer variables/values for 10kOhm potentiometer
 // -Pins
 const int pinI_pot_Dimmer = A1;
-// -Mapped variables/values
-int Dimmer_MapVal = 0;
 
 // Delay rate variables/values for 10kOhm potentiometer
 // -Pins
@@ -81,8 +79,6 @@ unsigned long Delay_MapVal = 0;
 // Pattern selection variables/values for 10kOhm potentiometer
 // -Pins
 const int pinI_pot_Select = A2;
-// -Mapped variables/values
-int Select_MapVal = 0;
 
 //==========Outputs==========
 

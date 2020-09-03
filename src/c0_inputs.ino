@@ -66,7 +66,10 @@ void dimmer()
 {
 
     // Dimmer potentiometer variables/values
+    // -Pin values
     static int pinI_pot_Dimmer_Val = 0;
+    // -Mapped variables/values
+    static int Dimmer_MapVal = 0;
 
     // EMA Filtering variables/values
     static int sample_MovAvg_Dimmer = analogRead(pinI_pot_Dimmer);
@@ -149,7 +152,10 @@ void select()
     Pattern *pattern[] = {&p1, &p2, &p3, &p4};
 
     // Select potentiometer variables/values
+    // -Pin values
     static int pinI_pot_Select_Val = 0;
+    // -Mapped variables/values
+    static int Select_MapVal = 0;
 
     // EMA filtering variables/values
     static int sample_MovAvg_Select = analogRead(pinI_pot_Select);
