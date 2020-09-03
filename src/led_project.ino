@@ -119,7 +119,7 @@ void setup()
     // Communication setup
     Serial.begin(9600);
 
-    // LED pin setup
+    // LED output pin setup
     // -Left/Right solid colour LED sets
     for (int i = 0; i < led_LR_Count; i++)
     {
