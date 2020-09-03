@@ -6,6 +6,10 @@
 void switch_AB()
 {
 
+    // Switch variables/values
+    static int pinI_switch_PosA_Val = 0;
+    static int pinI_switch_PosB_Val = 0;
+
     // Read switch input values
     pinI_switch_PosA_Val = digitalRead(pinI_switch_PosA);
     pinI_switch_PosB_Val = digitalRead(pinI_switch_PosB);
@@ -61,6 +65,13 @@ void switch_AB()
 void dimmer()
 {
 
+    // Dimmer potentiometer variables/values
+    static int pinI_pot_Dimmer_Val = 0;
+
+    // EMA Filtering variables/values
+    static int sample_MovAvg_Dimmer = analogRead(pinI_pot_Dimmer);
+    static float sample_Rate_Dimmer = 0.6;
+
     // Delay variables/values
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = 100;
@@ -91,6 +102,13 @@ void dimmer()
 // -Final calculated variable 'Delay_MapVal' used by pattern() functions
 void patternDelay()
 {
+
+    // Delay potentiometer variables/values
+    static int pinI_pot_Delay_Val = 0;
+
+    // EMA filtering variables/values
+    static int sample_MovAvg_Delay = analogRead(pinI_pot_Delay);
+    static float sample_Rate_Delay = 0.6;
 
     // Delay variables/values
     unsigned long ms1_Current = millis();
@@ -129,6 +147,13 @@ void select()
     Pattern3 p3;
     Pattern4 p4;
     Pattern *pattern[] = {&p1, &p2, &p3, &p4};
+
+    // Select potentiometer variables/values
+    static int pinI_pot_Select_Val = 0;
+
+    // EMA filtering variables/values
+    static int sample_MovAvg_Select = analogRead(pinI_pot_Select);
+    static float sample_Rate_Select = 0.6;
 
     // Delay variables/values
     // -Potentiometer input EMA filtering

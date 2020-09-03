@@ -64,32 +64,23 @@ const int patternSize = 4;
 // -Pins
 const int pinI_switch_PosA = A3;
 const int pinI_switch_PosB = A4;
-// -Pin values
-int pinI_switch_PosA_Val = 0;
-int pinI_switch_PosB_Val = 0;
-
-// Delay rate variables/values for 10kOhm potentiometer
-// -Pins
-const int pinI_pot_Delay = A0;
-// -Pin values
-int pinI_pot_Delay_Val = 0;
-// -Mapped variables/values
-// --Unsigned long to compare with millis()
-unsigned long Delay_MapVal = 0;
 
 // Dimmer variables/values for 10kOhm potentiometer
 // -Pins
 const int pinI_pot_Dimmer = A1;
-// -Pin values
-int pinI_pot_Dimmer_Val = 0;
 // -Mapped variables/values
 int Dimmer_MapVal = 0;
+
+// Delay rate variables/values for 10kOhm potentiometer
+// -Pins
+const int pinI_pot_Delay = A0;
+// -Mapped variables/values
+// --Unsigned long to compare with millis()
+unsigned long Delay_MapVal = 0;
 
 // Pattern selection variables/values for 10kOhm potentiometer
 // -Pins
 const int pinI_pot_Select = A2;
-// -Pin values
-int pinI_pot_Select_Val = 0;
 // -Mapped variables/values
 int Select_MapVal = 0;
 
@@ -118,19 +109,6 @@ const int pinO_led_C_Blu = 10;
 const int pinO_led_C_Grn = 11;
 
 //==========Other==========
-
-// EMA filtering variables/values
-// -EMA sample_Rate value can be adjusted between 0.1 (slow;higher quality) to 0.9 (fast;lower quality)
-// -Global variables required to remember previous loop values
-// --Dimmer potentiometer
-int sample_MovAvg_Dimmer = 0;
-float sample_Rate_Dimmer = 0.6;
-// --Select potentiometer
-int sample_MovAvg_Select = 0;
-float sample_Rate_Select = 0.6;
-// --Variable delay input potentiometer
-int sample_MovAvg_Delay = 0;
-float sample_Rate_Delay = 0.6;
 
 // Reset key variables/values
 // -Pattern sequence
@@ -169,11 +147,6 @@ void setup()
 
     // Dimmer output pin setup
     pinMode(pinO_Dimmer, OUTPUT);
-
-    // EMA filtering setup
-    sample_MovAvg_Delay = analogRead(pinI_pot_Delay);
-    sample_MovAvg_Dimmer = analogRead(pinI_pot_Dimmer);
-    sample_MovAvg_Select = analogRead(pinI_pot_Select);
 
     // Random seed setup
     randomSeed(analogRead(A5));
