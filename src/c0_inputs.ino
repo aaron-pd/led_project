@@ -102,7 +102,7 @@ void dimmer()
 //==========Pattern Delay Input Filtering==========
 
 // Pattern delay potentiometer input value calculations with EMA filtering
-// -Final calculated variable 'Delay_MapVal' used by pattern() functions
+// -Final calculated variable 'Delay_MapVal' used by transition(#) and pattern(#) functions
 void patternDelay()
 {
 
