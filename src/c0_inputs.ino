@@ -103,11 +103,15 @@ void dimmer()
 
 // Pattern delay potentiometer input value calculations with EMA filtering
 // -Final calculated variable 'Delay_MapVal' used by transition(#) and pattern(#) functions
-void patternDelay()
+// -Unsigned long to compare with millis()
+unsigned long patternDelay()
 {
 
     // Delay potentiometer variables/values
+    // -Pin values
     static int pinI_pot_Delay_Val = 0;
+    // -Mapped variables/values
+    static unsigned long Delay_MapVal = 0;
 
     // EMA filtering variables/values
     static int sample_MovAvg_Delay = analogRead(pinI_pot_Delay);
@@ -132,6 +136,7 @@ void patternDelay()
         // Delay value mapped to delay potentiometer value with filtering calculations
         Delay_MapVal = map(sample_MovAvg_Delay, 8, 1015, 50, 250);
     }
+    return Delay_MapVal;
 } // END: patternDelay()
 
 //==========Select==========
@@ -205,7 +210,7 @@ void select()
                 reset_Key[Select_MapVal - 1] = true;
             }
             // Run pattern
-            pattern[Select_MapVal - 1]->pattern(Delay_MapVal);
+            pattern[Select_MapVal - 1]->pattern(patternDelay());
         }
 
         // On

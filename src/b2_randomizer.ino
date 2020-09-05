@@ -1,4 +1,4 @@
-//-------------------- Transition Randomizer --------------------
+//-------------------- Randomizer Functions --------------------
 
 // Randomly play a transition pattern
 void transitionRandom()
@@ -13,8 +13,6 @@ void transitionRandom()
     // Run random transition
     transition[random(ARRAYSIZE(transition))]->transition();
 } // END: transitionRandom()
-
-//-------------------- Pattern Randomizer --------------------
 
 // Randomly play a pattern
 void patternRandom()
@@ -54,5 +52,5 @@ void patternRandom()
     }
 
     // Run pattern
-    pattern[rnd]->pattern(Delay_MapVal);
+    pattern[rnd]->pattern(patternDelay());
 } //END: patternRandom()

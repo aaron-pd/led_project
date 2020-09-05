@@ -11,7 +11,7 @@ public:
 
 protected:
     // Transition pattern sequence delay variables/values
-    int transition_Delay = (Delay_MapVal / 2);
+    int transition_Delay = (patternDelay() / 2);
 }; // END: class Transition
 
 //==========Derived==========

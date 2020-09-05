@@ -11,7 +11,7 @@ public:
 
 protected:
     // Pattern sequence delay variables/values
-    int pattern_Delay = (Delay_MapVal / 2);
+    int pattern_Delay = (patternDelay() / 2);
 }; // END: class Pattern
 
 //==========Derived==========
@@ -19,7 +19,7 @@ protected:
 // Derived 1 : Pattern
 // Sets LED pattern
 // -Pattern will flash all LEDs simultaneously
-// -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_MapVal'
+// -func_Delay_Val = user custom value or EMA filtered input variable 'patternDelay()'
 class Pattern1 : public Pattern
 {
 public:
@@ -55,7 +55,7 @@ public:
 // Derived 2 : Pattern
 // Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards
-// -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_MapVal'
+// -func_Delay_Val = user custom value or EMA filtered input variable 'patternDelay()'
 class Pattern2 : public Pattern
 {
 public:
@@ -109,7 +109,7 @@ public:
 // Derived 3 : Pattern
 // Sets LED pattern
 // -Pattern will flash center LED, then fade through the following LEDs outwards, the center LED colours will match the currently lit LEDs
-// -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_MapVal'
+// -func_Delay_Val = user custom value or EMA filtered input variable 'patternDelay()'
 class Pattern3 : public Pattern
 {
 public:
@@ -177,7 +177,7 @@ public:
 // Derived 4 : Pattern
 // Sets LED pattern
 // -Left and Right sets of LEDs will display the same pair (colour) with matching center LED colour
-// -func_Delay_Val = user custom value or EMA filtered input variable 'Delay_MapVal'
+// -func_Delay_Val = user custom value or EMA filtered input variable 'patternDelay()'
 class Pattern4 : public Pattern
 {
 public:

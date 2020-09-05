@@ -80,9 +80,6 @@ const int pinI_pot_Dimmer = A1;
 
 // Delay rate pins variables/values for 10kOhm potentiometer
 const int pinI_pot_Delay = A0;
-// -Mapped variables/values
-// --Unsigned long to compare with millis()
-unsigned long Delay_MapVal = 0;
 
 // Pattern selection pins variables/values for 10kOhm potentiometer
 const int pinI_pot_Select = A2;
@@ -139,6 +136,5 @@ void loop()
 {
 
     dimmer();
-    patternDelay();
     switch_AB();
 } // END: loop()
