@@ -1,4 +1,4 @@
-// _____Variables Legend_____
+//-------------------- Variables Legend --------------------
 //
 // --Devices--
 //  R               - Right
@@ -33,7 +33,7 @@
 //  Val             - Value
 //  MapVal          - Values mapped to potentiometer values (after EMA input filtering calculations)
 //
-// _____Notes_____
+//-------------------- Notes --------------------
 //  When adding new transitions:
 //  -Update 'transitionRandom()' object declarations and array
 //  When adding new patterns:
