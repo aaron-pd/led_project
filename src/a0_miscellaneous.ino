@@ -1,6 +1,7 @@
 //-------------------- Miscellaneous Functions --------------------
 
 //==========reset()==========
+
 // Set reset_Key[#] and sequence_Key to 'false' and all LEDs to 'LOW'
 // -reset_Key[#] used in select() and patternRandom() functions
 // -sequence_Key used in all pattern(#) functions
@@ -18,6 +19,7 @@ void reset()
 
 
 //==========on()==========
+
 // LEDs are always on, values set to 'HIGH'
 void on()
 {
@@ -33,6 +35,7 @@ void on()
 } // END: on()
 
 //==========off()==========
+
 // LEDs are always off, values set to 'LOW'
 void off()
 {

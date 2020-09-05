@@ -1,6 +1,7 @@
 //-------------------- Randomizer Functions --------------------
 
 //==========transitionRandom()==========
+
 // Randomly play a transition pattern
 void transitionRandom()
 {
@@ -16,6 +17,7 @@ void transitionRandom()
 } // END: transitionRandom()
 
 //==========patternRandom()==========
+
 // Randomly play a pattern
 void patternRandom()
 {
