@@ -91,8 +91,8 @@ const char pinO_Dimmer = 6;
 
 // Solid colour LED pins variables/values
 // -Left/Right position based on center tri-colour LED
-const int pinO_led_L[4] = {5, 4, 3, 2};
-const int pinO_led_R[4] = {7, 8, 12, 13};
+const unsigned char pinO_led_L[4] = {5, 4, 3, 2};
+const unsigned char pinO_led_R[4] = {7, 8, 12, 13};
 
 // Center tri-colour LED pins variables/values
 const char pinO_led_C_Red = 9;
