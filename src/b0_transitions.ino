@@ -8,6 +8,9 @@ class Transition
 public:
     // Polymorphic runtime pure virtual function declaration
     virtual void transition() = 0;
+
+    // Transition pattern sequence delay variables/values
+    int transition_Delay = (Delay_MapVal / 2);
 }; // END: class Transition
 
 //==========Derived==========

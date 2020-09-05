@@ -104,14 +104,6 @@ boolean sequence_Key;
 // --Values set by reset()
 boolean reset_Key[patternSize];
 
-// Delay variables/values
-// -Variable used by all pattern() functions
-// --Initial value to avoid delayed start up
-int pattern_Delay = 250;
-// -Variable used by all transition() functions
-// --Initial value to avoid delayed start up
-int transition_Delay = 250;
-
 //-------------------- Setup --------------------
 void setup()
 {

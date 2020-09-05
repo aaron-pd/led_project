@@ -8,6 +8,9 @@ class Pattern
 public:
     // Polymorphic runtime pure virtual function declaration
     virtual void pattern(unsigned long func_Delay_Val) = 0;
+
+    // Pattern sequence delay variables/values
+    int pattern_Delay = (Delay_MapVal / 4);
 }; // END: class Pattern
 
 //==========Derived==========

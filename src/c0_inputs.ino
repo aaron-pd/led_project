@@ -131,10 +131,6 @@ void patternDelay()
 
         // Delay value mapped to delay potentiometer value with filtering calculations
         Delay_MapVal = map(sample_MovAvg_Delay, 8, 1015, 50, 250);
-
-        // Global pattern/transition delay values update
-        pattern_Delay = (sample_MovAvg_Delay / 4);
-        transition_Delay = (sample_MovAvg_Delay / 2);
     }
 } // END: patternDelay()
 
