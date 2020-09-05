@@ -35,7 +35,7 @@ void patternRandom()
     static unsigned long ms1_Previous = 0;
 
     // Randomizer variables/values
-    static int rnd;
+    static unsigned char rnd;
 
 
     // Delay 1

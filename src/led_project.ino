@@ -56,10 +56,10 @@
 
 // Total number of patterns
 // -Constant required for arrays
-const int patternSize = 4;
+const unsigned char patternSize = 4;
 // Array count variables
 // -Used when including both L and R array sets
-const int led_LR_Count = 4;
+const unsigned char led_LR_Count = 4;
 
 // Reset key variables/values
 // -Pattern sequence
@@ -72,22 +72,22 @@ boolean reset_Key[patternSize];
 //==========Input Pins==========
 
 // Switch pins variables/values
-const int pinI_switch_PosA = A3;
-const int pinI_switch_PosB = A4;
+const char pinI_switch_PosA = A3;
+const char pinI_switch_PosB = A4;
 
 // Dimmer pins variables/values for 10kOhm potentiometer
-const int pinI_pot_Dimmer = A1;
+const char pinI_pot_Dimmer = A1;
 
 // Delay rate pins variables/values for 10kOhm potentiometer
-const int pinI_pot_Delay = A0;
+const char pinI_pot_Delay = A0;
 
 // Pattern selection pins variables/values for 10kOhm potentiometer
-const int pinI_pot_Select = A2;
+const char pinI_pot_Select = A2;
 
 //==========Output Pins==========
 
 // Dimmer pins variables/values for MOSFET
-const int pinO_Dimmer = 6;
+const char pinO_Dimmer = 6;
 
 // Solid colour LED pins variables/values
 // -Left/Right position based on center tri-colour LED
@@ -95,9 +95,9 @@ const int pinO_led_L[4] = {5, 4, 3, 2};
 const int pinO_led_R[4] = {7, 8, 12, 13};
 
 // Center tri-colour LED pins variables/values
-const int pinO_led_C_Red = 9;
-const int pinO_led_C_Blu = 10;
-const int pinO_led_C_Grn = 11;
+const char pinO_led_C_Red = 9;
+const char pinO_led_C_Blu = 10;
+const char pinO_led_C_Grn = 11;
 
 //-------------------- Main Program --------------------
 

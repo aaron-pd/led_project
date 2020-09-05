@@ -7,8 +7,8 @@ void switch_AB()
 {
 
     // Switch variables/values
-    static int pinI_switch_PosA_Val = 0;
-    static int pinI_switch_PosB_Val = 0;
+    static char pinI_switch_PosA_Val = 0;
+    static char pinI_switch_PosB_Val = 0;
 
     // Read switch input values
     pinI_switch_PosA_Val = digitalRead(pinI_switch_PosA);
@@ -69,7 +69,7 @@ void dimmer()
     // -Pin values
     static int pinI_pot_Dimmer_Val = 0;
     // -Mapped variables/values
-    static int Dimmer_MapVal = 0;
+    static unsigned char Dimmer_MapVal = 0;
 
     // EMA Filtering variables/values
     static int sample_MovAvg_Dimmer = analogRead(pinI_pot_Dimmer);
@@ -156,7 +156,7 @@ void select()
     // -Pin values
     static int pinI_pot_Select_Val = 0;
     // -Mapped variables/values
-    static int Select_MapVal = 0;
+    static unsigned char Select_MapVal = 0;
 
     // EMA filtering variables/values
     static int sample_MovAvg_Select = analogRead(pinI_pot_Select);
