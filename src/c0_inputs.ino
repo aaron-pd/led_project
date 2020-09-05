@@ -93,10 +93,10 @@ void dimmer()
 
         // Dimmer value mapped to dimmer potentiometer value with filtering calculations
         Dimmer_MapVal = map(sample_MovAvg_Dimmer, 8, 1015, 50, 250);
-
-        // Dimness of LEDs sent to MOSFET output pin
-        analogWrite(pinO_Dimmer, Dimmer_MapVal);
     }
+
+    // Dimness of LEDs sent to MOSFET output pin
+    analogWrite(pinO_Dimmer, Dimmer_MapVal);
 } // END: dimmer()
 
 //==========patternDelay()==========
