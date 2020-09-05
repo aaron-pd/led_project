@@ -1,6 +1,6 @@
 //-------------------- Input Functions --------------------
 
-//==========Switch_AB==========
+//==========switch_AB()==========
 
 // Switch between random pattern/manual pattern selection
 void switch_AB()
@@ -59,7 +59,7 @@ void switch_AB()
     } // END: else
 } // END: switch_AB()
 
-//==========Dimmer==========
+//==========dimmer()==========
 
 // LED dimming control determined by potentiometer value
 void dimmer()
@@ -99,7 +99,7 @@ void dimmer()
     }
 } // END: dimmer()
 
-//==========Pattern Delay Input Filtering==========
+//==========patternDelay() / Input Filtering==========
 
 // Pattern delay potentiometer input value calculations with EMA filtering
 // -Final calculated variable 'Delay_MapVal' used by transition(#) and pattern(#) functions
@@ -139,7 +139,7 @@ unsigned long patternDelay()
     return Delay_MapVal;
 } // END: patternDelay()
 
-//==========Select==========
+//==========select()==========
 
 // LED pattern selection determined by potentiometer position/value
 void select()

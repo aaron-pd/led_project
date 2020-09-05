@@ -99,7 +99,9 @@ const int pinO_led_C_Red = 9;
 const int pinO_led_C_Blu = 10;
 const int pinO_led_C_Grn = 11;
 
-//-------------------- Setup --------------------
+//-------------------- Main Program --------------------
+
+//==========setup()==========
 void setup()
 {
 
@@ -131,7 +133,7 @@ void setup()
     delay(100);
 } // END: setup()
 
-//-------------------- Loop --------------------
+//==========loop()==========
 void loop()
 {
 

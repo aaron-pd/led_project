@@ -1,5 +1,6 @@
 //-------------------- Randomizer Functions --------------------
 
+//==========transitionRandom()==========
 // Randomly play a transition pattern
 void transitionRandom()
 {
@@ -14,6 +15,7 @@ void transitionRandom()
     transition[random(ARRAYSIZE(transition))]->transition();
 } // END: transitionRandom()
 
+//==========patternRandom()==========
 // Randomly play a pattern
 void patternRandom()
 {
