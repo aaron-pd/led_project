@@ -99,7 +99,7 @@ void dimmer()
     }
 } // END: dimmer()
 
-//==========patternDelay() / Input Filtering==========
+//==========patternDelay()==========
 
 // Pattern delay potentiometer input value calculations with EMA filtering
 // -Final calculated variable 'Delay_MapVal' used by transition(#) and pattern(#) functions
