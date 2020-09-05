@@ -167,11 +167,6 @@ void select()
     unsigned long ms1_Current = millis();
     unsigned long ms1_Interval = 100;
     static unsigned long ms1_Previous = 0;
-    // -Pattern run
-    // -Bug avoidance
-    unsigned long ms2_Current = millis();
-    unsigned long ms2_Interval = 100;
-    static unsigned long ms2_Previous = 0;
 
     // Delay 1
     if (ms1_Current - ms1_Previous >= ms1_Interval)
@@ -188,37 +183,31 @@ void select()
         Select_MapVal = map(sample_MovAvg_Select, 8, 1015, 0, (patternSize + 2));
     }
 
-    // Delay 2
-    if (ms2_Current - ms2_Previous >= ms2_Interval)
+    // Off
+    if (Select_MapVal == 0)
     {
-        ms2_Previous = ms2_Current;
+        // One time reset and LED values set to 'LOW'
+        reset();
+    }
 
-        // Off
-        if (Select_MapVal == 0)
+    // Play selected pattern
+    else if (Select_MapVal >= 1 && Select_MapVal <= patternSize)
+    {
+        // One time reset and transition pattern
+        while (reset_Key[Select_MapVal - 1] == false)
         {
-            // One time reset and LED values set to 'LOW'
             reset();
+            reset_Key[Select_MapVal - 1] = true;
         }
+        // Run pattern
+        pattern[Select_MapVal - 1]->pattern(patternDelay());
+    }
 
-        // Play selected pattern
-        else if (Select_MapVal >= 1 && Select_MapVal <= patternSize)
-        {
-            // One time reset and transition pattern
-            while (reset_Key[Select_MapVal - 1] == false)
-            {
-                reset();
-                reset_Key[Select_MapVal - 1] = true;
-            }
-            // Run pattern
-            pattern[Select_MapVal - 1]->pattern(patternDelay());
-        }
-
-        // On
-        else
-        {
-            // One time reset and LED values set to 'HIGH'
-            reset();
-            on();
-        }
+    // On
+    else
+    {
+        // One time reset and LED values set to 'HIGH'
+        reset();
+        on();
     }
 } // END: select()
