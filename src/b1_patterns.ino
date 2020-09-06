@@ -10,6 +10,9 @@ public:
     virtual void pattern(unsigned long func_Delay_Val) = 0;
 
 protected:
+    // Delay variables/values
+    unsigned long ms1_Current = millis();
+
     // Pattern sequence delay variables/values
     int pattern_Delay = (patternDelay() / 2);
 }; // END: class Pattern
@@ -27,7 +30,6 @@ public:
     {
 
         // Delay variables/values
-        unsigned long ms1_Current = millis();
         static unsigned long ms1_Previous = 0;
 
         // Delay 1
@@ -63,7 +65,6 @@ public:
     {
 
         // Delay variables/values
-        unsigned long ms1_Current = millis();
         static unsigned long ms1_Previous = 0;
 
         // Delay 1
@@ -117,7 +118,6 @@ public:
     {
 
         // Delay variables/values
-        unsigned long ms1_Current = millis();
         static unsigned long ms1_Previous = 0;
 
         // Delay 1
@@ -185,7 +185,6 @@ public:
     {
 
         // Delay variables/values
-        unsigned long ms1_Current = millis();
         static unsigned long ms1_Previous = 0;
 
         // Randomizer variables/values

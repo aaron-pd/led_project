@@ -57,6 +57,7 @@
 // Total number of patterns
 // -Constant required for arrays
 const unsigned char patternSize = 4;
+
 // Array count variables
 // -Used when including both L and R array sets
 const unsigned char led_LR_Count = 4;
