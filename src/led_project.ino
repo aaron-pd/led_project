@@ -163,7 +163,6 @@ void reset()
     off();
 } // END: reset()
 
-
 //==========on()==========
 
 // LEDs are always on, values set to 'HIGH'
@@ -599,7 +598,6 @@ void patternRandom()
 
     // Randomizer variables/values
     static unsigned char rnd;
-
 
     // Delay 1
     if (ms1_Current - ms1_Previous >= ms1_Interval)
